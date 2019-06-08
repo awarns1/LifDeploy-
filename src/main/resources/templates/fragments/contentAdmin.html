@@ -1,0 +1,43 @@
+<div data-th-fragment="contentAdmin">
+	<!-- ======================== DEFAULTCONTENTADMIN =============================== -->
+	<div th:if="${!#strings.isEmpty(getDefaultContAdmin)}">
+		<div
+			th:replace="fragments/includes/defaultContentAdmin ::defaultContentAdmin"></div>
+	</div>
+	<!-- ========================  LISTE ECOLES =============================== -->
+	<div th:if="${!#strings.isEmpty(getEcolesList)}">
+		<div th:replace="fragments/includes/ListeEcoles ::ListeEcoles"></div>
+	</div>
+	<!-- ========================  LISTE PRODUCTEURS =============================== -->
+	<div th:if="${!#strings.isEmpty(getProducteursList)}">
+		<div
+			th:replace="fragments/includes/ListeProducteurs ::ListeProducteurs"></div>
+	</div>
+	<!-- ========================  LISTE PARTENAIRES =============================== -->
+	<div th:if="${!#strings.isEmpty(getPartenairesList)}">
+		<div
+			th:replace="fragments/includes/ListePartenaires ::ListePartenaires"></div>
+	</div>
+	<!-- ========================  LISTE CATEGORIES PRODUIT =============================== -->
+	<div th:if="${!#strings.isEmpty(getCategorieProd)}">
+		<div th:replace="fragments/includes/ListeCategorie ::ListeCategorie"></div>
+	</div>
+	<!-- ========================  LISTE PRODUITS PRODUCTEUR =============================== -->
+	<div th:if="${!#strings.isEmpty(getProdProducteur)}">
+		<div th:replace="fragments/includes/ListeProduits ::ListeProduits"></div>
+	</div>
+	<!-- ========================  MARCHE =============================== -->
+	<div th:if="${!#strings.isEmpty(getPlaceMarcher)}">
+		<div th:replace="fragments/includes/Marcher ::marcher"></div>
+	</div>
+	<!-- ========================  COMMANDE/PAIEMENTS/DONATIONS =============================== -->
+	<div th:if="${!#strings.isEmpty(ListeCmdEtPaiementEtDonation)}">
+		<div
+			th:replace="fragments/includes/ListeCmdEtPaiementEtDonation ::ListeCmdEtPaiementEtDonation"></div>
+	</div>
+	<!-- ========================  CARTOGRAPHIE =============================== -->
+	<div th:if="${!#strings.isEmpty(Cartographie)}">
+		<div
+			th:replace="fragments/includes/CartographieEcole ::CartographieEcole"></div>
+	</div>
+</div>

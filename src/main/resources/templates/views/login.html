@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-134532731-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134532731-1');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon"
+	th:href="@{/css_template_index/img/lifantouIcon.ico}" />
+<link th:href="@{/css_template_index/img/lifantouLogo4.png}"
+	rel="apple-touch-icon" />
+<title>Lifantou</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- FONT AWESOME-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css}" />
+<!-- SIMPLE LINE ICONS-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/simple-line-icons/css/simple-line-icons.css}" />
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/bootstrap.css}"
+	id="bscss" />
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/app.css}"
+	id="maincss" />
+<link rel="stylesheet" th:href="@{/css_template_home/myStyles.css}" />
+
+<!-- Libraries CSS Files -->
+<link
+	th:href="@{css_template_index/lib/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/animate/animate.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/owlcarousel/assets/owl.carousel.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/magnific-popup/magnific-popup.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+<!-- Main Stylesheet File -->
+<link th:href="@{css_template_index/css/style.css}" rel="stylesheet" />
+</head>
+
+<body class="bodyReg">
+	<div th:replace="fragments/index_header ::index_header"></div>
+
+	<div th:replace="fragments/index_menus_cnx ::index_menus_cnx"></div>
+
+	<div class="wrapper">
+		<div class="block-center mt-5 wd-flog">
+			<div class="card card-flat">
+				<div class="card-header text-center">
+					<a th:href="@{/}"> <img class="block-center" height="80px;"
+						width="150px;" th:src="@{/images/lifantouLogo4.png}" alt="Image" />
+					</a>
+				</div>
+				<div th:if="${formLogin==true}">
+					<div th:replace="fragments/formLogin ::formLogin"></div>
+				</div>
+				<div th:if="${formRecover==true}">
+					<div th:replace="fragments/formRecoverPwd ::formRecoverPwd"></div>
+				</div>
+				<div th:if="${formDonation==true}">
+					<div th:replace="fragments/formDonations ::formDonations"></div>
+				</div>
+			</div>
+			<div
+				th:replace="fragments/copyright_login_register ::copyright_login_register"></div>
+		</div>
+	</div>
+	<!-- SCRIPT DU BAS -->
+	<div th:replace="fragments/script_bas_home ::script_bas_home"></div>
+	<!-- ./ SCRIPT DU BAS -->
+</body>
+</html>

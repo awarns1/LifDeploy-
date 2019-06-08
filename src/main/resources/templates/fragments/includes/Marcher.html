@@ -1,0 +1,181 @@
+<div data-th-fragment="marcher">
+	<div class="content-heading">
+		<div>
+			Place du March&eacute;<span th:text="${text}"
+				th:if="${!#strings.isEmpty(text)}"></span>
+		</div>
+	</div>
+	<div th:replace="fragments/includes/Notification ::showNotification"></div>
+	<!-- START card tab-->
+	<div class="card" role="tabpanel">
+		<!-- Nav tabs-->
+		<ul class="nav nav-tabs nav-fill" role="tablist">
+			<li class="nav-item" role="presentation"><a
+				th:class="'nav-link '+${getActive}" href="#home"
+				aria-controls="home" role="tab" data-toggle="tab"> Passer une
+					commande </a></li>
+			<li class="nav-item" role="presentation"><a
+				th:class="'nav-link '+${getRepartiCmd}" href="#profile"
+				aria-controls="profile" role="tab" data-toggle="tab"> Commandes
+					en attente validation </a></li>
+		</ul>
+		<div class="tab-content p-0">
+			<!-- ============================= TAB PROD CMD =================== -->
+			<div th:class="'tab-pane '+${getActive}" id="home" role="tabpanel">
+				<div class="card-body">
+					<div class="table-responsive bootgrid">
+						<form method="post" th:action="@{/Admin/Passer-commande-ecole/}">
+							<table id="example" class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Image</th>
+										<th>Nom Produit</th>
+										<th>Prix Unitaire</th>
+										<th>Stock Global</th>
+										<th>Date Livraison</th>
+										<th><button class="btn btn-info" type="submit"
+												th:if="${!#strings.isEmpty(idEcole)}">Valider</button> <!-- <span th:if="${!#strings.isEmpty(idEcole)}" th:text="${Ident}"></span> --></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="catP,index :${ListCatProd}">
+										<td>
+											<div class="checkbox c-checkbox">
+												<label> <input type="checkbox"
+													th:value="${catP.id}+'/'+${index.count}" name="selectCh" />
+													<span class="fa fa-check" id="selectChoix"></span></label>
+											</div>
+										</td>
+										<td><img class="card-img-top img-fluid My-ImgMarche"
+											th:src="'/getPhoto/ProdBaseImg/'+${catP.id}" alt="Card cap" />
+											<input type="hidden" th:value="${catP.prixUnitaire}"
+											class="form-control" min="1" name="pu" /></td>
+										<td th:text="${catP.nomProduit}"></td>
+										<td
+											th:text="${#numbers.formatDecimal(catP.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+										<td th:text="${catP.stockGlobal}+' '+${catP.unite}"></td>
+										<td><input type="date" name="dateLiv"
+											class="form-control" /></td>
+										<td><input type="number" class="form-control"
+											placeholder="quantit&eacute; command&eacute;e" min="1"
+											name="qteCmd" /></td>
+									</tr>
+								</tbody>
+							</table>
+							<input type="hidden" name="idEcole" th:value="${idEcole}" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ============================= TAB CMD=================== -->
+			<div th:class="'tab-pane '+${getRepartiCmd}" id="profile"
+				role="tabpanel">
+				<div class="card-body">
+					<div class="table-responsive bootgrid">
+						<table id="example2"
+							class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>R&eacute;ference Commande</th>
+									<th>Identifiant Ecole</th>
+									<!-- <th>Ecole</th> -->
+									<th>Produit</th>
+									<th>Date Commande</th>
+									<th>Date Livraison</th>
+									<th>Quantit&eacute; Command&eacute;e</th>
+									<th>Montant Total</th>
+									<th>Etat Commande</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cmdEC, index :${ListCmdEnCours}">
+									<td th:text="${index.count}"></td>
+									<td th:text="${cmdEC.ref}"></td>
+									<td th:text="${cmdEC.ecole.identifiant}"></td>
+									<!-- <td th:text="${cmdEC.ecole.nomEcole}"></td> -->
+									<td th:text="${cmdEC.produit.nomProduit}"></td>
+									<td th:text="${#calendars.format(cmdEC.dateCmd,'dd/MM/yyyy')}"></td>
+									<td
+										th:text="${#calendars.format(cmdEC.dateLivraison,'dd/MM/yyyy')}"></td>
+									<td th:text="${cmdEC.quantite}+' '+${cmdEC.produit.unite}"></td>
+									<td
+										th:text="${#numbers.formatDecimal(cmdEC.montantTotal, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+									<td><span class="badge badge-info"
+										th:text="'En attente validation'"></span></td>
+									<td><a
+										th:href="@{'/Admin/Repartition_commande/'+${cmdEC.id}+'/'}">
+											<button class="btn btn-primary btn-xs" type="button"
+												id="testAlert">R&eacute;partir commande</button>
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="card-footer text-right"></div>
+
+				<div class="row" th:if="${!#strings.isEmpty(getRepartiCmd)}">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-10">
+								<h3>
+									<span
+										th:text="'R&eacute;partition de la commande :'+${cmd.ref}"></span>
+								</h3>
+							</div>
+							<div class="col-md-2">
+								<a th:href="@{'/Admin/Annuler_commande/'+${cmd.id}+'/'}">
+									<button class="mb-1 btn btn-outline-danger" type="submit">Annuler
+										la commande</button>
+								</a>
+							</div>
+						</div>
+						<div class="table-responsive bootgrid">
+							<form method="post" th:action="@{/Admin/Repartition/commande}">
+								<table id="example" class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Identifiant Producteur</th>
+											<th>Nom Produit</th>
+											<th>Quantit&eacute;e Disponible</th>
+											<th>Date Production</th>
+											<th><button class="btn btn-info" type="submit"
+													id="btnValiderRepart">Valider</button> <span
+												th:text="${errokQte}" th:if="${!#strings.isEmpty(errokQte)}"
+												style="color: red" id="msgError"></span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="pp,index :${prodProductLis}">
+											<td>
+												<div class="checkbox c-checkbox">
+													<label> <input type="checkbox"
+														th:value="${pp.id}+'/'+${index.count}" th:id="${pp.id}"
+														name="idProdProduct"
+														th:onclick="'myFunction('+${pp.id}+')'" /> <span
+														class="fa fa-check" id="selectChoix"></span></label>
+												</div>
+											</td>
+											<td th:text="${pp.producteur.identifiant}"></td>
+											<td th:text="${pp.produit.nomProduit}"></td>
+											<td th:text="${pp.quantiteStock}+' '+${pp.produit.unite}"></td>
+											<td
+												th:text="${#calendars.format(pp.dateProduction,'dd/MM/yyyy')}"></td>
+											<td><input type="number" class="form-control"
+												th:value="0" placeholder="quantite" name="qteProd" /></td>
+										</tr>
+									</tbody>
+								</table>
+								<input type="hidden" name="idLigneCmd" th:value="${cmd.id}" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,55 @@
+
+server:
+  port: 8083
+  error:
+    whitelabel:
+      enabled: true
+#logging:
+#  level:
+#    org.springframework.web: ERROR
+#    org.springframework.data: ERROR
+#    
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#  file: trace.log
+      
+spring:
+    jpa:
+        database: MYSQL
+        hibernate:
+            ddl-auto: update
+            dialect: org.hibernate.dialect.MySQL5Dialect
+    datasource:
+        url: jdbc:mysql://mysql-dev.database.svc.cluster.local/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+        username: root
+        password: mastermind01
+        driver-class-name: com.mysql.cj.jdbc.Driver
+#spring:
+#    profiles:
+#        active: prod
+#    jpa:
+#        database: MYSQL
+#        hibernate:
+#            ddl-auto: update
+#            dialect: org.hibernate.dialect.MySQL5Dialect
+#
+#    datasource:
+#       url: jdbc:mysql://localhost/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+#       username: root
+#       password: 
+#       driver-class-name: com.mysql.cj.jdbc.Driver
+        
+        
+    mail:
+        default-encoding: UTF-8
+        host: smtp.gmail.com
+        port: 587
+        username: lifantou.workgroup@gmail.com
+        password: 783001198@
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+              auth: true
+              starttls.enable: true
+              ssl.trust: smtp.gmail.com

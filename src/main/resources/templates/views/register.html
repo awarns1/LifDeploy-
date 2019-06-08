@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-134532731-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134532731-1');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon"
+	th:href="@{/css_template_index/img/lifantouIcon.ico}" />
+<link th:href="@{/css_template_index/img/lifantouLogo4.png}"
+	rel="apple-touch-icon" />
+<title>Lifantou</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- FONT AWESOME-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css}" />
+<!-- SIMPLE LINE ICONS-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/simple-line-icons/css/simple-line-icons.css}" />
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/bootstrap.css}"
+	id="bscss" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/select2/dist/css/select2.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css}" />
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/app.css}"
+	id="maincss" />
+<link rel="stylesheet" th:href="@{/css_template_home/myStyles.css}" />
+<!-- Libraries CSS Files -->
+<link
+	th:href="@{css_template_index/lib/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/animate/animate.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/owlcarousel/assets/owl.carousel.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/magnific-popup/magnific-popup.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+<!-- Main Stylesheet File -->
+<link th:href="@{css_template_index/css/style.css}" rel="stylesheet" />
+</head>
+
+<body class="bodyReg">
+	<div th:replace="fragments/index_header ::index_header"></div>
+
+	<div th:replace="fragments/index_menus_cnx ::index_menus_cnx"></div>
+
+	<div class="wrapper">
+		<!-- wd-xl replace to wd-formLoginAndRegister(wd-flr) -->
+		<div class="block-center mt-5 wd-fReg">
+			<!-- START card-->
+			<div class="card card-flat">
+				<div class="card-header text-center bg-white">
+					<a th:href="@{/}"> <img class="block-center" height="80px;"
+						width="150px;" th:src="@{/images/lifantouLogo4.png}" alt="Image" />
+					</a>
+				</div>
+				<div class="card-body">
+					<p class="text-center py-2">INSCRIVEZ-VOUS POUR OBTENIR UN ACCÈS.</p>
+					<p class="bg-warning" th:text="${compteOrEmailExist}"
+						th:if="${!#strings.isEmpty(compteOrEmailExist)}"></p>
+					<form class="mb-3" th:action="@{/register}" th:object="${userForm}"
+						method="post">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputEmail1">Nom
+										d'utilisateur </label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{username}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="icon-user"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('username')}"
+										th:errors="*{username}">tes</span>
+								</div>
+								<div class="form-group">
+									<label class="text-muted" for="signupInputEmail1">Adresse
+										Email </label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="email"
+											th:field="*{email}" id="signupInputEmail1"/>
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-envelope"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors" th:if="${#fields.hasErrors('email')}"
+										th:errors="*{email}">errors</span>
+								</div>
+								<div class="form-group">
+									<label class="text-muted" for="signupInputRePassword1">Mot
+										de passe</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="password"
+											th:field="*{password}"
+											data-parsley-equalto="#signupInputPassword1" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-lock"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('password')}"
+										th:errors="*{password}">errors</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Adresse
+										domicile</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{adresse}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-address-book"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors" th:if="${#fields.hasErrors('adresse')}"
+										th:errors="*{adresse}">errors</span>
+								</div>
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Telephone</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{tel}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="icon-phone"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors" th:if="${#fields.hasErrors('tel')}"
+										th:errors="*{tel}">errors</span>
+								</div>
+								<div class="form-group">
+									<label class="text-muted" for="signupInputRePassword1">Confirmer
+										mot de passe</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="password"
+											th:field="*{confirmPassword}"
+											data-parsley-equalto="#signupInputPassword1" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-lock"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('confirmPassword')}"
+										th:errors="*{confirmPassword}">errors</span> <span
+										class="My-errors" th:text="${erreurPwd}"
+										th:if="${!#strings.isEmpty(erreurPwd)}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-2 col-form-label">Compte ?</label>
+							<div class="col-md-10">
+								<label class="c-radio"> <input id="btnEcole"
+									type="radio" name="type" th:value="${userForm.type='Ecole'}" />
+									<span class="fa fa-circle"></span> Ecole
+								</label> <label class="c-radio"> <input id="btnProduct"
+									type="radio" name="type"
+									th:value="${userForm.type='Producteur'}" /> <span
+									class="fa fa-circle"></span> Producteur
+								</label> <label class="c-radio"> <input id="btnParte"
+									type="radio" name="type"
+									th:value="${userForm.type='Partenaire'}" /> <span
+									class="fa fa-circle"></span> Partenaire
+								</label> <span class="My-errors"
+									th:if="${!#strings.isEmpty(selectType)}"
+									th:text="${selectType}">errors</span>
+							</div>
+						</div>
+						<!-- ============================ PRODUCTEUR ================ -->
+						<div class="row" id="product">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Nom
+										producteur</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{nomProduct}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-user-shield"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('nomProduct')}"
+										th:errors="*{nomProduct}">errors</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Prenom
+										producteur</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{prenomProduct}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-user-shield"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('prenomProduct')}"
+										th:errors="*{prenomProduct}">errors</span>
+								</div>
+							</div>
+						</div>
+						<!-- ============================ ECOLE ================ -->
+						<div class="row" id="ecole">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Nom
+										école</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{nomEcole}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="icon-home"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('nomEcole')}"
+										th:errors="*{nomEcole}">errors</span>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row">
+									<div class="col-md-6">
+										<label class="text-muted" for="signupInputPassword1">Nom
+											gestionnaire</label>
+										<div class="input-group with-focus">
+											<input class="form-control border-right-0" type="text"
+												th:field="*{nomGest}" />
+											<div class="input-group-append">
+												<span
+													class="input-group-text text-muted bg-transparent border-left-0">
+													<em class="fa fa-user-shield"></em>
+												</span>
+											</div>
+										</div>
+										<span class="My-errors"
+											th:if="${#fields.hasErrors('nomGest')}"
+											th:errors="*{nomGest}">errors</span>
+									</div>
+									<div class="col-md-6">
+										<label class="text-muted" for="signupInputPassword1">Prenom
+											gestionnaire</label>
+										<div class="input-group with-focus">
+											<input class="form-control border-right-0" type="text"
+												th:field="*{prenomGest}" />
+											<div class="input-group-append">
+												<span
+													class="input-group-text text-muted bg-transparent border-left-0">
+													<em class="fa fa-user-shield"></em>
+												</span>
+											</div>
+										</div>
+										<span class="My-errors"
+											th:if="${#fields.hasErrors('prenomGest')}"
+											th:errors="*{prenomGest}">errors</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ============================ PARTENAIRE ================ -->
+						<div class="row" id="parte">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Nom
+										structure</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{nomStructure}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="icon-globe"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('nomStructure')}"
+										th:errors="*{nomStructure}">errors</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="text-muted" for="signupInputPassword1">Domaine
+										d'activité</label>
+									<div class="input-group with-focus">
+										<input class="form-control border-right-0" type="text"
+											th:field="*{domaineActivite}" />
+										<div class="input-group-append">
+											<span
+												class="input-group-text text-muted bg-transparent border-left-0">
+												<em class="fa fa-suitcase"></em>
+											</span>
+										</div>
+									</div>
+									<span class="My-errors"
+										th:if="${#fields.hasErrors('domaineActivite')}"
+										th:errors="*{domaineActivite}">errors</span>
+								</div>
+							</div>
+						</div>
+						<!-- ========================= REGION ==================== -->
+						<div class="form-group row mb-2">
+							<label class="col-md-2 col-form-label">Region</label>
+							<div class="col-md-10">
+								<select class="chosen-select form-control" name="idRegion">
+									<option th:each="region : ${regionList}"
+										th:value="${userForm.idRegion=region.id}"
+										th:text="${region.nomRegion}"></option>
+								</select>
+							</div>
+						</div>
+						<br />
+						<div class="row mb-2">
+							<div class="checkbox c-checkbox mt-0 col-md-12">
+								<label> <input type="checkbox" value=""
+									required="required" name="agreed" /> <span class="fa fa-check"></span>
+									Je suis d'accord avec les termes
+								</label>
+							</div>
+						</div>
+						<button class="btn btn-block btn-primary mt-3" type="submit">Valider</button>
+					</form>					
+					<a class="btn btn-block btn-secondary" th:href="@{/login}">Se
+						connecter</a>
+				</div>
+			</div>
+			<div
+				th:replace="fragments/copyright_login_register ::copyright_login_register"></div>
+		</div>
+	</div>
+
+	<!-- SCRIPT DU BAS -->
+	<div th:replace="fragments/script_bas_home ::script_bas_home"></div>
+	<!-- ./ SCRIPT DU BAS -->
+
+</body>
+</html>

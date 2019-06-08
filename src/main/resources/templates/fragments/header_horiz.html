@@ -1,0 +1,118 @@
+<div data-th-fragment="header_horizontal">
+	<header class="topnavbar-wrapper">
+		<nav class="navbar topnavbar navbar-expand-lg navbar-light">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/}">
+					<div class="brand-logo">
+						<img class="img-fluid" th:src="@{/images/Logolifantou3.png}"
+							alt="App Logo" />
+					</div>
+					<div class="brand-logo-collapsed">
+						<img class="img-fluid" th:src="@{/images/Logolifantou3.png}"
+							alt="App Logo" />
+					</div>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#topnavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topnavbar">
+				<ul class="nav navbar-nav mr-auto flex-column flex-lg-row">
+					<li th:class="'nav-item '+${getDefaultContentHoriz}" th:if="${role!='PARTENAIRE'}"><a
+						class="nav-link" th:href="@{/dashboard}">Statisques</a></li>
+					<li th:class="'nav-item '+${getProfilUser}"><a
+						class="nav-link" th:href="@{/Gestions/Profil}">Mon Profil</a></li>
+					<li th:class="'nav-item '+${getMarche}" th:if="${role=='ECOLE'}"><a
+						class="nav-link" th:href="@{/Gestions/Marche}">March&eacute;</a></li>
+					<li th:class="'nav-item '+${getCmdUser}"
+						th:if="${role=='ECOLE' || role=='PRODUCTEUR'}"><a
+						class="nav-link" th:href="@{/Gestions/Commandes}">Commandes</a></li>
+					<li th:class="'nav-item '+${getStock}"
+						th:if="${role=='PRODUCTEUR'}"><a class="nav-link"
+						th:href="@{/Gestions/Stock}">Mes Produits</a></li>
+					<li th:class="'nav-item '+${getPaiementUser}"
+						th:if="${role=='ECOLE' || role=='PRODUCTEUR'}"><a
+						class="nav-link" th:href="@{/Gestions/Paiements}">Paiements</a></li>
+					<li th:class="'nav-item '+${parteEcole}" th:if="${role=='ECOLE'}"><a
+						class="nav-link" th:href="@{/Gestions/Partenaires}">Partenaires</a></li>
+					<li th:class="'nav-item '+${ecolePart}"
+						th:if="${role=='PARTENAIRE'}"><a class="nav-link"
+						th:href="@{/Gestions/Ecoles}">Ecoles</a></li>
+
+				</ul>
+
+				<ul class="navbar-nav flex-row">
+					<!-- <li class="nav-item dropdown dropdown-list"><a
+						class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+						data-toggle="dropdown"> <em class="icon-bell"></em> <span
+							class="badge badge-danger">11</span>
+					</a>
+						<div class="dropdown-menu dropdown-menu-right animated flipInX">
+							<div class="dropdown-item">
+								<div class="list-group">
+									<div class="list-group-item list-group-item-action">
+										<div class="media">
+											<div class="align-self-start mr-2">
+												<em class="fab fa-twitter fa-2x text-info"></em>
+											</div>
+											<div class="media-body">
+												<p class="m-0">New followers</p>
+												<p class="m-0 text-muted text-sm">1 new follower</p>
+											</div>
+										</div>
+									</div>
+									<div class="list-group-item list-group-item-action">
+										<div class="media">
+											<div class="align-self-start mr-2">
+												<em class="fa fa-envelope fa-2x text-warning"></em>
+											</div>
+											<div class="media-body">
+												<p class="m-0">New e-mails</p>
+												<p class="m-0 text-muted text-sm">You have 10 new emails</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div></li> -->
+
+					<li class="nav-item dropdown dropdown-list"><a title="Profil"
+						class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+						data-toggle="dropdown"> <em class="icon-user"></em>
+					</a>
+						<div class="dropdown-menu dropdown-menu-right animated flipInX lienss">
+							<a th:href="@{/Gestions/Profil}">
+								<div class="dropdown-item">
+									<div class="list-group">
+										<div class="list-group-item list-group-item-action">
+											<div class="item user-block">
+												<!-- User picture-->
+												<div class="user-block-picture">
+													<div class="user-block-status">
+														<img class="img-thumbnail rounded-circle"
+															th:src="@{/css_template_home/img/user/avatar.png}"
+															alt="Avatar" width="60" height="60" />
+														<div class="circle bg-success circle-lg"></div>
+													</div>
+												</div>
+												<!-- Name and Job-->
+												<div class="user-block-info">
+													<span class="user-block-name"
+														th:text="Hello+' '+${session.Nom}"></span> <span
+														class="user-block-role" th:text="${session.RoleNmaem}">A</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/logout}"
+						data-toggle-state="offsidebar-open" data-no-persist="true"> D&eacute;connexion
+					</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+</div>

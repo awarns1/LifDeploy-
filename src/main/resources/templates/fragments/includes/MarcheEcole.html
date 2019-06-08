@@ -1,0 +1,202 @@
+<div data-th-fragment="MarcheEcole">
+	<div class="card">
+		<div class="card-header row">
+			<div class="col-md-10">
+				<h3 th:text="${getMarcheEcole}">Titre</h3>
+			</div>
+			<div class="col-md-2">
+				<div class="btn-group">
+					<!-- <a th:href="@{/Gestions/Panier}"><h3>
+							<em class="fas fa-cart-arrow-down"></em> <span
+								class="badge badge-danger" th:text="${NbCart}">0</span>
+						</h3></a> -->
+					<a th:href="@{/Gestions/Panier}">
+						<button class="mb-1 btn btn-outline-info" type="button">Allez
+							vers mon panier</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/includes/Notification ::showNotification"></div>
+	<div th:if="${!#strings.isEmpty(getProdList)}">
+		<form th:action="@{/Gestions/Marche/Search/produit}" method="post">
+			<div class="row">
+				<div class="col-md-5 col-md-offset-5">
+					<div class="form-group">
+						<input class="form-control" type="text" name="valSearch"
+							placeholder="Rechercher un produit" required="required" />
+					</div>
+				</div>
+				<div class="col-mb-2">
+					<button class="btn btn-secondary" type="submit">Recherche</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col-xl-3" th:each="prCat :${ListCatProduit}">
+				<div class="card">
+					<a> <!-- <img class="img-fluid" class="card-img-top img-fluid My-ImgMarche"
+					th:src="@{/css_template_home/img/bg1.jpg}" alt="demo" /> --> <img
+						class="img-fluid My-ImgMarcheEcole"
+						th:src="'/getPhoto/ProdBaseImg/'+${prCat.id}" alt="photo produit" />
+					</a>
+					<div class="card-body">
+						<h4>
+							<p class="d-flex">
+								<span><strong th:text="${prCat.nomProduit}">Nom
+										Produit </strong> </span> <span class="ml-auto"> <strong
+									th:text="${#numbers.formatDecimal(prCat.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'">PU</strong>
+								</span>
+							</p>
+						</h4>
+						<p>
+							Quantite Disponible: <span class="tailleText"><strong
+								th:text="${prCat.stockGlobal}+' '+${prCat.unite}"></strong></span>
+						</p>
+						<p>Description Produit.</p>
+						<h4>
+							<!-- <a th:if="'${desactiver=='+${prCat.id}+'}'"
+								th:href="@{'/Gestions/cart/'+${prCat.id}+'/add-product-to-cart/'}"><button
+									class="btn btn-info" disabled="disabled">Ajouter au panier</button> </a> -->
+							<a
+								th:href="@{'/Gestions/cart/'+${prCat.id}+'/add-product-to-cart/'}"><button
+									class="btn btn-info">Ajouter au panier</button> </a>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============================= CONTENU PANIER ==================== -->
+	<div class="card" th:if="${!#lists.isEmpty(ListProdCart)}">
+		<div class="card-body">
+			<form th:action="@{/Gestions/checkout/order/}" method="post">
+				<div class="card-header row">
+					<div class="col-md-4">Contenu du Panier</div>
+					<div class="col-md-6">
+						<span th:if="${!#strings.isEmpty(errorQtes)}" style="color: red"
+							th:text="${errorQtes}"></span>
+					</div>
+					<div class="col-md-2">
+						<div class="btn-group">
+							<button class="btn btn-info" type="submit">Valider mon
+								panier</button>
+						</div>
+					</div>
+				</div>
+				<div class="table-responsive bootgrid">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr class="column-labels">
+								<th>#</th>
+								<th>Image</th>
+								<th>Produit</th>
+								<th class="product-price">Prix Unitaire</th>
+								<th>Quantit&eacute;e Disponible</th>
+								<th>Date Livraison</th>
+								<th class="product-quantity">Quantit&eacute;e &agrave;
+									commander</th>
+								<th class="product-line-price">Sous Total</th>
+								<th>Supp.</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pan,index :${ListProdCart}" class="product">
+								<input type="hidden" name="idCart" th:value="${pan.idCart}" />
+								<td th:text="${index.count}">#</td>
+								<td><img class="img-fluid My-ImgMarche"
+									th:src="'/getPhoto/ProdBaseImg/'+${pan.produit.id}"
+									alt="photo produit" /></td>
+								<td th:text="${pan.produit.nomProduit}"></td>
+								<td class="product-price" th:text="${pan.produit.prixUnitaire}"></td>
+								<td
+									th:text="${pan.produit.stockGlobal}+' '+${pan.produit.unite}"></td>
+								<td><input type="date" class="form-control" name="dateLiv"
+									required="required" /></td>
+								<td class="product-quantity"><input type="number"
+									name="qteCmd" placeholder="quantite a commander"
+									class="form-control" min="1" required="required" /></td>
+								<td class="product-line-price">0</td>
+								<td><a
+									th:href="@{'/Gestions/Panier/'+${pan.idCart}+'/remove/'}"><button
+											type="button" name="remove"
+											class="btn btn-danger btn-sm remove">
+											<span class="fa fa-minus"></span>
+										</button></a></td>
+							</tr>
+						</tbody>
+						<thead>
+							<tr class="alignText">
+								<th colspan="6">MONTANT TOTAL</th>
+								<th><div class="totals-value" id="cart-subtotal">0</div></th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- ============================= LIST CHECKOUT ==================== -->
+	<div class="card" th:if="${!#lists.isEmpty(listCheckout)}">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<h3 class="m-0">R&eacute;capitulatif Commande</h3>
+				</div>
+				<hr />
+				<div class="table-responsive table-bordered mb-3">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Produit</th>
+								<th>Date Livraison</th>
+								<th>Prix Unitaire</th>
+								<th>Quantit&eacute;e command&eacute;e</th>
+								<th class="text-right">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="panCk,index :${listCheckout}">
+								<td th:text="${index.count}">#</td>
+								<td th:text="${panCk.produit.nomProduit}"></td>
+								<td
+									th:text="${#calendars.format(panCk.dateLivraison,'dd/MM/yyyy')}"></td>
+								<td
+									th:text="${#numbers.formatDecimal(panCk.produit.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'">12.99</td>
+								<td th:text="${panCk.quantite}+' '+${panCk.produit.unite}"></td>
+								<td
+									th:text="${#numbers.formatDecimal(panCk.produit.prixUnitaire * panCk.quantite, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"
+									class="text-right"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="row">
+					<div class="col-lg-6"></div>
+					<div class="col-lg-6 py-2">
+						<div class="row mb-3 align-items-center">
+							<div class="col-7">
+								<div class="h3">SOMME FINALE</div>
+							</div>
+							<div class="col-5">
+								<div class="text-right h3"
+									th:text="${#numbers.formatDecimal(mntTotal, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'">$
+									13000</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="d-print-none" />
+				<div class="clearfix">
+					<button class="btn btn-secondary float-left" type="button"
+						onclick="window.print();">Imprimer</button>
+					<a th:href="@{/Gestions/checkout/valider/}"><button
+							class="btn btn-success float-right" type="button">Valider
+							la commande</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,88 @@
+<div data-th-fragment="menu_gauche_admin">
+	<aside class="aside-container">
+		<!-- START Sidebar (left)-->
+		<div class="aside-inner">
+			<nav class="sidebar" data-sidebar-anyclick-close="">
+				<!-- START sidebar nav-->
+				<ul class="sidebar-nav">
+					<!-- START user info-->
+					<li class="has-user-block">
+						<div class="collapse" id="user-block">
+							<div class="item user-block">
+								<!-- User picture-->
+								<div class="user-block-picture">
+									<div class="user-block-status">
+										<img class="img-thumbnail rounded-circle"
+											th:src="@{/css_template_home/img/user/avatar.png}"
+											alt="Avatar" width="60" height="60" />
+										<div class="circle bg-success circle-lg"></div>
+									</div>
+								</div>
+								<!-- Name and Job-->
+								<div class="user-block-info">
+									<span class="user-block-name"
+										th:text="Hello+' '+${session.Nom}"></span> <span
+										class="user-block-role" th:text="${session.RoleNmaem}">A</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- END user info-->
+					<!-- Iterates over all sidebar items-->
+					<!-- <li class="nav-heading "><span
+						data-localize="sidebar.heading.HEADER">Menu Navigation</span></li> -->
+					<li th:class=" ${getDefaultContAdmin}"><a th:href="@{/dashboard}"
+						title="Statistiques"> <em class="icon-speedometer"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Statistiques</span>
+					</a></li>
+					<li th:class="${getEcolesList}"><a th:href="@{/Admin/Ecoles-List}" title="Liste des Ecoles">
+							<em class="fa fa-home"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Ecoles</span>
+					</a></li>
+					<li th:class="${getProducteursList}"><a th:href="@{/Admin/Producteurs-List}" title="Single View">
+							<em class="fas fa-user"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Producteurs</span>
+					</a></li>
+					<li th:class="${getPartenairesList}"><a th:href="@{/Admin/Partenaires-List}" title="Single View">
+							<em class="icon-globe"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Partenaires</span>
+					</a></li>
+					<li th:class="${getPlaceMarcher}"><a th:href="@{/Admin/Place-Marche}" title="Place du Marcher">
+							<em class="icon-handbag"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">March&eacute;</span>
+					</a></li>
+					<li th:class="${getCategorieProd}"><a th:href="@{/Admin/Produit-Base}" title="Base des produits">
+							<em class="fab fa-product-hunt"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Produit de base</span>
+					</a></li>
+					<li th:class="${getProdProducteur}"><a th:href="@{/Admin/Produit-Disponible}" title="Produits Dispo">
+							<em class="fab fa-product-hunt"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Produits Dispo.</span>
+					</a></li>
+					<li th:class="${getCommandes}"><a th:href="@{/Admin/Commandes}" title="Commande validees">
+							<em class="fas fa-cart-arrow-down"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Commandes</span>
+					</a></li>
+					<li th:class="${getPaiements}"><a th:href="@{/Admin/Paiements}" title="liste des paiements">
+							<em class="fab fa-cc-mastercard"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Paiements</span>
+					</a></li>
+					<li th:class="${getDonations}"><a th:href="@{/Admin/Donations}" title="liste des donations">
+							<em class="fab fa-cc-mastercard"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Donations</span>
+					</a></li>
+					<li th:class="${getComptesUser}"><a th:href="@{/Admin/Comptes-Users}" title="Comptes des utilisateurs">
+							<em class="fas fa-users"></em> <span
+							data-localize="sidebar.nav.SINGLEVIEW">Comptes Utilisateurs</span>
+					</a></li>
+					<li th:class="${getCartographie}">
+						<a th:href="@{/Admin/Cartographie-Ecole}" title="Comptes des utilisateurs">
+								<em class="fas fa-users"></em> <span
+								data-localize="sidebar.nav.SINGLEVIEW">Cartographie</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+</div>

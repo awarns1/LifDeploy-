@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<title>Lifantou</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- FONT AWESOME-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css}" />
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css}" />
+<!-- SIMPLE LINE ICONS-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/simple-line-icons/css/simple-line-icons.css}" />
+<!-- ANIMATE.CSS-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/animate.css/animate.css}" />
+<!-- WHIRL (spinners)-->
+<link rel="stylesheet"
+	th:href="@{/css_template_home/vendor/whirl/dist/whirl.css}" />
+<!-- =============== PAGE VENDOR STYLES ===============-->
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/bootstrap.css}"
+	id="bscss" />
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" th:href="@{/css_template_home/css/app.css}"
+	id="maincss" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- HEADER ADMIN-->
+		<div th:replace="fragments/header_admin ::header_admin"></div>
+		<!-- ./ HEADER ADMIN-->
+		
+		<!-- MENU GAUCHE ADMIN-->
+		<div th:replace="fragments/menu_gauche_admin ::menu_gauche_admin"></div>
+		<!-- ./ MENU GAUCHE ADMIN-->		
+		
+		<!-- offsidebar-->
+		
+		<!-- Main section corps-->
+		<section class="section-container">
+			<!-- Page content-->
+			<div class="content-wrapper">
+				<div class="content-heading">
+					<div>
+						Single Views <small data-localize="dashboard.WELCOME"></small>
+					</div>
+					<!-- START Language list-->
+					<div class="ml-auto">
+						<div class="btn-group">
+							<button
+								class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret"
+								type="button" data-toggle="dropdown">English</button>
+							<div
+								class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort"
+								role="menu">
+								<a class="dropdown-item" href="#" data-set-lang="en">English</a>
+								<a class="dropdown-item" href="#" data-set-lang="es">Spanish</a>
+							</div>
+						</div>
+					</div>
+					<!-- END Language list-->
+				</div>
+				<div class="row">
+					<div class="col-12 text-center">
+						<h2 class="text-thin">Single view content</h2>
+						<p>
+							This project is an application skeleton. You can use it to
+							quickly bootstrap your jQuery webapp projects and dev environment
+							for these projects. <br />The seed app doesn't do much and has
+							most of the feature removed so you can add theme as per your
+							needs just following the demo app examples.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Page footer-->
+		<div th:replace="fragments/footer ::footer"></div>			
+	</div>
+	<!-- SCRIPT DU BAS -->
+	<div th:replace="fragments/script_bas_home ::script_bas_home"></div>	
+	<!-- ./ SCRIPT DU BAS -->
+</body>
+
+</html>

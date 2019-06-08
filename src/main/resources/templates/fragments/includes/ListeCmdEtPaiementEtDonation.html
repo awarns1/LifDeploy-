@@ -1,0 +1,509 @@
+<div data-th-fragment="ListeCmdEtPaiementEtDonation">
+	<div class="content-heading">
+		<div th:text="${ListeCmdEtPaiementEtDonation}">Titre</div>
+	</div>
+	<div class="card"
+		th:if="${!#strings.isEmpty(CtlCmd) || !#strings.isEmpty(getDonations) || !#strings.isEmpty(getComptesUserNot)}">
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr th:if="${!#strings.isEmpty(CtlCmd)}">
+							<th>#</th>
+							<th>R&eacute;ference Commande</th>
+							<th>Produit</th>
+							<th>Date Commande</th>
+							<th>Prix Unitaire</th>
+							<th>Quantit&eacute;e Command&eacute;e</th>
+							<th>Montant Total</th>
+							<th>Etat Commande</th>
+							<th>Etat Paiement</th>
+							<th>Actions</th>
+						</tr>
+						<tr th:if="${!#strings.isEmpty(getDonations)}">
+							<th>#</th>
+							<th>Nom Complet</th>
+							<th>Email</th>
+							<th>Telephone</th>
+							<th>Adresse</th>
+							<th>Date donation</th>
+							<th>Montant</th>
+							<th>Description</th>
+						</tr>
+						<tr th:if="${!#strings.isEmpty(getComptesUserNot)}">
+							<th>#</th>
+							<th>Username</th>
+							<th>Type Compte</th>
+							<th>Activation</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cmd,index :${ListCommande}"
+							th:if="${!#strings.isEmpty(CtlCmd)}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${cmd.ref}"></td>
+							<td th:text="${cmd.produit.nomProduit}"></td>
+							<td th:text="${#calendars.format(cmd.dateCmd,'dd/MM/yyyy')}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(cmd.produit.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+
+							<td th:text="${cmd.quantite}+' '+${cmd.produit.unite}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(cmd.montantTotal, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+							<td th:if="${cmd.etatCmd==1}"><span class="badge badge-info"
+								th:text="'Commande valid&eacute;e'"></span></td>
+							<td th:if="${cmd.etatCmd==2}"><span
+								class="badge badge-purple" th:text="'Livraison en cours'"></span></td>
+							<td th:if="${cmd.etatCmd==3}"><span
+								class="badge badge-success" th:text="'Commande Livr&eacute;e'"></span></td>
+								<td th:if="${cmd.etatCmd==4}"><span
+								class="badge badge-danger" th:text="'Commande annul&eacute;e'"></span></td>
+							<td th:if="${cmd.etatPaiement==false}"><span
+								class="badge badge-warning"
+								th:text="'Commande Non Pay&eacute;e'"></span></td>
+							<td th:if="${cmd.etatPaiement==true}"><span
+								class="badge badge-success" th:text="'Commande Pay&eacute;e'"></span></td>
+							<td><div class="btn-group mb-1">
+									<a title="D&eacute;tails Commande"
+										th:href="@{'/Admin/Details_commande/'+${cmd.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-info mr-2">
+											<em class="fa fa-list fa-fw"></em>
+										</button>
+									</a> <a title="Livraison Commande"
+										th:href="@{'/Admin/Livraison_commande/'+${cmd.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-warning mr-2">
+											<em class="fa fa-truck fa-fw"></em>
+										</button>
+									</a> <a title="Payer Commande" th:if="${cmd.etatPaiement==false}"
+										th:href="@{'/Admin/Payer_commande/'+${cmd.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-purple mr-2">
+											<em class="fa fa-dollar-sign fa-fw"></em>
+										</button>
+									</a> <a title="Commande livree"
+										th:href="@{'/Admin/Commande_livree/'+${cmd.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-success mr-2">
+											<em class="fa fa-check-circle fa-fw"></em>
+										</button>
+									</a>
+								</div></td>
+						</tr>
+						<tr th:each="don,index :${ListDonations}"
+							th:if="${!#strings.isEmpty(getDonations)}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${don.nomComplet}"></td>
+							<td th:text="${don.user.email}"></td>
+							<td th:text="${don.user.tel}"></td>
+							<td th:text="${don.user.adresse}"></td>
+							<td th:text="${#calendars.format(don.date,'dd/MM/yyyy')}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(don.montant, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+							<td><p th:text="${don.description}"></p></td>
+						</tr>
+						<tr th:each="ac,index :${ListAccessApp}"
+							th:if="${!#strings.isEmpty(getComptesUser)}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${ac.username}"></td>
+							<td th:text="${ac.idRole.type}"></td>
+							<td th:if="${ac.actived==0}"><span
+								class="badge badge-warning" th:text="'En attente activation'"></span></td>
+							<td th:if="${ac.actived==1}"><span
+								class="badge badge-success" th:text="'Compte activ&eacute;'"></span></td>
+							<td th:if="${ac.actived==2}"><span
+								class="badge badge-danger" th:text="'Compte bloqu&eacute;'"></span></td>
+							<td><div class="btn-group mb-1">
+									<a title="D&eacute;tails"
+										th:href="@{'/Admin/Details_informations/'+${ac.idAccesApp}+'/'}">
+										<button type="button" class="btn btn-sm btn-info mr-2">
+											<em class="fa fa-list fa-fw"></em>
+										</button>
+									</a> <a title="Activer Compte" th:if="${ac.actived!=1}"
+										th:href="@{'/Admin/Activer_compte/'+${ac.idAccesApp}+'/'}">
+										<button type="button" class="btn btn-sm btn-success mr-2">
+											<em class="fa fa-check fa-fw"></em>
+										</button>
+									</a> <a title="Desactiver Compte" th:if="${ac.actived==1}"
+										th:href="@{'/Admin/Desactiver_compte/'+${ac.idAccesApp}+'/'}">
+										<button type="button" class="btn btn-sm btn-warning mr-2">
+											<em class="fa fa-times fa-fw"></em>
+										</button>
+									</a> <a title="Bloquer Compte"
+										th:href="@{'/Admin/Bloquer_compte/'+${ac.idAccesApp}+'/'}">
+										<button type="button" class="btn btn-sm btn-danger mr-2">
+											<em class="fa fa-times-circle fa-fw"></em>
+										</button>
+									</a>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ PAIEMENTS ECOLE/PRODUCTEUR===================== -->
+	<div class="card" role="tabpanel"
+		th:if="${!#strings.isEmpty(getPaiements)}">
+		<!-- Nav tabs-->
+		<ul class="nav nav-tabs nav-fill" role="tablist">
+			<li class="nav-item" role="presentation"><a
+				th:class="'nav-link '+${getActive}" href="#home"
+				aria-controls="home" role="tab" data-toggle="tab"> <!-- <em class="far fa-clock fa-fw"></em> -->Paiements
+					Ecoles
+			</a></li>
+			<li class="nav-item" role="presentation"><a class="nav-link"
+				href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+					<!-- <em class="far fa-money-bill-alt fa-fw"></em> -->Paiements
+					Producteurs
+			</a></li>
+		</ul>
+		<div class="tab-content p-0">
+			<!-- ============================= PAIEMENTS ECOLES =================== -->
+			<div th:class="'tab-pane '+${getActive}" id="home" role="tabpanel">
+				<div class="card-body">
+					<div class="table-responsive bootgrid">
+						<form method="post" th:action="@{/Admin/Passer-commande-ecole/}">
+							<table id="example" class="table table-striped table-bordered">
+								<thead>
+									<tr th:if="${!#strings.isEmpty(getPaiements)}">
+										<th>#</th>
+										<th>Ecole</th>
+										<th>Reference Commande</th>
+										<th>Date Commande</th>
+										<th>Produit</th>
+										<th>Prix Unitaire</th>
+										<th>Quantit&eacute;e Command&eacute;e</th>
+										<th>Montant Total</th>
+										<th>Etat Paiement</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="paie,index :${ListPaiements}">
+										<td th:text="${index.count}"></td>
+										<td th:text="${paie.ecole.nomEcole}"></td>
+										<td th:text="${paie.ref}"></td>
+										<td th:text="${#calendars.format(paie.dateCmd,'dd/MM/yyyy')}"></td>
+										<td th:text="${paie.produit.nomProduit}"></td>
+										<td
+											th:text="${#numbers.formatDecimal(paie.produit.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+										<td th:text="${paie.quantite}+' '+${paie.produit.unite}"></td>
+										<td
+											th:text="${#numbers.formatDecimal(paie.montantTotal, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+										<td th:if="${paie.etatPaiement==false}"><span
+											class="badge badge-info" th:text="'Cmd Non Pay&eacute;e'"></span></td>
+										<td th:if="${paie.etatPaiement==true}"><span
+											class="badge badge-success" th:text="'Commande Pay&eacute;e'"></span></td>
+										<td><div class="btn-group mb-1">
+												<a title="Annuler Paiement"
+													th:href="@{'/Admin/Anuler_paiement_cmd/'+${paie.id}+'/'}">
+													<button type="button" class="btn btn-sm btn-danger mr-2">
+														<em class="fa fa-minus fa-fw"></em>
+													</button>
+												</a>
+											</div></td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ============================= PAIEMENTS PRODUCTEURS =================== -->
+			<div class="tab-pane" id="profile" role="tabpanel">
+				<div class="card-body">
+					<div class="table-responsive bootgrid">
+						<table id="example2" class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Producteur</th>
+									<th>Reference Commande</th>
+									<th>Produit</th>
+									<th>Date Commande</th>
+									<th>Prix Unitaire</th>
+									<th>Quantit&eacute;e &agrave; Livrer</th>
+									<th>Montant Total</th>
+									<th>Etat Paiement</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="paieP, index :${ListPaiementsProd}">
+									<td th:text="${index.count}"></td>
+									<td
+										th:text="${paieP.produitProducteur.producteur.nomProduct}+' '+${paieP.produitProducteur.producteur.prenomProduct}"></td>
+									<td th:text="${paieP.ligneCommande.ref}"></td>
+									<td th:text="${paieP.ligneCommande.produit.nomProduit}"></td>
+									<td
+										th:text="${#calendars.format(paieP.ligneCommande.dateCmd,'dd/MM/yyyy')}"></td>
+									<td
+										th:text="${#numbers.formatDecimal(paieP.ligneCommande.produit.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+									<td
+										th:text="${paieP.quantite}+' '+${paieP.ligneCommande.produit.unite}"></td>
+									<td
+										th:text="${#numbers.formatDecimal(paieP.quantite*paieP.ligneCommande.produit.prixUnitaire, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+
+									<td th:if="${paieP.etatPaiement==false}"><span
+										class="badge badge-warning"
+										th:text="'Commande Non Pay&eacute;e'"></span></td>
+									<td th:if="${paieP.etatPaiement==true}"><span
+										class="badge badge-success" th:text="'Commande Pay&eacute;e'"></span></td>
+									<td><div class="btn-group mb-1">
+											<a title="Payer Producteur"
+												th:if="${paieP.etatPaiement==false}"
+												th:href="@{'/Admin/Payer_producteur/'+${paieP.id}+'/'}">
+												<button type="button" class="btn btn-sm btn-purple mr-2">
+													<em class="fa fa-dollar-sign fa-fw"></em>
+												</button>
+											</a><a title="Annuler Paiement"
+												th:if="${paieP.etatPaiement==true}"
+												th:href="@{'/Admin/Annuler_paiement_prod/'+${paieP.id}+'/'}">
+												<button type="button" class="btn btn-sm btn-danger mr-2">
+													<em class="fa fa-minus fa-fw"></em>
+												</button>
+											</a>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ ./ PAIEMENTS ECOLE/PRODUCTEUR===================== -->
+	<!-- ================================= DETAILS COMMANDES ==============================  -->
+	<div class="card card-default"
+		th:if="${!#strings.isEmpty(getDetailCmd)}">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-6">
+					<p class="lead bb">
+						<b>Commande</b>
+					</p>
+					<form class="form-horizontal">
+						<div class="form-group row">
+							<div class="col-md-4">Reference:</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ref}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Produit:</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.produit.nomProduit}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Date Commande:</div>
+							<div class="col-md-8">
+								<strong
+									th:text="${#calendars.format(lcmd.dateCmd,'dd/MM/yyyy')}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Quantite Commande:</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.quantite}+' '+${lcmd.produit.unite}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Etat Commande:</div>
+							<div class="col-md-8">
+								<span class="badge badge-info" th:if="${lcmd.etatCmd==1}">Commande
+									valid&eacute;e</span> <span class="badge badge-purple"
+									th:if="${lcmd.etatCmd==2}">Livraison en cours</span> <span
+									class="badge badge-success" th:if="${lcmd.etatCmd==3}">Commande
+									Livr&eacute;e</span>
+									<span
+									class="badge badge-danger" th:if="${lcmd.etatCmd==4}">Commande
+									annul&eacute;e</span>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Etat Paiement:</div>
+							<div class="col-md-8">
+								<span class="badge badge-warning"
+									th:if="${lcmd.etatPaiement==false}">Commande Non
+									Pay&eacute;</span> <span class="badge badge-success"
+									th:if="${lcmd.etatPaiement==true}">Commande Pay&eacute;</span>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<p class="lead bb">
+						<b>Ecole</b>
+					</p>
+					<form class="form-horizontal">
+						<div class="form-group row">
+							<div class="col-md-4">Nom Ecole</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.nomEcole}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Adresse</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.adresse}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Telephone</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.tel}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Email Ecole</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.email}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Nom Gest.</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.nomGest}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Prenom Gest.</div>
+							<div class="col-md-8">
+								<strong th:text="${lcmd.ecole.prenomGest}"></strong>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<br />
+			<p class="lead bb">
+				<b>Producteur(s)</b>
+			</p>
+			<div class="table-responsive">
+				<table class="table table-hover table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Identifiant</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Region</th>
+							<th>Quantit&eacute;e &agrave; livrer</th>
+							<th>Etat Paiement Producteur</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="chPr,index :${choixProdLis}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${chPr.produitProducteur.producteur.identifiant}"></td>
+							<td th:text="${chPr.produitProducteur.producteur.nomProduct}"></td>
+							<td th:text="${chPr.produitProducteur.producteur.prenomProduct}"></td>
+							<td
+								th:text="${chPr.produitProducteur.producteur.region.nomRegion}"></td>
+							<td
+								th:text="${chPr.quantite}+' '+${chPr.produitProducteur.produit.unite}"></td>
+							<td th:if="${chPr.etatPaiement==false}"><span
+								class="badge badge-warning"
+								th:text="'Producteur Non Pay&eacute;'"></span></td>
+							<td th:if="${chPr.etatPaiement==true}"><span
+								class="badge badge-success" th:text="'Producteur Pay&eacute;'"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================= DETAILS INFOS SAISSIE COMPTE ==============================  -->
+	<div class="card card-default"
+		th:if="${!#strings.isEmpty(getDetailInfosUser)}">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-6">
+					<p class="lead bb">Infos de base</p>
+					<form class="form-horizontal">
+						<div class="form-group row">
+							<div class="col-md-4">Nom utilisateur</div>
+							<div class="col-md-8">
+								<strong th:text="${AccessApp.username}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Email</div>
+							<div class="col-md-8">
+								<strong th:text="${AccessApp.idUser.email}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Adresse</div>
+							<div class="col-md-8">
+								<strong th:text="${AccessApp.idUser.adresse}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Telephone</div>
+							<div class="col-md-8">
+								<strong th:text="${AccessApp.idUser.tel}"></strong>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">Region</div>
+							<div class="col-md-8">
+								<strong th:text="${AccessApp.idUser.region.nomRegion}"></strong>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<p class="lead bb" th:if="${ecol != null}">Ecole</p>
+					<p class="lead bb" th:if="${prod != null}">Producteur</p>
+					<p class="lead bb" th:if="${parte != null}">Partenaire</p>
+					<form class="form-horizontal">
+						<span th:if="${ecol != null}">
+							<div class="form-group row">
+								<div class="col-md-4">Nom Ecole</div>
+								<div class="col-md-8">
+									<strong th:text="${ecol.nomEcole}"></strong>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4">Nom Gest.</div>
+								<div class="col-md-8">
+									<strong th:text="${ecol.nomGest}"></strong>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4">Prenom Gest.</div>
+								<div class="col-md-8">
+									<strong th:text="${ecol.prenomGest}"></strong>
+								</div>
+							</div>
+						</span> <span th:if="${prod != null}"><div class="form-group row">
+								<div class="col-md-4">Nom Producteur</div>
+								<div class="col-md-8">
+									<strong th:text="${prod.nomProduct}"></strong>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4">Prenom Producteur</div>
+								<div class="col-md-8">
+									<strong th:text="${prod.prenomProduct}"></strong>
+								</div>
+							</div></span> <span th:if="${parte != null}"><div
+								class="form-group row">
+								<div class="col-md-4">Nom Structure</div>
+								<div class="col-md-8">
+									<strong th:text="${parte.nomStructure}"></strong>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4">Domaine Activite</div>
+								<div class="col-md-8">
+									<strong th:text="${parte.domaineActivite}"></strong>
+								</div>
+							</div></span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

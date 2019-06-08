@@ -1,0 +1,60 @@
+<div data-th-fragment="ListeProducteurs">
+	<div class="content-heading">
+		<div th:text="${title}"></div>
+		<div class="ml-auto">
+			<div class="btn-group">
+				<a th:href="@{/register}">
+					<button class="mb-1 btn btn-outline-info" type="button">Ajouter
+						un producteur</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="card" th:if="${!#strings.isEmpty(getProducteursListNot)}">
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Identifiant</th>
+							<th>Nom Producteur</th>
+							<th>Prenom Producteur</th>
+							<th>Adresse</th>
+							<th>Telephone</th>
+							<th>Email</th>
+							<th>Region</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="prod :${ListProduct}">
+							<td th:text="${prod.identifiant}">identifiant</td>
+							<td th:text="${prod.nomProduct}">nom prod</td>
+							<td th:text="${prod.prenomProduct}">prenom product</td>
+							<td th:text="${prod.adresse}">adresse</td>
+							<td th:text="${prod.tel}">tel</td>
+							<td th:text="${prod.email}">email</td>
+							<td th:text="${prod.region.nomRegion}">region</td>
+							<td><div class="btn-group mb-1">
+									<a title="Ajouter un produit" th:href="@{'/Admin/Produit-Disponible/'+${prod.id}+'-new/'}">
+										<button type="button" class="btn btn-sm btn-info mr-2">
+											<em class="fa fa-plus fa-fw"></em>
+										</button>
+									</a> <a title="Mis &agrave; jour infos" th:href="@{'/Admin/Producteur/'+${prod.id}+'/edit'}">
+										<button type="button"
+											class="btn btn-sm btn-warning mr-2 command-edit">
+											<em class="fa fa-edit fa-fw"></em>
+										</button>
+									</a>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ EDIT INFOS PRODUCTEUR=================  -->
+	<div class="card" th:if="${!#strings.isEmpty(getProdCoord)}">
+		<div th:replace="fragments/includes/BlocProfil ::BlocProfil"></div>
+	</div>
+</div>

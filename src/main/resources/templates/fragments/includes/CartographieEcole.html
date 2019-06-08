@@ -1,0 +1,156 @@
+<div data-th-fragment="CartographieEcole">
+	<div class="content-heading">
+		<div th:text="${Cartographie}" th:if="${!#strings.isEmpty(Cartographie)}"
+		     class="d-inline-block w-50">Cartographie</div>
+		     
+		<div th:text="${CartographieProducteur}" class="d-inline-block w-50"
+			th:if="${!#strings.isEmpty(CartographieProducteur)}">Cartographie</div>
+		<div class="d-inline-block w-50 text-right">
+			<a th:href="@{/Admin/Cartographie-Producteur}" class="badge badge-info mr-0"
+			th:if="${!#strings.isEmpty(mapForEcole)}">Voir Cartographie Producteurs</a>
+			<a th:href="@{/Admin/Cartographie-Ecole}" class="badge badge-success mr-0"
+			 th:if="${!#strings.isEmpty(mapForProductor)}">Voir Cartographie Ecoles</a>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row no-gutters">
+			<div class="col-sm-12" th:if="${mapMarkersLabels}">
+				<select style="z-index:1;right:50px;opacity:0.9;" id="mapLabelsSelectField"
+			    	class="form-control form-control-sm rounded-0 w-25 position-absolute mt-3">
+					<option th:each="lab,iter : ${mapMarkersLabels}" th:text="${lab}"
+					 th:selected="${mapCenterPositionIndice==iter.index}" th:value="${iter.index}"></option>
+				</select>
+			</div>
+			<div class="col-sm-12 p-0">
+				<div id="map" class="w-100"></div>
+			</div>
+		</div>
+	</div>
+	<!-- <script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoibWRpb3AiLCJhIjoiY2pyNmJweHFzMjZodzQ5cXFhN24xZW94eiJ9.mBAtrDs6VgLe4zuS8vzUMA';
+		var geojson = {
+			"type" : "FeatureCollection",
+			"features" : [ {
+				"type" : "Feature",
+				"properties" : {
+					"message" : "Foo",
+					"iconSize" : [ 30, 30 ]
+				},
+				"geometry" : {
+					"type" : "Point",
+					"coordinates" : [ -66.324462890625, -16.024695711685304 ]
+				}
+			}, {
+				"type" : "Feature",
+				"properties" : {
+					"message" : "Bar",
+					"iconSize" : [ 30, 30 ]
+				},
+				"geometry" : {
+					"type" : "Point",
+					"coordinates" : [ -61.2158203125, -15.97189158092897 ]
+				}
+			}, {
+				"type" : "Feature",
+				"properties" : {
+					"message" : "Baz",
+					"iconSize" : [ 30, 30 ]
+				},
+				"geometry" : {
+					"type" : "Point",
+					"coordinates" : [ -63.29223632812499, -18.28151823530889 ]
+				}
+			}, {
+				"type" : "Feature",
+				"properties" : {
+					"message" : "Brasilia",
+					"iconSize" : [ 30, 30 ]
+				},
+				"geometry" : {
+					"type" : "Point",
+					"coordinates" : [ -51.631911980005924, -9.621183907513554 ]
+				}
+			} ]
+		};
+
+		var map = new mapboxgl.Map({
+			container : 'map',
+			style : 'mapbox://styles/mapbox/streets-v9',
+			center : [ -65.017, -16.457 ],
+			zoom : 5
+		});
+		// add markers to map
+		geojson.features.forEach(function(marker) {
+			// create a DOM element for the marker
+			var el = document.createElement('div');
+			el.className = 'marker';
+			var popup = new mapboxgl.Popup({
+				offset : 25
+			}).setText(marker.properties.message);
+			// add marker to map
+			new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates)
+					.setPopup(popup) // sets a popup on this marker
+					.addTo(map);
+		});
+	</script> -->
+	<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+		function initMap(){
+			    var locations = /*[[${mapMarkersLocations}]]*/;
+			    var labels= /*[[${mapMarkersLabels}]]*/;
+			    var centerPosIndice = /*[[${mapCenterPositionIndice}]]*/;
+			    var centerPos = (locations.length > 0) ? locations[centerPosIndice] : {lat: 4.7645042, lng: -17.3660286};
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 16,
+		          center: centerPos,
+		          mapTypeId: google.maps.MapTypeId.ROADMAP
+		        });
+		        // Add some markers to the map.
+		        // Note: The code uses the JavaScript Array.prototype.map() method to
+		        // create an array of markers based on a given "locations" array.
+		        // The map() method here has nothing to do with the Google Maps API.
+		        var markers = locations.map(function(location, i) {
+		          return new google.maps.Marker({
+		            position: location,
+		            label: labels[i],
+		            animation:google.maps.Animation.BOUNC
+		          });
+		        });
+	
+		        // Add a marker clusterer to manage the markers.
+		        var markerCluster = new MarkerClusterer(map, markers,
+		            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+			/*]]>*/
+			// change center position 
+			document.getElementById("mapLabelsSelectField").addEventListener('change',function(){
+				map.setCenter(locations[this.value]);
+			});
+			
+			// position data shower 
+	       /*  google.maps.event.addListener(map, 'click', function(event) {
+	        	  placeMarker(map, event.latLng);
+	        }); */
+	      }
+		function placeMarker(map, location) {
+			  var marker = new google.maps.Marker({
+			    position: location,
+			    map: map
+			  });
+			  var infowindow = new google.maps.InfoWindow({
+			    content: 'Latitude: ' + location.lat() +
+			    '<br/>Longitude: ' + location.lng()
+			  });
+			  infowindow.open(map,marker);
+		}
+		/*
+		function entierAleatoire(min, max)
+		{
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}*/
+	</script>
+	<!-- ================= my corte graphy js required -->
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYuiLvMF5Gb9LOcUTbYVS3D1Qc2HGJWvI&amp;callback=initMap"
+    async="async" defer="defer"></script>
+</div>

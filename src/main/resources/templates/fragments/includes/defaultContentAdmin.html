@@ -1,0 +1,71 @@
+<div data-th-fragment="defaultContentAdmin">
+	<div class="content-heading">
+		<div>
+			Statistiques <small data-localize="dashboard.WELCOME"></small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xl-3 col-md-6 bntLink">
+			<a th:href="@{/Admin/Produit-Base}">
+				<div
+					class="card flex-row align-items-center align-items-stretch border-0">
+					<div
+						class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+						<em class="fab fa-product-hunt fa-3x"></em>
+					</div>
+					<div class="col-8 py-3 bg-primary rounded-right">
+
+						<div class="h2 mt-0" th:text="${NbProdBase}">0</div>
+						<div class="text-uppercase">Produit Base</div>
+
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-xl-3 col-md-6 bntLink">
+			<a th:href="@{/Admin/Place-Marche}">
+				<div
+					class="card flex-row align-items-center align-items-stretch border-0">
+					<div
+						class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+						<em class="fas fa-cart-arrow-down fa-3x"></em>
+					</div>
+					<div class="col-8 py-3 bg-purple rounded-right">
+						<div class="h2 mt-0" th:text="${NbCmdEnCours}">
+							700 <small>GB</small>
+						</div>
+						<div class="text-uppercase">Cmd Non validees</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-xl-3 col-lg-6 col-md-12 bntLink">
+			<a th:href="@{/Admin/Donations}">
+				<div
+					class="card flex-row align-items-center align-items-stretch border-0">
+					<div
+						class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+						<em class="icon-bubbles fa-3x"></em>
+					</div>
+					<div class="col-8 py-3 bg-green rounded-right">
+						<div class="h2 mt-0" th:text="${MntTotalDonation}">500</div>
+						<div class="text-uppercase">Donations</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- <div class="col-xl-3 col-md-6">
+			<div
+				class="card flex-row align-items-center align-items-stretch border-0">
+				<div
+					class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+					<em class="icon-cloud-upload fa-3x"></em>
+				</div>
+				<div class="col-8 py-3 bg-primary rounded-right">
+					<div class="h2 mt-0">1700</div>
+					<div class="text-uppercase">Uploads</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</div>

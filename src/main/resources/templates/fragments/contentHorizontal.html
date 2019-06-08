@@ -1,0 +1,19 @@
+<div data-th-fragment="contentHorizontal">
+	<!-- ======================== DEFAULTCONTENTHORIZ =============================== -->
+	<div th:if="${!#strings.isEmpty(getDefaultContentHoriz)}">
+		<div
+			th:replace="fragments/includes/defaultContentHoriz ::defaultContentHoriz"></div>
+	</div>
+	<!-- ========================  PROFIL =============================== -->
+	<div th:if="${!#strings.isEmpty(getProfilUser)}">
+		<div th:replace="fragments/includes/MonProfil ::MonProfil"></div>
+	</div>
+	<!-- ========================  CMD /PAIEMENT =============================== -->
+	<div th:if="${!#strings.isEmpty(getCmdEtPaiementUser)}">
+		<div th:replace="fragments/includes/ListeCmdEtPaiementHoriz ::ListeCmdEtPaiementHoriz"></div>
+	</div>
+	<!-- ========================  PLACE MARCHE =============================== -->
+	<div th:if="${!#strings.isEmpty(getMarcheEcole)}">
+		<div th:replace="fragments/includes/MarcheEcole ::MarcheEcole"></div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+<div data-th-fragment="formRecoverPwd">
+	<div class="card-body" th:if="${ShowformRecover==true}">
+		<p class="text-center py-2">Changement de mot de passe.</p>
+		<p class="bg-success" th:if="${!#strings.isEmpty(confirmOk)}">
+			<span> Vous allez recevoir un email pour la confirmation du
+				changement de mot de passe demand&eacute;</span> <span><br />Verifer
+				votre boite mail !!!</span>
+		</p>
+		<p class="bg-danger" th:text="${errorEmail}"
+			th:if="${!#strings.isEmpty(errorEmail)}"></p>
+		<p class="My-errors" th:if="${param.error}">Nom utilisateur/ mot
+			de passe incorrects ou compte pas encore activer !!!</p>
+		<form th:action="@{/recover}" class="mb-3" method="post">
+			<div class="form-group">
+				<label class="text-muted" for="resetInputEmail1">Adresse
+					Email</label>
+				<div class="input-group with-focus">
+					<input class="form-control border-right-0" id="resetInputEmail1"
+						name="email" type="email" placeholder="Enter email"
+						required="required" />
+					<div class="input-group-append">
+						<span
+							class="input-group-text text-muted bg-transparent border-left-0">
+							<em class="fa fa-envelope"></em>
+						</span>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-block btn-danger mt-3" type="submit">Reset</button>
+		</form>
+	</div>
+	<div class="card-body" th:if="${ShowformReset==true}">
+		<p class="text-center py-2">Changement de mot de passe.</p>
+		<p class="bg-success" th:text="${registrationOk}"
+			th:if="${!#strings.isEmpty(registrationOk)}"></p>
+		<p class="bg-danger" th:text="${PwdNonIdent}"
+			th:if="${!#strings.isEmpty(PwdNonIdent)}"></p>
+		<form th:action="@{/changePassword}" class="mb-3" method="post">
+			<input type="hidden" name="idAccesApp" th:value="${idAc}" />
+			<div class="form-group">
+				<div class="input-group with-focus">
+					<input class="form-control border-right-0" id="resetInputEmail1"
+						type="password" name="password" placeholder="Mot de passe"
+						required="required" />
+					<div class="input-group-append">
+						<span
+							class="input-group-text text-muted bg-transparent border-left-0">
+							<em class="fa fa-lock"></em>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group with-focus">
+					<input class="form-control border-right-0" id="resetInputEmail1"
+						type="password" name="confirmPassword"
+						placeholder="Confirmatiom mot de passe" required="required" />
+					<div class="input-group-append">
+						<span
+							class="input-group-text text-muted bg-transparent border-left-0">
+							<em class="fa fa-lock"></em>
+						</span>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-block btn-success mt-3" type="submit">Valider</button>
+		</form>
+	</div>
+</div>

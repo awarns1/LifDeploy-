@@ -1,0 +1,54 @@
+<div data-th-fragment="ListeProduits">
+	<div class="content-heading">
+		<div>Liste des Produits</div>
+	</div>
+	<div th:replace="fragments/includes/Notification ::showNotification"></div>
+
+	<div class="card" th:if="${!#strings.isEmpty(ProdDispoList)}">
+		<div class="card-header">Liste des produits disponibles chez les
+			producteurs !!!</div>
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Identifiant</th>
+							<th>Producteur</th>
+							<th>Produit</th>
+							<th>Quantit&eacute; Disponoble</th>
+							<th>Date Production</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="prdDp,index :${ListProdProduct}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${prdDp.producteur.identifiant}"></td>
+							<td
+								th:text="${prdDp.producteur.nomProduct}+' '+${prdDp.producteur.prenomProduct}"></td>
+							<td th:text="${prdDp.produit.nomProduit}"></td>
+							<td th:text="${prdDp.quantiteStock}+' '+${prdDp.produit.unite}"></td>
+							<td
+								th:text="${#calendars.format(prdDp.dateProduction,'dd/MM/yyyy')}"></td>
+							<td><div class="btn-group mb-1">
+									<a title="Modifier Stock"
+										th:href="@{'/Admin/Produit-Disponible/'+${prdDp.id}+'-edit/'}">
+										<button type="button"
+											class="btn btn-sm btn-warning mr-2 command-edit">
+											<em class="fa fa-edit fa-fw"></em>
+										</button>
+									</a>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ ADD PROD PRODUCTEUR=================  -->
+	<div class="card" th:if="${!#strings.isEmpty(addProduitProduct)}">
+		<div
+			th:replace="fragments/includes/addProduitToProducteur ::addProduitToProducteur"></div>
+	</div>
+</div>

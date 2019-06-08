@@ -1,0 +1,19 @@
+**************************** REGLE A RESPECTER ****************************
+**************> COTE BASE DE DONNEES
+	1. Nomenclatures des roles:
+		- ADMIN
+		- ECOLE
+		- PRODUCTEUR
+		- PARTENAIRE
+	2. Nomenclature des regions:
+		- Exemple: nom_region = Dakar; sigle = DK; (pour la zone = 'vous renseignez la zone correspondante')
+	3. Il faut imperativement avoir un utilisateur ayant le role admin
+		************> PROCEDURE DE CREATION PROFIL ADMIN
+			1. créé l'utilisateur dans la table user avec comme type_user = 'User' et renseigner ses champs:
+				- Adresse domicile
+				- Email
+				- Créé un identifiqnt du genre: 'le-sigle_de_sa_region+ADM+Un_nombre_a_4Chiffres';
+				- Telephone
+				_ region
+			2. En suite recuperer son id
+			3. Dans la table acces_app

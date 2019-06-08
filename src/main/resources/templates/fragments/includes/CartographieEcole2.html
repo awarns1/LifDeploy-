@@ -1,0 +1,51 @@
+<div data-th-fragment="CartographieEcole">
+	<div class="content-heading">
+		<div th:text="${Cartographie}">Cartographie</div>
+	</div>
+	<div class="col-md-12">
+		<div class="card card-default">
+			<div class="card-body">
+				<div id='map' style='width: 560px; height: 400px;'></div>
+				<script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
+				<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+				<script>
+					mapboxgl.accessToken = 'pk.eyJ1IjoibWRpb3AiLCJhIjoiY2pyNmJweHFzMjZodzQ5cXFhN24xZW94eiJ9.mBAtrDs6VgLe4zuS8vzUMA';
+					var map = new mapboxgl.Map({
+						container : 'map',
+						style : 'mapbox://styles/mapbox/streets-v9',
+						center : [ -14.452361999999994, 14.497401 ],
+						zoom : 5.70
+					});
+				</script>
+				<!-- <script>
+					mapboxgl.accessToken = 'pk.eyJ1IjoibWRpb3AiLCJhIjoiY2pyNmJweHFzMjZodzQ5cXFhN24xZW94eiJ9.mBAtrDs6VgLe4zuS8vzUMA';
+					// eslint-disable-next-line no-undef
+					var mapboxClient = mapboxSdk({
+						accessToken : mapboxgl.accessToken
+					});
+					mapboxClient.geocoding.forwardGeocode({
+						query : 'Wellington, New Zealand',
+						autocomplete : false,
+						limit : 1
+					}).send().then(function(response) {
+						if (response and response.body and response.body.features and response.body.features.length) {
+				            var feature = response.body.features[0];
+
+				            var map = new mapboxgl.Map({
+				                container: 'map',
+				                style: 'mapbox://styles/mapbox/streets-v9',
+				                center: feature.center,
+				                zoom: 10
+				            });
+				            new mapboxgl.Marker()
+				                .setLngLat(feature.center)
+				                .addTo(map);
+				        }
+
+					});
+				</script> -->
+
+			</div>
+		</div>
+	</div>
+</div>

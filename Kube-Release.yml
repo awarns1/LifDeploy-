@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lifantou
+  namespace: lab
+  labels:
+    app: lifantou
+spec:
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  selector:
+    app: lifantou
+  ports:
+  - port: 8083
+    nodePort: 31008
+    targetPort: 8083
+    protocol: TCP
+    name: 31008-8083
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifantou
+  namespace: lab
+  labels:
+    app: lifantou
+spec:
+  selector:
+    matchLabels:
+      app: lifantou
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lifantou
+    spec:
+      containers:
+      - resources:
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+          requests:
+            memory: "1Gi"
+            cpu: "0.5"
+        name: bimap
+        image: registry.devops.svc.cluster.local:5000/lifantou-release
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always

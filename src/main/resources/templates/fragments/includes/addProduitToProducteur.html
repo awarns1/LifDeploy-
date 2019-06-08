@@ -1,0 +1,46 @@
+<div data-th-fragment="addProduitToProducteur">
+	<!-- ================================ ADD PROD PRODUCTEUR=================  -->
+	<div class="card" th:if="${!#strings.isEmpty(addProduitProduct)}">
+		<!-- <div class="card-header">Ajout produit un producteur !!!</div> -->
+		<div class="card-body">
+			<form method="post" th:action="@{/Add_Produit/new/}">
+				<div class="table-repsonsive">
+					<span id="error"></span>
+					<table class="table table-bordered">
+						<tr>
+							<th>Cat&eacute;gorie Produit</th>
+							<th>Quantit&eacute;</th>
+							<th>Date Production</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td><select class="chosen-select form-control" name="catId"
+								th:if="${!#strings.isEmpty(prodBaseListe)}" required="required">
+									<option th:each="p : ${prodBaseListe}" th:value="${p.id}"><span
+											th:text="${p.nomProduit}+' ('+${p.unite}+' )'"></span></option>
+							</select> <select class="chosen-select form-control" name="catId"
+								th:if="${!#strings.isEmpty(prodBas)}" required="required">
+									<option th:value="${prodBas.id}"><span
+											th:text="${prodBas.nomProduit}+' ('+${prodBas.unite}+' )'"></span></option>
+							</select></td>
+							<td><input class="form-control" id="demo_selectors"
+								name="Qte" th:if="${#strings.isEmpty(edit)}" required="required"
+								type="number" min="1" data-format="hex" /> <input
+								class="form-control" id="demo_selectors" name="Qte"
+								th:if="${!#strings.isEmpty(edit)}" required="required"
+								th:value="${qte}" type="number" min="1" data-format="hex" /></td>
+							<td><input class="form-control" type="date" name="dateProd"
+								required="required" /></td>
+							<td><button type="submit" title="Ajouter"
+									class="btn btn-success btn-sm">
+									<span class="fa fa-plus"></span>
+								</button></td>
+						</tr>
+					</table>
+				</div>
+				<input type="hidden" th:value="${id}" name="idProduct" /> <input
+					type="hidden" th:value="${idPP}" name="idProdProduct" />
+			</form>
+		</div>
+	</div>
+</div>

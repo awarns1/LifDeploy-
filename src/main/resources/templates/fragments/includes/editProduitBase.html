@@ -1,0 +1,42 @@
+<div data-th-fragment="editProduitBase">
+	<div class="card">
+		<div class="card-body">
+			<form method="post" th:action="@{/Add_Produit/new/}">
+				<div class="table-repsonsive">
+					<span id="error"></span>
+					<table class="table table-bordered">
+						<tr>
+							<th>Production Nationale</th>
+							<th>Nom Produit</th>
+							<th>Prix Unitaire</th>
+							<th>Unite</th>
+							<th>Image</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td><input type="number" class="form-control" name="f"
+								th:value="${prodBase.productionNat}" min="0" /></td>
+							<td><input type="text" class="form-control" name="f"
+								th:value="${prodBase.nomProduit}" /></td>
+							<td><input type="number" class="form-control" name="f"
+								th:value="${prodBase.prixUnitaire}" min="0" /></td>
+							<td><input type="text" class="form-control" name="f"
+								th:value="${prodBase.unite}" /></td>
+							<td><img class="card-img-top img-fluid My-Img"
+								th:src="'/getPhoto/ProdBaseImg/'+${prodBase.id}" alt="Card cap" />
+								<input class="form-control filestyle" type="file" name="file"
+								required="required" data-classbutton="btn btn-secondary"
+								data-classinput="form-control inline" /></td>
+							<td><button type="submit" title="Valider"
+									class="btn btn-success btn-sm">
+									<span class="fa fa-plus"></span>
+								</button></td>
+						</tr>
+					</table>
+				</div>
+				<!-- <input type="hidden" th:value="${id}" name="idProduct" /> <input
+					type="hidden" th:value="${idPP}" name="idProdProduct" /> -->
+			</form>
+		</div>
+	</div>
+</div>

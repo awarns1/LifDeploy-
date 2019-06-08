@@ -1,0 +1,294 @@
+<div data-th-fragment="script_bas_home">
+	<!-- =============== VENDOR SCRIPTS ===============-->
+	<!-- MODERNIZR-->
+	<script
+		th:src="@{/css_template_home/vendor/modernizr/modernizr.custom.js}"></script>
+	<!-- JQUERY-->
+	<script th:src="@{/css_template_home/vendor/jquery/dist/jquery.js}"></script>
+	<!-- <script src="/css_template_home/vendor/jquery/dist/jquery.js"></script> -->
+	<!-- BOOTSTRAP-->
+	<script
+		th:src="@{/css_template_home/vendor/popper.js/dist/umd/popper.js}"></script>
+	<script
+		th:src="@{/css_template_home/vendor/bootstrap/dist/js/bootstrap.js}"></script>
+	<!-- STORAGE API-->
+	<script th:src="@{/css_template_home/vendor/js-storage/js.storage.js}"></script>
+	<!-- JQUERY EASING-->
+	<script
+		th:src="@{/css_template_home/vendor/jquery.easing/jquery.easing.js}"></script>
+	<!-- ANIMO-->
+	<script th:src="@{/css_template_home/vendor/animo/animo.js}"></script>
+	<!-- SCREENFULL-->
+	<script
+		th:src="@{/css_template_home/vendor/screenfull/dist/screenfull.js}"></script>
+	<!-- LOCALIZE-->
+	<script
+		th:src="@{/css_template_home/vendor/jquery-localize/dist/jquery.localize.js}"></script>
+	<!-- SELECT2-->
+	<!-- 	<script
+		th:src="@{/css_template_home/vendor/select2/dist/js/select2.full.js}"></script> -->
+	<!-- Bootgrid-->
+	<script
+		th:src="@{/css_template_home/vendor/jquery-bootgrid/dist/jquery.bootgrid.js}"></script>
+	<script
+		th:src="@{/css_template_home/vendor/jquery-bootgrid/dist/jquery.bootgrid.fa.js}"></script>
+	<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+	<!-- FLOT CHART-->
+	<script src="/css_template_home/vendor/flot/jquery.flot.js"></script>
+	<script
+		src="/css_template_home/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
+	<script src="/css_template_home/vendor/flot/jquery.flot.resize.js"></script>
+	<script src="/css_template_home/vendor/flot/jquery.flot.pie.js"></script>
+	<script src="/css_template_home/vendor/flot/jquery.flot.time.js"></script>
+	<script src="/css_template_home/vendor/flot/jquery.flot.categories.js"></script>
+	<script
+		src="/css_template_home/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
+	<script
+		src="/css_template_home/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+	<!-- SWEET ALERT-->
+	
+	<!-- =============== APP SCRIPTS ===============-->
+	<script th:src="@{/css_template_home/js/app.js}"></script>
+	<script th:src="@{/css_template_home/js/myScript.js}"></script>
+	<script>
+		$('#idAffect').hide();
+		function myFunction2(vals) {
+			// Get the checkbox
+			var checkBox = document.getElementById(vals);
+			// If the checkbox is checked, display the output text
+			if (checkBox.checked == true) {
+				$('#idAffect').show();
+			} else {
+				$('#idAffect').hide();
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		$("#ecole").hide();
+		$("#product").hide();
+		$("#parte").hide();
+		/* $("#btnPanier").hide();	 */
+		$("#btnEcole").on("click", function() {
+			$("#ecole").show();
+			$("#product").hide();
+			$("#parte").hide();
+			if($("#signupInputEmail1").val()=="contact@lifantou.com")
+				$("#signupInputEmail1").val("");
+		});
+		$("#btnProduct").on("click", function() {
+			$("#product").show();
+			$("#ecole").hide();
+			$("#parte").hide();
+			if($("#signupInputEmail1").val()=="")
+				$("#signupInputEmail1").val("contact@lifantou.com");
+		});
+		$("#btnParte").on("click", function() {
+			$("#parte").show();
+			$("#ecole").hide();
+			$("#product").hide();
+			if($("#signupInputEmail1").val()=="contact@lifantou.com")
+				$("#signupInputEmail1").val("");
+		});
+
+		/* $("#selectChoix").on("click", function() {
+			$("#btnPanier").show();			
+		}); */
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+		$(document).ready(function() {
+			$('#example2').DataTable();
+			$('#example3').DataTable();
+			$('#example4').DataTable();
+			$('#example5').DataTable();
+			$('#example6').DataTable();
+		});
+	</script>
+
+	<!-- <script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+	<script type="text/javascript"
+		th:src="@{/css_template_home/js/jqueryDataTablesCND.js}"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".alert").delay(2500).hide(2000);
+			$(".alert_error").delay(2500).hide(2000);
+		});
+	</script>
+
+
+	<script>
+		/* Set rates + misc */
+		var taxRate = 0.0;
+		var shippingRate = 0.00;
+		var fadeTime = 300;
+
+		/* Assign actions */
+		$('.product-quantity input').change(function() {
+			updateQuantity(this);
+		});
+
+		$('.product-removal button').click(function() {
+			removeItem(this);
+		});
+
+		/* Recalculate cart */
+		function recalculateCart() {
+			var subtotal = 0;
+
+			/* Sum up row totals */
+			$('.product').each(
+					function() {
+						subtotal += parseFloat($(this).children(
+								'.product-line-price').text());
+					});
+
+			/* Calculate totals */
+			var tax = subtotal * taxRate;
+			var shipping = (subtotal > 0 ? shippingRate : 0);
+			var total = subtotal;
+
+			/* Update totals display */
+			$('.totals-value').fadeOut(fadeTime, function() {
+				$('#cart-subtotal').html(subtotal.toFixed(2));
+				$('#cart-tax').html(tax.toFixed(2));
+				$('#cart-shipping').html(shipping.toFixed(2));
+				$('#cart-total').html(total.toFixed(2));
+				if (total == 0) {
+					$('.checkout').fadeOut(fadeTime);
+				} else {
+					$('.checkout').fadeIn(fadeTime);
+				}
+				$('.totals-value').fadeIn(fadeTime);
+			});
+		}
+
+		/* Update quantity */
+		function updateQuantity(quantityInput) {
+			/* Calculate line price */
+			var productRow = $(quantityInput).parent().parent();
+			var price = parseFloat(productRow.children('.product-price').text());
+			var quantity = $(quantityInput).val();
+			var linePrice = price * quantity;
+
+			/* Update line price display and recalc cart totals */
+			productRow.children('.product-line-price').each(function() {
+				$(this).fadeOut(fadeTime, function() {
+					$(this).text(linePrice.toFixed(2));
+					recalculateCart();
+					$(this).fadeIn(fadeTime);
+				});
+			});
+		}
+
+		/* Remove item from cart */
+		function removeItem(removeButton) {
+			/* Remove row from DOM and recalc cart total */
+			var productRow = $(removeButton).parent().parent();
+			productRow.slideUp(fadeTime, function() {
+				productRow.remove();
+				recalculateCart();
+			});
+		}
+	</script>
+
+	<script>
+		$('#btnValiderRepart').hide();
+		function myFunction(val) {
+			// Get the checkbox
+			var checkBox = document.getElementById(val);
+			// If the checkbox is checked, display the output text
+			if (checkBox.checked == true) {
+				$('#btnValiderRepart').show();
+				$('#msgError').hide();
+			} else {
+				$('#btnValiderRepart').hide();
+				$('#msgError').hide();
+			}
+		}
+	</script>
+	<!-- ==================== Show/Hide bloc profil ===============-->
+	<script type="text/javascript">
+		$('#idEmail').hide();
+		$('#idTel').hide();
+		$('#idAdresse').hide();
+		$('#idRegion').hide();
+		$('#idNomEcole').hide();
+		$('#idDept').hide();
+		$('#idNbElev').hide();
+		$('#idBudgetAn').hide();
+		$('#idNomGest').hide();
+		$('#idPrenomGest').hide();
+		$('#idActGest').hide();
+		$('#idLongEcole').hide();
+		$('#idLatEcole').hide();
+
+		$('#idNomProd').hide();
+		$('#idPrenomProd').hide();
+		$('#idLongProd').hide();
+		$('#idLatProd').hide();
+		$('#idNomStruct').hide();
+		$('#idDomaieAct').hide();
+
+		$('#BtnMisAJour').hide();
+
+		/* 	$('#idEmail').prop("disabled", true);
+			$('#idTel').prop("disabled", true);
+		 */
+		function activerChamp() {
+			$('#labEmail').hide();
+			$('#idEmail').show();
+			$('#labTel').hide();
+			$('#idTel').show();
+			$('#labAdresse').hide();
+			$('#idAdresse').show();
+			$('#labRegion').hide();
+			$('#idRegion').show();
+
+			$('#labNomEcole').hide();
+			$('#idNomEcole').show();
+			$('#labDept').hide();
+			$('#idDept').show();
+			$('#labNbEl').hide();
+			$('#idNbElev').show();
+			$('#labBudgetAn').hide();
+			$('#idBudgetAn').show();
+			$('#labNomGest').hide();
+			$('#idNomGest').show();
+			$('#labPrenomGest').hide();
+			$('#idPrenomGest').show();
+			$('#labActiviteGest').hide();
+			$('#idActGest').show();
+
+			$('#labLongEcole').hide();
+			$('#idLongEcole').show();
+			$('#labLatEcole').hide();
+			$('#idLatEcole').show();
+
+			$('#labNomProd').hide();
+			$('#idNomProd').show();
+			$('#labPrenomProd').hide();
+			$('#idPrenomProd').show();
+			$('#labLongProd').hide();
+			$('#idLongProd').show();
+			$('#labLatProd').hide();
+			$('#idLatProd').show();
+			$('#labNomStruct').hide();
+			$('#idNomStruct').show();
+			$('#labDomaineAct').hide();
+			$('#idDomaieAct').show();
+
+			$('#BtnMisAJour').show();
+
+			/* $('#idEmail').prop("disabled", false);
+			$('#idTel').prop("disabled", false); */
+		}
+	</script>
+
+
+
+</div>

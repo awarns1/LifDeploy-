@@ -1,0 +1,386 @@
+<div data-th-fragment="modals">
+	<div class="modal fade" role="dialog" aria-labelledby="myModalLabel"
+		th:if="${!#strings.isEmpty(getCategorieProd)}" id="addCatProd">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Ajout Produit de
+						base</h4>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form th:action="@{/Admin/Produit-Base/new}" th:object="${produit}"
+					method="post" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+								htmlFor="inputContact1">Production Nationale:</label>
+							<div class="col-xl-6 col-md-9 col-8">
+								<Input class="form-control" th:field="*{productionNat}"
+									required="required" id="inputContact1" type="number" min="0" />
+							</div>
+							<span class="My-errors"
+								th:if="${#fields.hasErrors('productionNat')}"
+								th:errors="*{productionNat}">tes</span>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+								htmlFor="inputContact1">Nom Produit:</label>
+							<div class="col-xl-6 col-md-9 col-8">
+								<Input class="form-control" th:field="*{nomProduit}"
+									required="required" id="inputContact1" type="text" />
+							</div>
+							<span class="My-errors"
+								th:if="${#fields.hasErrors('nomProduit')}"
+								th:errors="*{nomProduit}">tes</span>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+								htmlFor="inputContact1">Prix Unitaire:</label>
+							<div class="col-xl-6 col-md-9 col-8">
+								<Input class="form-control" th:field="*{prixUnitaire}"
+									required="required" id="inputContact1" type="number" min="0" />
+							</div>
+							<span class="My-errors"
+								th:if="${#fields.hasErrors('prixUnitaire')}"
+								th:errors="*{prixUnitaire}">tes</span>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+								htmlFor="inputContact1">Unite:</label>
+							<div class="col-xl-6 col-md-9 col-8">
+								<Input class="form-control" th:field="*{unite}"
+									required="required" id="inputContact1" type="text" />
+							</div>
+							<span class="My-errors" th:if="${#fields.hasErrors('unite')}"
+								th:errors="*{unite}">tes</span>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-2 col-form-label">Image</label>
+							<div class="col-md-10">
+								<input class="form-control filestyle" type="file" name="file"
+									required="required" data-classbutton="btn btn-secondary"
+									data-classinput="form-control inline" />
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">Close</button>
+						<button class="btn btn-primary" type="submit">Ajouter</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--=========================== MODAL EDIT PROD BASE==================  -->
+	<div class="myForms">
+		<div class="modal fade" role="dialog" aria-labelledby="editCatProd"
+			id="editCatProd">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Modifier Produit de
+							base</h4>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form th:action="@{/Admin/Produit-Base/edit}" method="post"
+						enctype="multipart/form-data">
+						<div class="modal-body">
+							<Input type="hidden" class="form-control" id="id" name="id"
+								value="" /> <Input type="hidden" class="form-control"
+								id="stockGlobal" name="stockGlobal" value="" />
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+									htmlFor="inputContact1">Production Nationale:</label>
+								<div class="col-xl-6 col-md-9 col-8">
+									<Input class="form-control" id="productionNat"
+										name="productionNat" type="number" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+									htmlFor="inputContact1">Nom Produit:</label>
+								<div class="col-xl-6 col-md-9 col-8">
+									<Input class="form-control" id="nomProduit" name="nomProduit"
+										type="text" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+									htmlFor="inputContact1">Prix Unitaire:</label>
+								<div class="col-xl-6 col-md-9 col-8">
+									<Input class="form-control" required="required"
+										id="prixUnitaire" name="prixUnitaire" type="number" min="0" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-4 col-md-3 col-4 col-form-label text-right"
+									htmlFor="inputContact1">Unite:</label>
+								<div class="col-xl-6 col-md-9 col-8">
+									<Input class="form-control" required="required" id="unite"
+										name="unite" type="text" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-2 col-form-label">Image</label>
+								<div class="col-md-10">
+									<input class="form-control filestyle" type="file" name="file"
+										data-classbutton="btn btn-secondary"
+										data-classinput="form-control inline" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button"
+								data-dismiss="modal">Close</button>
+							<button class="btn btn-primary" type="submit">Modifier</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- =============================== DELETE PRODUIT BASE  -->
+	<div id="deleteProdBse" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="icon-box">
+						<i class="fa fa-trash"></i>
+					</div>
+					<h4 class="modal-title">Etes-vous s&ucirc;r?</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>Voulez-vous vraiment supprimer ces enregistrements? Ce processus ne peut pas &ecirc;tre annul&eacute;.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+					<a href="" id="delProd"><button type="button" class="btn btn-danger">Supprimer</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog"
+		th:if="${!#strings.isEmpty(getPlaceMarcher)}"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		th:each="cmdEC :${ListCmdEnCours}" id="tt">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel" th:text="'#'+${cmdEC.id}">Modal
+						title</h4>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- <div class="row">
+						<div class="col-md-6">
+							<select class="form-control">
+								<option>Prod1</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" placeholder="Qte" />
+						</div>
+					</div> -->
+					<form method="post" id="insert_form">
+						<div class="table-repsonsive">
+							<span id="error"></span>
+							<table class="table table-bordered" id="item_table">
+								<tr>
+									<th>Enter Item Name</th>
+									<th>Enter Quantity</th>
+									<th>Select Unit</th>
+									<th><button type="button" name="add"
+											class="btn btn-success btn-sm add">
+											<span class="fa fa-plus"></span>
+										</button></th>
+								</tr>
+							</table>
+							<div align="center">
+								<input type="submit" name="submit" class="btn btn-info"
+									value="Insert" />
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Close</button>
+					<button class="btn btn-primary" type="button">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <script>
+		$.ajax({
+			type : "GET",
+			url : "/demo_trial_application/json_source",
+			dataType : "json",
+			success : function(data) {
+				$.each(data.aaData, function(i, obj) {
+					alert(obj.value + ":" + obj.text);
+					var div_data = "<option value="+obj.value+">" + obj.text
+							+ "</option>";
+					alert(div_data);
+					$(div_data).appendTo('#ch_user1');
+				});
+			}
+		});
+	</script> -->
+	<script>
+		$(document)
+				.ready(
+						function() {
+
+							$(document)
+									.on(
+											'click',
+											'.add',
+											function() {
+												var html = '';
+												html += '<tr>';
+												html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+												html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
+												html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Unit</option>';
+
+												$
+														.ajax({
+															type : "GET",
+															url : "http://localhost:8083/getRegion",
+															dataType : "json",
+															success : function(
+																	data) {
+																$
+																		.each(
+																				data.aaData,
+																				function(
+																						i,
+																						obj) {
+																					alert(obj.id
+																							+ ":"
+																							+ obj.nomRegion);
+																					html += "<option value="+obj.id+">"
+																							+ obj.nomRegion
+																							+ "</option>";
+																					alert(div_data);
+																					$(
+																							div_data)
+																							.appendTo(
+																									'#ch_user1');
+																				});
+															}
+														});
+												html += '</select></td>';
+												html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="fa fa-minus"></span></button></td></tr>';
+												$('#item_table').append(html);
+											});
+
+							$(document).on('click', '.remove', function() {
+								$(this).closest('tr').remove();
+							});
+
+							$('#insert_form')
+									.on(
+											'submit',
+											function(event) {
+												event.preventDefault();
+												var error = '';
+												$('.item_name')
+														.each(
+																function() {
+																	var count = 1;
+																	if ($(this)
+																			.val() == '') {
+																		error += "<p>Enter Item Name at "
+																				+ count
+																				+ " Row</p>";
+																		return false;
+																	}
+																	count = count + 1;
+																});
+
+												$('.item_quantity')
+														.each(
+																function() {
+																	var count = 1;
+																	if ($(this)
+																			.val() == '') {
+																		error += "<p>Enter Item Quantity at "
+																				+ count
+																				+ " Row</p>";
+																		return false;
+																	}
+																	count = count + 1;
+																});
+
+												$('.item_unit')
+														.each(
+																function() {
+																	var count = 1;
+																	if ($(this)
+																			.val() == '') {
+																		error += "<p>Select Unit at "
+																				+ count
+																				+ " Row</p>";
+																		return false;
+																	}
+																	count = count + 1;
+																});
+												var form_data = $(this)
+														.serialize();
+												if (error == '') {
+													$
+															.ajax({
+																url : "insert.php",
+																method : "POST",
+																data : form_data,
+																success : function(
+																		data) {
+																	if (data == 'ok') {
+																		$(
+																				'#item_table')
+																				.find(
+																						"tr:gt(0)")
+																				.remove();
+																		$(
+																				'#error')
+																				.html(
+																						'<div class="alert alert-success">Item Details Saved</div>');
+																	}
+																}
+															});
+												} else {
+													$('#error').html(
+															'<div class="alert alert-danger">'
+																	+ error
+																	+ '</div>');
+												}
+											});
+
+						});
+	</script>
+</div>

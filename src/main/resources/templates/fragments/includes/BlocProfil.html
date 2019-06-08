@@ -1,0 +1,259 @@
+<div data-th-fragment="BlocProfil">
+	<div class="card card-default">
+		<div class="card-header d-flex align-items-center">
+			<div class="d-flex justify-content-center col"
+				th:if="${role=='ECOLE'}">
+				<div class="h3 m-0 text-center">Informations Ecole</div>
+			</div>
+			<div class="d-flex justify-content-center col"
+				th:if="${role=='PRODUCTEUR'}">
+				<div class="h3 m-0 text-center">Informations Producteur</div>
+			</div>
+			<div class="d-flex justify-content-center col"
+				th:if="${role=='PARTENAIRE'}">
+				<div class="h3 m-0 text-center">Informations Partenaire</div>
+			</div>
+			<div th:if="${session.RoleName=='ADMIN'}" class="d-flex justify-content-end">
+				<button class="btn btn-info" onclick="activerChamp();">Modifier les informations</button>
+			</div>
+		</div>
+
+		<div class="card-body">
+			<div class="row py-4 justify-content-center">
+				<div class="col-12 col-sm-10">
+					<div
+						th:replace="fragments/includes/Notification ::showNotification"></div>
+					<form class="form-horizontal" method="post" th:object="${datas}"
+						th:action="@{/Gestions/Profil/Edit}">
+						<input type="hidden" th:field="*{type}" /> <input type="hidden"
+							th:field="*{id}" /> <input type="hidden"
+							th:field="*{identifiant}" />
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+								for="inputContact2">Identifiant</label>
+							<div class="col-xl-9 col-md-9 col-8">
+								<input class="form-control" id="inputContact2" type="text"
+									th:field="*{identifiant}" disabled="disabled" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+								for="inputContact2">Email :</label>
+							<div class="col-xl-9 col-md-9 col-8">
+								<label id="labEmail" th:text="${datas.email}"></label> <input
+									class="form-control" id="idEmail" type="email"
+									th:field="*{email}" required="required" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+								for="inputContact3">Telephone :</label>
+							<div class="col-xl-9 col-md-9 col-8">
+								<label id="labTel" th:text="${datas.tel}"></label> <input
+									class="form-control" id="idTel" type="text" th:field="*{tel}"
+									required="required" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+								for="inputContact4">Adresse :</label>
+							<div class="col-xl-9 col-md-9 col-8">
+								<label id="labAdresse" th:text="${datas.adresse}"></label> <input
+									class="form-control" id="idAdresse" type="text"
+									th:field="*{adresse}" required="required" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+								for="inputContact4">Region :</label>
+							<div class="col-xl-9 col-md-9 col-8">
+								<label th:each="region : ${regionList}"
+									th:if="${region.id==datas.idRegion}" id="labRegion"
+									th:text="${region.nomRegion}"></label> <select
+									class="chosen-select form-control" name="idRegion"
+									id="idRegion">
+									<option th:each="region : ${regionList}"
+										th:if="${region.id==datas.idRegion}"
+										th:value="${datas.idRegion=region.id}"
+										th:text="${region.nomRegion}"></option>
+									<option th:each="region : ${regionList}"
+										th:unless="${region.id==datas.idRegion}"
+										th:value="${datas.idRegion=region.id}"
+										th:text="${region.nomRegion}"></option>
+								</select>
+							</div>
+						</div>
+						<span th:if="${role=='ECOLE'}">
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Nom Ecole :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labNomEcole" th:text="${datas.nomEcole}"></label> <input
+										class="form-control" id="idNomEcole" type="text"
+										th:field="*{nomEcole}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Departement :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labDept" th:text="${datas.departement}"></label> <input
+										class="form-control" id="idDept" type="text"
+										th:field="*{departement}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Nombre Eleve :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labNbEl" th:text="${datas.nbEleve}"></label> <input
+										class="form-control" id="idNbElev" type="number" min="0"
+										th:field="*{nbEleve}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Budget Annuel :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labBudgetAn" th:text="${#numbers.formatDecimal(datas.budgetAnnuel, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></label>
+									<input class="form-control" id="idBudgetAn" type="number"
+										min="0" th:field="*{budgetAnnuel}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Nom Gest. :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labNomGest" th:text="${datas.nomGest}"></label> <input
+										class="form-control" id="idNomGest" type="text"
+										th:field="*{nomGest}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Prenom Gest. :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labPrenomGest" th:text="${datas.prenomGest}"></label>
+									<input class="form-control" id="idPrenomGest" type="text"
+										th:field="*{prenomGest}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Activite Gest. :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labActiviteGest" th:text="${datas.activiteGest}"></label>
+									<input class="form-control" id="idActGest" type="text"
+										th:field="*{activiteGest}" required="required" />
+								</div>
+							</div> <span th:if="${!#strings.isEmpty(editAdmin)}">
+								<div class="form-group row">
+									<label
+										class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+										for="inputContact1">Longitude Ecole :</label>
+									<div class="col-xl-9 col-md-9 col-8">
+										<label id="labLongEcole" th:text="${datas.longitudeEcole}"></label>
+										<input class="form-control" id="idLongEcole" type="text"
+											th:field="*{longitudeEcole}" required="required" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label
+										class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+										for="inputContact1">Latitude Ecole :</label>
+									<div class="col-xl-9 col-md-9 col-8">
+										<label id="labLatEcole" th:text="${datas.latitudeEcole}"></label>
+										<input class="form-control" id="idLatEcole" type="text"
+											th:field="*{latitudeEcole}" required="required" />
+									</div>
+								</div>
+						</span>
+						</span> <span th:if="${role=='PRODUCTEUR'}">
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Nom Producteur :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labNomProd" th:text="${datas.nomProduct}"></label>
+									<input class="form-control" id="idNomProd" type="text"
+										th:field="*{nomProduct}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Prenom Producteur:</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labPrenomProd" th:text="${datas.prenomProduct}"></label>
+									<input class="form-control" id="idPrenomProd" type="text"
+										th:field="*{prenomProduct}" required="required" />
+								</div>
+							</div> <span th:if="${!#strings.isEmpty(editAdmin)}">
+								<div class="form-group row">
+									<label
+										class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+										for="inputContact1">Longitude Product. :</label>
+									<div class="col-xl-9 col-md-9 col-8">
+										<label id="labLongProd" th:text="${datas.longitudeProduct}"></label>
+										<input class="form-control" id="idLongProd" type="text"
+											th:field="*{longitudeProduct}" required="required" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label
+										class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+										for="inputContact1">Latitude Product. :</label>
+									<div class="col-xl-9 col-md-9 col-8">
+										<label id="labLatProd" th:text="${datas.latitudeProduct}"></label>
+										<input class="form-control" id="idLatProd" type="text"
+											th:field="*{latitudeProduct}" required="required" />
+									</div>
+								</div>
+						</span>
+						</span> <span th:if="${role=='PARTENAIRE'}">
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Nom Structure :</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labNomStruct" th:text="${datas.nomStructure}"></label>
+									<input class="form-control" id="idNomStruct" type="text"
+										th:field="*{nomStructure}" required="required" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									class="text-bold col-xl-3 col-md-3 col-4 col-form-label text-right"
+									for="inputContact1">Domaine Activite:</label>
+								<div class="col-xl-9 col-md-9 col-8">
+									<label id="labDomaineAct" th:text="${datas.domaineActivite}"></label>
+									<input class="form-control" id="idDomaieAct" type="text"
+										th:field="*{domaineActivite}" required="required" />
+								</div>
+							</div>
+						</span> <br />
+						<div class="form-group row">
+							<div class="col-md-10">
+								<button class="btn btn-info" type="submit" id="BtnMisAJour">Mettre
+									a jour</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<div data-th-fragment="showNotification">
+	<div class="alert alert-success" role="alert"
+		th:if="${!#strings.isEmpty(MisAjouSk)}">
+		<strong>Succes!</strong> Stock bien mis a jour.
+	</div>
+	<div class="alert alert-success" role="alert"
+		th:if="${!#strings.isEmpty(addProdBase)}">
+		<strong>Succes!</strong> Produit bien ajout&eacute;.
+	</div>
+	<div class="alert alert-success" role="alert"
+		th:if="${!#strings.isEmpty(editProdBase)}">
+		<strong>Succes!</strong> Produit bien modifi&eacute;.
+	</div>
+	<div class="alert alert-success" role="alert"
+		th:if="${!#strings.isEmpty(EditProdProdOK)}">
+		<strong>Succes!</strong> Produit bien mis a jour.
+	</div>
+	<div class="alert alert-success" role="alert"
+		th:if="${!#strings.isEmpty(AddProdProdOK)}">
+		<strong>Succes!</strong> Produit bien ajoute pour ce producteur.
+	</div>
+	<div class="alert alert-warning" role="alert"
+		th:if="${!#strings.isEmpty(ProdExist)}">
+		<strong>Attention!</strong> Ce produit a deja ete ajouter pour ce
+		producteur.
+	</div>
+	<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(editProfilOk)}">
+		<strong>Succes!</strong> Informations bien mis a jour.
+	</div>
+	<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(msg_addProdToCartOk)}">
+		<strong>Succes!</strong> Produit bien ajouter au panier.
+	</div>
+	<div class="alert alert-warning" role="alert" th:if="${!#strings.isEmpty(msg_addProdToCartKo)}">
+		<strong>Erreur!</strong> Produit existe deja dans le panier.
+	</div>
+	<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(cmdValid)}">
+		<strong>Succes!</strong> Votre commande a ete  enregistrer.
+	</div>
+	
+	<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(suppProdOK)}">
+		<strong>Succes!</strong> <span th:text="${suppProdOK}"></span>
+	</div>
+	<div class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(suppProdKO)}">
+		<strong>Erreur!</strong> <span th:text="${suppProdKO}"></span>
+	</div>
+</div>

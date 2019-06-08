@@ -1,0 +1,177 @@
+<div data-th-fragment="ListePartenaires">
+	<div class="content-heading">
+		<div th:text="${title}">titre</div>
+		<div class="ml-auto">
+			<div class="btn-group">
+				<a th:href="@{/register}">
+					<button class="mb-1 btn btn-outline-info" type="button">Ajouter
+						un partenaire</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="card" th:if="${!#strings.isEmpty(getPartenairesListNot)}">
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Identifiant</th>
+							<th>Nom Structure</th>
+							<th>Domaine Activite</th>
+							<th>Adresse</th>
+							<th>Telephone</th>
+							<th>Email</th>
+							<th>Region</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="part,index :${ListPart}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${part.identifiant}">identifiant</td>
+							<td th:text="${part.nomStructure}">nom structure</td>
+							<td th:text="${part.domaineActivite}">domaine activite</td>
+							<td th:text="${part.adresse}">adresse</td>
+							<td th:text="${part.tel}">tel</td>
+							<td th:text="${part.email}">email</td>
+							<td th:text="${part.region.nomRegion}">region</td>
+							<td><div class="btn-group mb-1">
+									<a title="Liste Ecoles"
+										th:href="@{'/Admin/Ecoles_partenaire/'+${part.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-info mr-2">
+											<em class="fa fa-list fa-fw"></em>
+										</button>
+									</a> <a title="Mis &agrave; jour infos"
+										th:href="@{'/Admin/Partenaire/'+${part.id}+'/edit'}">
+										<button type="button"
+											class="btn btn-sm btn-warning mr-2 command-edit">
+											<em class="fa fa-edit fa-fw"></em>
+										</button>
+									</a><a title="Affecter une &eacute;cole"
+										th:href="@{'/Admin/Affecter_ecole/'+${part.id}+'/'}">
+										<button type="button"
+											class="btn btn-sm btn-success mr-2 command-edit">
+											<em class="fa fa-plus fa-fw"></em>
+										</button>
+									</a>
+
+									<!-- <button class="btn dropdown-toggle btn-info" type="button"
+										data-toggle="dropdown">Actions</button>
+									<div class="dropdown-menu" role="menu">
+										<a class="dropdown-item"
+											th:href="@{'/Admin/Ecoles_partenaire/'+${part.id}+'/'}">Liste
+											Ecoles </a> <a class="dropdown-item"
+											th:href="@{'/Admin/Partenaire/'+${part.id}+'/edit'}">Mis
+											&agrave; jour infos</a>
+									</div> -->
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--============================= LISTE DES ECOLES BY PARTENAIRES ================  -->
+	<div class="card" th:if="${!#strings.isEmpty(getEcolePart)}">
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Identifiant</th>
+							<th>Nom Ecole</th>
+							<th>Nom et Prenom Gest.</th>
+							<th>Activite Gest.</th>
+							<th>Budget Annuel</th>
+							<th>Nombre Eleve</th>
+							<th>Adresse</th>
+							<th>Telephone</th>
+							<th>Email</th>
+							<th>Region</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ec,index :${ListEcolePart}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${ec.identifiant}">identifiant</td>
+							<td th:text="${ec.nomEcole}">nom ecole</td>
+							<td th:text="${ec.nomGest}+' '+${ec.prenomGest}">nom gest</td>
+							<td th:text="${ec.activiteGest}">activite Gest</td>
+							<td
+								th:text="${#numbers.formatDecimal(ec.budgetAnnuel, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'">budget</td>
+							<td th:text="${ec.nbEleve}">nbEleve</td>
+							<td th:text="${ec.adresse}">adresse</td>
+							<td th:text="${ec.tel}">tel</td>
+							<td th:text="${ec.email}">email</td>
+							<td th:text="${ec.region.nomRegion}">region</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ EDIT INFOS PARTENAIRE=================  -->
+	<div class="card" th:if="${!#strings.isEmpty(getEditInfoPart)}">
+		<div th:replace="fragments/includes/BlocProfil ::BlocProfil"></div>
+	</div>
+
+	<!-- ================================ ADD ECOLE FOR PARTENAIRE =================  -->
+	<div class="card" th:if="${!#strings.isEmpty(getAddEcoleForPart)}">
+		<div class="card-body">
+			<form th:action="@{/Admin/AddEcoleToPartenaire/}" method="post">
+				<div class="form-group row">
+					<div class="col-md-10">
+						<legend>
+							<h3>Liste des &eacute;coles</h3>
+						</legend>
+					</div>
+					<div class="col-md-2">
+						<div class="ml-auto">
+							<div class="btn-group">
+								<button th:if="${!#lists.isEmpty(ListEcoleNonAffect)}" id="idAffect" class="mb-1 btn btn-outline-success" type="submit">Affecter</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label><h4>Ecole(s) d&eacute;j&agrave;
+								Affect&eacute;e(s)</h4></label>
+						<div class="row" th:each="listEc :${ListEcoleExistant}">
+							<div class="col-md-7">
+								<label
+									th:text="${listEc.ecole.identifiant}+' / '+${listEc.ecole.nomEcole}+' / '+${listEc.ecole.adresse}"></label>
+							</div>
+							<div class="col-md-1 checkbox c-checkbox">
+								<label><input type="checkbox" value="" checked="checked"
+									disabled="" /> <span class="fa fa-check"></span> </label>
+							</div>
+							<div class="col-md-1">
+								<a th:href="'/Admin/'+${listEc.id}+'/DeleteEcoleToPartenaire/'+${listEc.partenaire.id}+'/'"> <i class="fa fa-trash red"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<input type="hidden" name="idPart" th:value="${partenaire.id}" />
+						<label><h4>Ecole(s) non Affect&eacute;e(s)</h4></label>
+						<div class="row" th:each="EcNonAf :${ListEcoleNonAffect}">
+							<div class="col-md-9">
+								<label
+									th:text="${EcNonAf.identifiant}+' / '+${EcNonAf.nomEcole}+' / '+${EcNonAf.adresse}"></label>
+							</div>
+							<div class="col-md-2 checkbox c-checkbox">
+								<label><input type="checkbox" name="idEcole" th:id="${EcNonAf.id}" th:onclick="'myFunction2('+${EcNonAf.id}+')'"
+									th:value="${EcNonAf.id}" /> <span class="fa fa-check"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

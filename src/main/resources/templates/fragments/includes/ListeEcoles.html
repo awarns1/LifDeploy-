@@ -1,0 +1,72 @@
+<div data-th-fragment="ListeEcoles">
+	<div class="content-heading">
+		<div th:text="${title}">title</div>
+		<div class="ml-auto">
+			<div class="btn-group">
+				<a th:href="@{/register}">
+					<button class="mb-1 btn btn-outline-info" type="button">Ajouter
+						une &eacute;cole</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="card" th:if="${!#strings.isEmpty(getEcolesListNot)}">
+		<!-- <div class="card-header">
+			Commands
+			<div class="text-sm">Open browser console to see commands log</div>
+		</div> -->
+		<div class="card-body">
+			<div class="table-responsive bootgrid">
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Identifiant</th>
+							<th>Nom Ecole</th>
+							<th>Nom et Prenom Gest.</th>
+							<th>Activite Gest.</th>
+							<th>Budget Annuel</th>
+							<th>Nombre Eleve</th>
+							<th>Adresse</th>
+							<th>Telephone</th>
+							<th>Email</th>
+							<th>Region</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ec,index :${ListEcoles}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${ec.identifiant}">identifiant</td>
+							<td th:text="${ec.nomEcole}">nom ecole</td>
+							<td th:text="${ec.nomGest}+' '+${ec.prenomGest}">nom gest</td>
+							<td th:text="${ec.activiteGest}">activite Gest</td>
+							<td th:text="${#numbers.formatDecimal(ec.budgetAnnuel, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'">budget</td>
+							<td th:text="${ec.nbEleve}">nbEleve</td>
+							<td th:text="${ec.adresse}">adresse</td>
+							<td th:text="${ec.tel}">tel</td>
+							<td th:text="${ec.email}">email</td>
+							<td th:text="${ec.region.nomRegion}">region</td>
+							<td><div class="btn-group mb-1">
+									<a title="Passer commande" th:href="@{'/Admin/Passer_commande/'+${ec.id}+'/'}">
+										<button type="button" class="btn btn-sm btn-info mr-2">
+											<em class="fa fa-cart-plus fa-fw"></em>
+										</button>
+									</a> <a title="Mis &agrave; jour infos" th:href="@{'/Admin/Ecole/'+${ec.id}+'/edit'}">
+										<button type="button"
+											class="btn btn-sm btn-warning mr-2 command-edit">
+											<em class="fa fa-edit fa-fw"></em>
+										</button>
+									</a>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ================================ COORDONNEE ECOLE=================  -->
+	<div class="card" th:if="${!#strings.isEmpty(getEcolesCoord)}">
+		<div th:replace="fragments/includes/BlocProfil ::BlocProfil"></div>
+	</div>
+</div>
