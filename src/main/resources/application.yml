@@ -17,7 +17,7 @@ server:
 spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3308/lifantou
+        url: jdbc:mysql://localhost:3306/lifantou
         username: root
         password: Digit@l2019
     jpa:
