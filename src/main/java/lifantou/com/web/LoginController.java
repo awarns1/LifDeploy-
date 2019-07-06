@@ -50,8 +50,9 @@ public class LoginController {
 	private PasswordResetTokenRepository passwordTokenRepository;
 	@Autowired
 	private IConfigPayDunya configPayDunyaServ;
-	
-	@Autowired private LifantouService lifantouService;
+
+	@Autowired
+	private LifantouService lifantouService;
 
 	@GetMapping("/")
 	public String index(ModelMap map) {
@@ -59,7 +60,7 @@ public class LoginController {
 		return "views/index";
 	}
 
-//	redirection vers le form de connexion
+	// redirection vers le form de connexion
 	@GetMapping("/login")
 	public String logon(ModelMap map) {
 		try {
@@ -72,7 +73,7 @@ public class LoginController {
 		}
 	}
 
-//	redirection vers le recover pwd
+	// redirection vers le recover pwd
 	@GetMapping("/recover")
 	public String recover(ModelMap map) {
 		try {
@@ -86,7 +87,7 @@ public class LoginController {
 		}
 	}
 
-//	redirection vers le form donation
+	// redirection vers le form donation
 	@GetMapping("/donation")
 	public String donation(ModelMap map) {
 		try {
@@ -111,14 +112,14 @@ public class LoginController {
 		}
 	}
 
-//	verifier etat paiement
+	// verifier etat paiement
 	@GetMapping("/verification-etat-paiement")
 	public String verificationEtatPaiement(@RequestParam("token") String token, ModelMap map) {
 		configPayDunyaServ.verifEtatPaiement(token);
 		return "redirect:/";
 	}
 
-//	si client bien authentifié
+	// si client bien authentifié
 	@GetMapping("/dashboard")
 	public String red(Authentication auth, HttpSession session, ModelMap map) {
 		try {
@@ -153,7 +154,7 @@ public class LoginController {
 		}
 	}
 
-//	redirection vers le form de creation de copmte
+	// redirection vers le form de creation de copmte
 	@GetMapping("/register")
 	public String register(ModelMap map) {
 		map.put("year", year);
@@ -175,12 +176,12 @@ public class LoginController {
 			} else if (!userForm.getPassword().equals(userForm.getConfirmPassword())) {
 				map.put("erreurPwd", "Mot de passe non identique");
 				return "views/register";
-				//accountService.verificationCompteUser(userForm.getEmail()) != null
-			} else if ( accountService.verificationCompteUsername(userForm.getUsername()) != null) {
+				// accountService.verificationCompteUser(userForm.getEmail()) != null
+			} else if (accountService.verificationCompteUsername(userForm.getUsername()) != null) {
 				map.put("compteOrEmailExist", "Le nom d'utilisateur existe déjà !!!");
 				return "views/register";
 			} else {
-				if((userForm.getEmail() == null || userForm.getEmail().equals(""))
+				if ((userForm.getEmail() == null || userForm.getEmail().equals(""))
 						&& userForm.getType().toLowerCase().equals("producteur"))
 					userForm.setEmail("contact@lifantou.com");
 				final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
@@ -367,7 +368,7 @@ public class LoginController {
 		}
 		return mnt2;
 	}
-  
+
 	@GetMapping("/initApp")
 	public String initApp(HttpServletRequest request) {
 		try {
@@ -377,7 +378,7 @@ public class LoginController {
 		}
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/activeAllAccounts")
 	public String activeAllAccounts() {
 		try {

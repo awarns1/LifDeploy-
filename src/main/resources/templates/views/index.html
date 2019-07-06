@@ -34,6 +34,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <!-- Main Stylesheet File -->
+    <link th:href="@{css_template_index/lib/swiper-4.5.0/dist/css/swiper.min.css}" rel="stylesheet" />
 
 </head>
 <body id="body">
@@ -246,7 +248,7 @@
           </li>
           <li class="progression_studios_animate_left">
             <div class="progression-studios-slider-image-background"
-              style="background-image:url(../css_template_index/ressources/slides/slide-1-min0.jpg);">
+              style="background-image:url(../css_template_index/ressources/slides/slide-10-min.jpg);">
               <div class="progression-studios-slider-display-table">
                 <div class="progression-studios-slider-vertical-align">
           
@@ -356,109 +358,86 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <div id="temoignage" class="carousel slide" data-ride="carousel">
-              <div id="carouselExampleCaptions" class="carousel slide d-none d-md-block" data-ride="carousel">
-                <div class="carousel-inner w-100 h-100" id="realite">
-                  <div class="carousel-item active" style="height: 400px">
-                    <a href="https://www.nouvelobs.com/monde/afrique/20181112.OBS5257/awa-thiam-les-enfants-senegalais-doivent-pouvoir-manger-chaque-jour-a-l-ecole.html"
-                      target="blank">
-                      <img class="d-block w-100" style="height: 300px" data-src="@{/css_template_index/ressources/Awa.jpg}"
-                        alt="Première diapositive [800x400]" th:src="@{/css_template_index/ressources/Awa.jpg}"
-                        data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">Mettre en contact les producteurs
-                              agricoles et les cantines scolaires.</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+            <div id="temoignage" class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/Awa.jpg}" alt="Card image cap"/>
+                    <div class="card-body">
+                      <p class="card-text">L'Obs Awa Thiam : "Les enfants sénégalais doivent pouvoir
+                      manger chaque jour à l'école".
+                      </p>
+                      <a href="https://www.nouvelobs.com/monde/afrique/20181112.OBS5257/awa-thiam-les-enfants-senegalais-doivent-pouvoir-manger-chaque-jour-a-l-ecole.html"
+                        target="blank" class="btn btn-primary voir-article">Voir article</a>
+                    </div>
                   </div>
-                  <div class="carousel-item" style="height: 400px">
-                    <a href="https://medium.com/radiant-earth-insights/farmers-schools-and-data-creating-efficient-sustainable-food-systems-with-geospatial-data-305f01034fc5
-                                                  " target="blank">
-                      <img class="d-block w-100" style="height: 300px"
-                        data-src="@{/css_template_index/ressources/Logo5.png}" alt="Deuxième diapositive [800x400]"
-                        th:src="@{/css_template_index/ressources/Logo5.png}" data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">Créer des systèmes alimentaires avec des
-                              données géospatiales</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/meduim.jpg}" alt="Card image cap" />
+                    <div class="card-body">
+                      <p class="card-text">Awa Thiam: Creating Efficient Sustainable Food Systems
+                      with Geospatial Data
+                      </p>
+                        <a href="https://medium.com/radiant-earth-insights/farmers-schools-and-data-creating-efficient-sustainable-food-systems-with-geospatial-data-305f01034fc5"
+                        target="blank" class="btn btn-primary voir-article">Voir article</a>
+                    </div>
                   </div>
-                  <div class="carousel-item" style="height: 400px">
-                    <a href="https://yali.state.gov/yali-voices-podcast-senegals-awa-thiam-uses-data-to-link-farmers-with-schools-in-need/
-                                                  " target="blank">
-                      <img class="d-block w-100" style="height: 300px"
-                        data-src="@{/css_template_index/ressources/lifilustration2.jpg}"
-                        alt="Troisième diapositive [800x400]" th:src="@{/css_template_index/ressources/lifilustration2.jpg}"
-                        data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">Utiliser des données pour lier les
-                              agriculteurs aux écoles dans le besoin.</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/lifilustration2.jpg}" alt="Card image cap" />
+                    <div class="card-body">
+                      <p class="card-text">YALI Voices Podcast: Senegal’s Awa Thiam Uses Data to
+                        Link Farmers with Schools in Need
+                      </p>
+                      <a href="https://yali.state.gov/yali-voices-podcast-senegals-awa-thiam-uses-data-to-link-farmers-with-schools-in-need/"
+                        target="blank" class="btn btn-primary voir-article">Voir article</a>
+                    </div>
                   </div>
-    
-                  <div class="carousel-item" style="height: 400px">
-                    <a href="https://www.iowajpec.org/mandela-washington-fellows/awa-thiam
-                                                  " target="blank">
-                      <img class="d-block w-100" style="height: 300px"
-                        data-src="@{/css_template_index/ressources/uiowa.jpg}"
-                        th:src="@{/css_template_index/ressources/uiowa.jpg}" data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">MANDELA WASHINGTON FELLOW</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/uiowa.jpg}" alt="Card image cap" />
+                    <div class="card-body">
+                      <p class="card-text">MANDELA WASHINGTON FELLOW
+                      </p>
+                      <a href="https://www.iowajpec.org/mandela-washington-fellows/awa-thiam"
+                        target="blank" class="btn btn-primary voir-article">Voir article</a>
+                    </div>
                   </div>
-                  <div class="carousel-item" style="height: 400px">
-                    <a href="https://www.lemonde.fr/afrique/article/2019/05/01/agriculture-numerique-le-senegal-montre-l-exemple_5457016_3212.html
-                                                  " target="blank">
-                      <img class="d-block w-100" style="height: 300px"
-                        data-src="@{/css_template_index/ressources/lifilustration5.jpg}"
-                        alt="Quatrieme diapositive [800x400]" th:src="@{/css_template_index/ressources/lifilustration5.jpg}"
-                        data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">L’intelligence artificielle et le « big
-                              data » offrent des solutions nouvelles .</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/lifilustration5.jpg}" alt="Card image cap" />
+                    <div class="card-body">
+                      <p class="card-text">Agriculture numérique : le Sénégal montre l’exemple,
+                      Lifantou
+                      </p>
+                      <a href="https://www.lemonde.fr/afrique/article/2019/05/01/agriculture-numerique-le-senegal-montre-l-exemple_5457016_3212.html" target="blank" class="btn btn-primary voir-article">Voir
+                        article</a>
+                    </div>
                   </div>
-                  <div class="carousel-item" style="height: 400px">
-                    <a href="https://fr-fr.facebook.com/RFI.Afrique/videos/awa-thiam-cartographier-le-sénégal-pour-que-les-enfants-aillent-à-lécole/272924523553740/
-                                                  " target="blank">
-                      <img class="d-block w-100" style="height: 300px"
-                        data-src="@{/css_template_index/ressources/lifrfi.png}" alt="sixieme diapositive [800x400]"
-                        th:src="@{/css_template_index/ressources/lifrfi.png}" data-holder-rendered="true" />
-                      <div class="carousel-caption d-none d-md-block">
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <h5 style="vertical-align: inherit;" class="text-dark">cartographier le Sénégal pour que les
-                              enfants aillent à l'école.</h5>
-                          </font>
-                        </p>
-                      </div>
-                    </a>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card card-article">
+                    <img class="card-img-top" th:src="@{/css_template_index/ressources/lifrfi.png}" alt="Card image cap" />
+                    <div class="card-body">
+                      <p class="card-text">Cartographier le Sénégal pour que les
+                      enfants aillent à l'école.
+                      </p>
+                      <a href="https://fr-fr.facebook.com/RFI.Afrique/videos/awa-thiam-cartographier-le-sénégal-pour-que-les-enfants-aillent-à-lécole/272924523553740/"
+                        target="blank" class="btn btn-primary voir-article">Voir
+                        article</a>
+                    </div>
                   </div>
                 </div>
               </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
           </div>
           <div class="col-md-8 row">
@@ -575,6 +554,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script th:src="@{/css_template_index/js/jquery.flexslider-min.js}"></script>
+  <script th:src="@{/css_template_index/lib/swiper-4.5.0/dist/js/swiper.min.js}"></script>
   <script th:src="@{/css_template_index/js/script.js}"></script>
     <script>
     $(document).ready(function () {

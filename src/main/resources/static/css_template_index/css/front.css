@@ -288,3 +288,16 @@ li.flex-active-slide.progression_studios_animate_in .progression-studios-slider-
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
+.card-article {
+	height: 450px;
+}
+.card-article .card-img-top {
+	height: 288px;
+}
+.card-article .card-body p.card-text {
+	height: 60px;
+}
+
+.card-article .card-body a.voir-article {
+	float: right;
+}

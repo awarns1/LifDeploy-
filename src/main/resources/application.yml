@@ -3,25 +3,29 @@ server:
   port: 8083
   error:
     whitelabel:
-      enabled: true
-#logging:
-#  level:
-#    org.springframework.web: ERROR
-#    org.springframework.data: ERROR
-#    
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-#  file: trace.log
+      enabled: false
+    include-stacktrace: always
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    org.springframework.data: ERROR
+    
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: trace.log
       
 spring:
+    profiles:
+      active: prod
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/lifantou
+        url: jdbc:mysql://localhost:3308/lifantou
         username: root
-        password: Digit@l2019
+        password: 
     jpa:
-        hibernate.ddl-auto: update
+        hibernate.ddl-auto: validate
         generate-ddl: true
         show-sql: true
 #spring:
