@@ -3,9 +3,9 @@ jQuery(document).ready(function($) {
 
 	$('.progression-studios-slider').flexslider({
 		slideshow: true,
-		slideshowSpeed: 8000,
+		slideshowSpeed: 4000,
 		animation: 'fade',
-		animationSpeed: 800,
+		animationSpeed: 400,
 		directionNav: true,
 		controlNav: true,
 		prevText: '',
