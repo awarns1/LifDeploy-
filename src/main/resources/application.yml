@@ -21,9 +21,9 @@ spring:
       active: prod
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3308/lifantou
+        url: jdbc:mysql://localhost:3306/lifantou
         username: root
-        password: 
+        password: Digit@l2019
     jpa:
         hibernate.ddl-auto: validate
         generate-ddl: true

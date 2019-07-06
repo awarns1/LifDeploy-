@@ -16896,3 +16896,5 @@ Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving temp
 2019-07-06 20:27:03 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
 2019-07-06 20:27:03 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8083 (http)
 2019-07-06 20:27:03 [main] INFO  lifantou.com.LifantouApplication - Started LifantouApplication in 14.075 seconds (JVM running for 20.965)
+2019-07-06 20:27:06 [http-nio-8083-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-07-06 20:31:35 [http-nio-8083-exec-8] ERROR org.thymeleaf.TemplateEngine - [THYMELEAF][http-nio-8083-exec-8] Exception processing template "error": Error resolving template "error", template might not exist or might not be accessible by any of the configured Template Resolvers
