@@ -1,24 +1,18 @@
-
 server:
   port: 8083
   error:
     whitelabel:
-      enabled: false
-    include-stacktrace: always
-
-logging:
-  level:
-    org.springframework.web: ERROR
-    org.springframework.data: ERROR
-    
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-  file: trace.log
-      
+      enabled: true
+#logging:
+#  level:
+#    org.springframework.web: ERROR
+#    org.springframework.data: ERROR
+#    
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#  file: trace.log
 spring:
-    profiles:
-      active: prod
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/lifantou
@@ -38,12 +32,10 @@ spring:
 #            dialect: org.hibernate.dialect.MySQL5Dialect
 #
 #    datasource:
-#       url: jdbc:mysql://localhost/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+#       url: jdbc:mysql://localhost/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPubl$
 #       username: root
 #       password: 
 #       driver-class-name: com.mysql.cj.jdbc.Driver
-        
-        
     mail:
         default-encoding: UTF-8
         host: smtp.gmail.com
