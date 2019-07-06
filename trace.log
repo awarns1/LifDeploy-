@@ -13563,3 +13563,6 @@ Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving temp
 2019-07-06 12:40:20 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8083 (http)
 2019-07-06 12:40:20 [main] INFO  lifantou.com.LifantouApplication - Started LifantouApplication in 13.485 seconds (JVM running for 19.181)
 2019-07-06 12:40:33 [http-nio-8083-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-07-06 13:59:16 [Thread-5] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6becdcea: startup date [Sat Jul 06 12:40:08 GMT 2019]; root of context hierarchy
+2019-07-06 13:59:16 [Thread-5] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2019-07-06 13:59:16 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

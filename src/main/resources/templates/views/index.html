@@ -37,7 +37,7 @@
 
 </head>
 <body id="body">
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <!--==========================
         Header
       ============================-->
@@ -45,86 +45,196 @@
     <!-- #header -->
 
     <div class="accueil" id="accueil">
-      <div class="container align-center">
-        <div class="mer col-md-12 col-xs-8 row">
-          <div class="shine">
-            <a href="#service">
-              <img class="c-glitch d-none d-xl-block d-lg-block ndiro" width="200px" th:src="@{/css_template_index/ressources/7.png}" alt=""/>
-            </a>
-          </div>
-          <div class="shine">
-            <a href="#service">
-              <img class="c-glitch d-none d-xl-block d-sm-block niarel" width="200px" th:src="@{/css_template_index/ressources/6.png}" alt=""/>
-            </a>
-          </div>
-          <div class="shine">
-            <a href="#service">
-              <img class="c-glitch ndiro" width="200px" th:src="@{/css_template_index/ressources/5.png}" alt=""/>
-            </a>
-          </div>
-        </div><br/> <br/>
-        <p class="text-center text-uppercase">
-          <a th:href="@{/register}" class="btn btn-primary btn-lg" id="inscr"> Inscription</a>
-          <a th:href="@{/login}" class="btn btn-primary btn-lg" id="inscr"> Connexion</a>
-        </p> <br/><br/>
-        <div class="container col-md-12 col-xs-8">
-          <div class="mer1">
-            <div class="shine">
-              <a href="#service">
-                <img class="c-glitch  d-none d-xl-block d-sm-block niarel" width="200px" th:src="@{/css_template_index/ressources/4.png}" alt=""/>
-              </a>
-            </div>
-            <div class="shine">
-              <a href="#service"><img class="c-glitch d-none d-xl-block d-lg-block ndiro" width="200px" th:src="@{/css_template_index/ressources/3.png}"
-                  alt=""/></a>
-            </div>
-            <div class="shine">
-              <a href="#service"><img class="c-glitch d-none d-xl-block d-lg-block niarel" width="200px" th:src="@{/css_template_index/ressources/2.png}"
-                  alt=""/></a>
-            </div>
-            <div class="">
-              <a href="#service"><img class="c-glitch ndiro" width="200px" th:src="@{/css_template_index/ressources/1.png}" alt=""/></a>
-            </div>
-          </div>
-        </div>
-        <h1 class="text-muted text-center" style="margin-top:2%">Des produits locaux de qualité mis à votre disposition</h1>
-        <br/><br/><br/>
-      </div>
+      <div class="flexslider progression-studios-slider">
+        <ul class="slides">
+          <li class="progression_studios_animate_in">
+            <div class="progression-studios-slider-image-background" style="background-image:url(../css_template_index/ressources/slides/slide-1.jpg);">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+      
+                  <div class="container">
+      
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+      
+                  </div><!-- close .container -->
+      
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+      
+              <div class="progression-studios-slider-mobile-background-cover"></div>
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+          <li class="progression_studios_animate_right">
+            <div class="progression-studios-slider-image-background"
+              style="background-image:url(../css_template_index/ressources/slides/slide-2.jpg); background-color:#111015;">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+      
+                  <div class="container">
+      
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+      
+                  </div><!-- close .container -->
+      
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+      
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+          <li class="progression_studios_animate_left">
+            <div class="progression-studios-slider-image-background"
+              style="background-image:url(../css_template_index/ressources/slides/slide-3.jpg);">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+      
+                  <div class="container">
+      
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+      
+                  </div><!-- close .container -->
+      
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+      
+              <div class="progression-studios-slider-mobile-background-cover"></div>
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+          <li class="progression_studios_animate_in">
+            <div class="progression-studios-slider-image-background"
+              style="background-image:url(../css_template_index/ressources/slides/slide-4.jpg);">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+          
+                  <div class="container">
+          
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+          
+                  </div><!-- close .container -->
+          
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+          
+              <div class="progression-studios-slider-mobile-background-cover"></div>
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+          <li class="progression_studios_animate_right">
+            <div class="progression-studios-slider-image-background"
+              style="background-image:url(../css_template_index/ressources/slides/slide-5.jpg); background-color:#111015;">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+          
+                  <div class="container">
+          
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+          
+                  </div><!-- close .container -->
+          
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+          
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+          <li class="progression_studios_animate_left">
+            <div class="progression-studios-slider-image-background"
+              style="background-image:url(../css_template_index/ressources/slides/slide-6.jpg);">
+              <div class="progression-studios-slider-display-table">
+                <div class="progression-studios-slider-vertical-align">
+          
+                  <div class="container">
+          
+                    <div class="progression-studios-slider-caption-width">
+                      <div class="progression-studios-slider-caption-align text-center">
+                        <h2>Des produits locaux de qualité mis à votre disposition</h2>
+                        <h6>Faites un achat économique et utile</h6>
+                        <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">Inscription</a>
+                        <a class="btn btn-success btn-lg" th:href="@{/login}" role="button">Connexion</a>
+                      </div><!-- close .progression-studios-slider-caption-align -->
+                    </div><!-- close .progression-studios-slider-caption-width -->
+          
+                  </div><!-- close .container -->
+          
+                </div><!-- close .progression-studios-slider-vertical-align -->
+              </div><!-- close .progression-studios-slider-display-table -->
+          
+              <div class="progression-studios-slider-mobile-background-cover"></div>
+            </div><!-- close .progression-studios-slider-image-background -->
+          </li>
+        </ul>
+      </div><!-- close .progression-studios-slider - See /js/script.js file for options -->
     </div>
 
-    <div class="service container row col-lg-12" id="service">
-      <h2 class="text-center text-uppercase col-lg-12">Nos services</h2><br />
-      <div class="container row col-lg-12">
-        <div class="col-sm-4 col-lg-3 col-xs-2">
-          <img class="card-img-top" th:src="@{/css_template_index/ressources/11.png}" alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title text-center">Agri</h5>
-            <p class="card-text "> Nous facilitons l'accès aux ressources afin d'optimiser la production</p>
-            <a href="#" class="btn btn-outline-primary text-center">Devenez partenaire</a>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3 col-xs-2">
-          <img class="card-img-top" th:src="@{/css_template_index/ressources/10.png}" alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title text-center">E-market</h5>
-            <p class="card-text">Nous prenons en charge votre commande de l'achat à la livraison</p>
-            <a href="#" class="btn btn-outline-primary text-center">Faites vos commandes</a>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3 col-xs-2">
-          <img class="card-img-top" th:src="@{/css_template_index/ressources/9.png}" alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title text-center">Supervision</h5>
-            <p class="card-text"> Une cartographie intégrée pour un meilleur accès aux données territoriales</p>
-            <a href="#" class="btn btn-outline-primary text-center">Contactez-nous</a>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3 col-xs-2">
-          <img class="card-img-top" th:src="@{/css_template_index/ressources/8.png}" alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title text-center">Coup de coeur</h5>
-            <p class="card-text" style="padding: 1px;"> Un espace dédié pour améliorer l'alimentation en milieu scolaire</p>
-            <a href="#" class="btn btn-outline-primary text-center">Faites un don</a>
+    <div class="service container-fluid" id="service">
+      <div class="row">
+        <h2 class="text-center text-uppercase col-lg-12">Nos services</h2><br />
+        <div class="col-md-12 col-lg-12">
+          <div class="row">
+            <div class="col-md-4 col-lg-3 col-xs-12">
+              <img class="card-img-top" th:src="@{/css_template_index/ressources/11.png}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">Agri</h5>
+                <p class="card-text text-description"> Nous facilitons l'accès aux ressources afin d'optimiser la production</p>
+                <a href="#" class="btn btn-outline-primary text-center">Devenez partenaire</a>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xs-12">
+              <img class="card-img-top" th:src="@{/css_template_index/ressources/10.png}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">E-market</h5>
+                <p class="card-text text-description">Nous prenons en charge votre commande de l'achat à la livraison</p>
+                <a href="#" class="btn btn-outline-primary text-center">Faites vos commandes</a>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xs-12">
+              <img class="card-img-top" th:src="@{/css_template_index/ressources/9.png}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">Supervision</h5>
+                <p class="card-text text-description"> Une cartographie intégrée pour un meilleur accès aux données territoriales</p>
+                <a href="#" class="btn btn-outline-primary text-center">Contactez-nous</a>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xs-12">
+              <img class="card-img-top" th:src="@{/css_template_index/ressources/8.png}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">Coup de coeur</h5>
+                <p class="card-text text-description" style="padding: 1px;"> Un espace dédié pour améliorer l'alimentation en milieu scolaire</p>
+                <a href="#" class="btn btn-outline-primary text-center">Faites un don</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -138,7 +248,7 @@
           <div class="carousel-item active">
             <div class="part1">
               <a href="https://sn.ambafrance.org/" target="blank" class="col-lg-3"><img
-                  th:src="@{/css_template_index/ressources/Logo1.jpg}" alt="" /></a>
+                  th:src="@{/css_template_index/ressources/france.png}" alt="" /></a>
               <div class="col-lg-1"></div>
               <a href="https://www.snsoftware.com/" target="blank" class="col-lg-3"><img
                   th:src="@{/css_template_index/ressources/Logo2.jpg}" alt="" /></a>
@@ -157,7 +267,7 @@
                   th:src="@{/css_template_index/ressources/Logo4.jpg}" alt="" /></a>
               <div class="col-lg-1"></div>
               <a href="https://www.tonyelumelufoundation.org/" target="blank" class="col-lg-3"><img
-                  th:src="@{/css_template_index/ressources/unnamed.png}" alt="" /></a>
+                  th:src="@{/css_template_index/ressources/lowa.png}" alt="" /></a>
               <div class="col-lg-1"></div>
     
             </div>
@@ -298,8 +408,8 @@
                   prix varie selon l'acheteur, on a pas de visibilité sur la
                   rentabilité.<strong>"</strong><br /><br /><br />
     
-                  <h4 class="text-center"><strong>Vieux Diouf</strong></h4>
-                  <span class="text-muted text-center sign">Producteur dans la zone des niayes</span>
+                  <h4 class="text-center"><strong>Samba Diouf</strong></h4>
+                  <span class="text-muted text-center sign">Producteur sénégalais</span>
                 </span>
               </div>
     
@@ -313,7 +423,7 @@
       <h1 class="text-uppercase text-center">notre équipe</h1>
       <div class="container">
         <div class="row">
-          <div class="card col-lg-3 room" style="border: none;">
+          <div class="card col-lg-3 col-md-6 col-xs-12 room" style="border: none;">
             <img class="card-img-top" th:src="@{/css_template_index/ressources/wawa.jpg}" alt="Card image cap" />
             <div class="card-body equipe">
               <h5 class="card-title text-center">Awa Thiam</h5>
@@ -321,7 +431,7 @@
             </div>
           </div>
     
-          <div class="card col-lg-3 room" style="border: none;">
+          <div class="card col-lg-3 col-md-6 col-xs-12 room" style="border: none;">
             <img class="card-img-top" th:src="@{/css_template_index/ressources/rosio.jpg}" alt="Card image cap" />
             <div class="card-body equipe">
               <h5 class="card-title text-center">Michel Rosio</h5>
@@ -329,7 +439,7 @@
             </div>
           </div>
     
-          <div class="card col-lg-3 room" style="border: none;">
+          <div class="card col-lg-3 col-md-6 col-xs-12 room" style="border: none;">
             <img class="card-img-top" th:src="@{/css_template_index/ressources/fafa.png}" alt="Card image cap" />
             <div class="card-body equipe">
               <h5 class="card-title text-center">Fatou Ka</h5>
@@ -337,7 +447,7 @@
             </div>
           </div>
     
-          <div class="card col-lg-3 room" style="border: none;">
+          <div class="card col-lg-3 col-md-6 col-xs-12 room" style="border: none;">
             <img class="card-img-top" th:src="@{/css_template_index/ressources/seyna.jpg}" alt="Card image cap" />
             <div class="card-body equipe">
               <h5 class="card-title text-center">Seynabou Mbengue</h5>
@@ -383,13 +493,15 @@
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script>
+  <script th:src="@{/css_template_index/js/jquery.flexslider-min.js}"></script>
+  <script th:src="@{/css_template_index/js/script.js}"></script>
+    <script>
     $(document).ready(function () {
       $('a', 'li').mouseover(function () {
         $('span', 'li').animate({

@@ -46,9 +46,11 @@
 
 .part1 img {
 	width: 230px;
-	height: 150px;
+	height: 85px;
 }
-
+.text-description {
+	height: 4.5em;
+}
 #demo {
 	padding: 20px;
 }
@@ -182,4 +184,107 @@ h1 {
 
 .sign {
 	font-size: 15px;
+}
+
+/* For slide */
+.flexslider.progression-studios-slider {
+	background: #fafafa;
+	height: 650px;
+}
+.flexslider {
+	padding: 0;
+	margin: 0;
+	background: 0 0;
+	border: none;
+	position: relative;
+	zoom: 1;
+	-webkit-transform: translateZ(0);
+}
+.flexslider .slides {
+	zoom: 1;
+}
+.flex-control-nav,
+.flex-direction-nav,
+.slides,
+.slides > li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.flex-control-nav,
+.flex-direction-nav,
+.slides,
+.slides > li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.progression-studios-slider-image-background {
+	height: 650px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.progression-studios-slider-display-table {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.progression-studios-slider-vertical-align {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+}
+.progression-studios-slider-caption-width {
+	position: relative;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.4);
+	color: #ffffff;
+	border-radius: 0.7rem;
+	padding: 0.5rem;
+}
+.flexslider.progression-studios-dashboard-slider h2.light-fonts-pro a,
+h1.light-fonts-pro,
+h2.light-fonts-pro {
+	color: #fff;
+}
+li.flex-active-slide.progression_studios_animate_in .progression-studios-slider-caption-align {
+	animation-name: ProgressionStudiosElementszoomup;
+}
+.progression_studios_animate_down .progression-studios-slider-caption-align,
+.progression_studios_animate_in .progression-studios-slider-caption-align,
+.progression_studios_animate_left .progression-studios-slider-caption-align,
+.progression_studios_animate_out .progression-studios-slider-caption-align,
+.progression_studios_animate_right .progression-studios-slider-caption-align,
+.progression_studios_animate_up .progression-studios-slider-caption-align {
+	animation-delay: .5s;
+	animation-duration: .8s;
+	opacity: 1;
+	animation-fill-mode: both;
+}
+.progression-studios-slider-caption-width h2 {
+	font-size: 43px;
+	line-height: 1.1;
+	margin-bottom: 20px;
+}
+.progression-studios-slider-caption-width h6 {
+	line-height: 1.7;
+	font-weight: 400;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+.flexslider .flex-direction-nav a {
+	transition-duration: 250ms;
+	transition-property: all;
+	transition-timing-function: ease-in-out;
+}
+.flex-direction-nav .flex-prev {
+	left: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.flex-direction-nav .flex-next {
+	right: 0;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
