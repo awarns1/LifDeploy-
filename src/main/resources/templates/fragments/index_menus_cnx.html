@@ -1,27 +1,31 @@
-<div data-th-fragment="index_menus_cnx">
-	<header id="header">
-		<div class="container">
-			<div id="logo" class="pull-left">
-				<h1>
-					<a th:href="@{/}" class="scrollto">Lifantou<span></span></a>
-				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				  <!-- <a><img th:src="@{/images/lifantu2.png}" alt="" title="" style="top: 115px;"  /></a>     --> 
-			</div>
-
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a th:href="@{/}">Home</a></li>
-					<li><a th:href="@{/#about}">A propos</a></li>
-					<li><a th:href="@{/#services}">Services</a></li>
-					<li><a th:href="@{/#portfolio}">Portfolio</a></li>
-					<li><a th:href="@{/#team}">Team</a></li>
-					<li><a th:href="@{/#contact}">Contact</a></li>
-					<li><a th:href="@{/login}">Connexion</a></li>
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
+<nav data-th-fragment="index_menus_cnx" class="navbar navbar-expand-lg navbar-white bg-white fixed-top"
+	style="box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);">
+	<div class="container navbar-fixed-top">
+		<a class="navbar-brand" th:href="@{/}">
+			<img width="50" class="img-responsive" th:src="@{/css_template_index/ressources/Logo.png}"
+				alt="" /><span class="text-muted text-uppercase lif">lifantou</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"><img th:src="@{/css_template_index/ressources/lines.png}" width="80%"
+					alt="" /></span>
+		</button>
+		<div class="collapse navbar-collapse navbar-fixed-top" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link text-dark" th:href="@{/#accueil}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" th:href="@{/#service}">Services</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" th:href="@{/#propos}">À propos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" th:href="@{/#contact}">Contact</a>
+				</li>
+				<span></span>
+			</ul>
 		</div>
-	</header>
-
-</div>
+	</div>
+</nav>

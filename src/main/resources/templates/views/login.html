@@ -15,7 +15,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
 <!-- Favicons -->
 <link rel="icon" type="image/x-icon"
-	th:href="@{/css_template_index/img/lifantouIcon.ico}" />
+	th:href="@{/css_template_index/ressources/Logo.png}" />
 <link th:href="@{/css_template_index/img/lifantouLogo4.png}"
 	rel="apple-touch-icon" />
 <title>Lifantou</title>
@@ -61,16 +61,14 @@
 </head>
 
 <body class="bodyReg">
-	<div th:replace="fragments/index_header ::index_header"></div>
-
 	<div th:replace="fragments/index_menus_cnx ::index_menus_cnx"></div>
 
 	<div class="wrapper">
-		<div class="block-center mt-5 wd-flog">
+		<div class="block-center wd-flog" style="margin-top: 8rem !important;">
 			<div class="card card-flat">
 				<div class="card-header text-center">
-					<a th:href="@{/}"> <img class="block-center" height="80px;"
-						width="150px;" th:src="@{/images/lifantouLogo4.png}" alt="Image" />
+					<a th:href="@{/}"> <img class="block-center" height="110px;"
+						width="150px;" th:src="@{/css_template_index/lifantou.png}" alt="Image" />
 					</a>
 				</div>
 				<div th:if="${formLogin==true}">
