@@ -1,0 +1,185 @@
+.mer {
+	display: flex;
+	justify-content: space-between;
+	width: 900px;
+	position: relative;
+}
+
+.mer1 {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.serv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.serv .card-text {
+	padding: 10px;
+}
+
+.bserv {
+	border: solid 2px blue;
+	border-radius: 30%;
+	font-size: 20px;
+	padding: 8px;
+}
+
+.service {
+	background: rgba(235, 233, 233, 0.61);
+	padding-bottom: 50px;
+	padding-top: 70px;
+}
+
+.service h2 {
+	padding: 20px;
+}
+
+.part1 {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	height: 150px;
+}
+
+.part1 img {
+	width: 230px;
+	height: 150px;
+}
+
+#demo {
+	padding: 20px;
+}
+
+.accompagne h1 {
+	padding-top: 50px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.tesmo {
+	background-image: url("../ressources/4.png");
+	background-size: 350px;
+	background-repeat: no-repeat;
+	height: 300px;
+}
+
+.gallerie {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 40px;
+	padding-left: 50px;
+}
+
+.realite {
+	background: rgba(235, 233, 233, 0.61);
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.realite .container,
+h1 {
+	padding-top: 20px;
+}
+
+.team .container {
+	padding-top: 50px;
+}
+
+.team {
+	padding-bottom: 1%;
+	margin-bottom: 4%;
+}
+
+.bas .container {
+	padding-top: 50px;
+}
+
+.bas {
+	background-image: url("../ressources/footer.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.teamm {
+	margin: 0.5px;
+}
+
+.c-glitch:hover {
+	zoom: 120%;
+}
+
+.navbar-toggler-icon {
+	color: black;
+}
+
+#img-footer {
+	width: 150px;
+	padding-top: 20%;
+}
+
+#inscr {
+	background: linear-gradient(135deg, rgb(51, 131, 235), rgb(2, 170, 86));
+	border-radius: 20px;
+	border: none;
+}
+
+.ndiro {
+	border: solid 3px rgb(51, 131, 235);
+	border-radius: 50%;
+}
+
+.niarel {
+	border: solid 3px rgb(29, 233, 63);
+	border-radius: 50%;
+}
+
+.equipe {
+	background: rgb(46, 112, 57);
+	color: white;
+	padding-top: -50px;
+	height: 50%;
+}
+
+.team .text-uppercase .container .row .room {
+	border: none;
+}
+.accueil {
+	padding-top: 80px;
+}
+.lif {
+	margin-left: 20px;
+}
+.nav-link:visited {
+	border-bottom: solid 2px green;
+}
+.navbar-toggler-icon {
+	background: url("../ressources/lines.png");
+}
+.gal {
+	font-family: italic;
+	font-size: 17px;
+	border-right: solid 1px rgb(231, 224, 224);
+}
+
+.team img {
+	height: 350px;
+}
+.carousel-caption {
+	position: relative;
+	top: 280px;
+}
+
+#realite {
+	padding: px;
+	box-shadow: 2px 3px;
+}
+
+.gimet {
+	font-size: 2em;
+}
+
+.sign {
+	font-size: 15px;
+}

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-134532731-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134532731-1');
+</script>
+<meta charset="utf-8" />
+<title>Lifantou</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="keywords" />
+<meta content="" name="description" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon"
+	th:href="@{/css_template_index/img/lifantouIcon.ico}" />
+<link th:href="@{/css_template_index/img/lifantouLogo4.png}"
+	rel="apple-touch-icon" />
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700"
+	rel="stylesheet" />
+
+<!-- Bootstrap CSS File -->
+<link
+	th:href="@{css_template_index/lib/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+
+<!-- Libraries CSS Files -->
+<link
+	th:href="@{css_template_index/lib/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/animate/animate.min.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/owlcarousel/assets/owl.carousel.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{css_template_index/lib/magnific-popup/magnific-popup.css}"
+	rel="stylesheet" />
+<link th:href="@{css_template_index/lib/ionicons/css/ionicons.min.css}"
+	rel="stylesheet" />
+
+<!-- Main Stylesheet File -->
+<link th:href="@{css_template_index/css/style.css}" rel="stylesheet" />
+</head>
+<body id="body">
+
+	<!--==========================
+    Top Bar
+  ============================-->
+	<div th:replace="fragments/index_header ::index_header"></div>
+
+	<!--==========================
+    Header
+  	============================-->
+	<div th:replace="fragments/index_menus ::index_menus"></div>
+	<!-- #header -->
+
+	<!--==========================
+    Intro Section
+  ============================-->
+	<section id="intro">
+		<div class="intro-content">
+			<h2>
+				Chaque <span>graine est une</span><br />lumière!
+			</h2>
+			<div>
+				<a th:href="@{/register}" class="btn-get-started scrollto">S'incrire</a>
+				<a th:href="@{/donation}" class="btn-projects scrollto">Faire un
+					don</a>
+			</div>
+		</div>
+
+		<div id="intro-carousel" class="owl-carousel">
+			<div class="item"
+				style="background-image: url('/css_template_index/img/intro-carousel/Lifantou.png');"></div>
+			<div class="item"
+				style="background-image: url('/css_template_index/img/intro-carousel/Lifantou.png');"></div>
+			<div class="item"
+				style="background-image: url('/css_template_index/img/intro-carousel/Lifantou.png');"></div>
+		</div>
+	</section>
+	<!-- #intro -->
+
+	<main id="main"> <!--==========================
+      About Section
+    ============================-->
+	<section id="about" class="wow fadeInUp">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 about-img">
+					<img th:src="@{/css_template_index/img/cartes1.png}" alt="" />
+				</div>
+
+				<div class="col-lg-6 content">
+					<h2>Une plateforme technologique pour la mise en relation des
+						producteurs et des cantines scolaires</h2>
+					<h3>Basée sur un système géographique nous accompagnons la
+						production et la distribution alimentaire.</h3>
+
+					<ul>
+						<li><i class="ion-android-checkmark-circle"></i> Une
+							plateforme adaptée aux procédures officielles.</li>
+						<li><i class="ion-android-checkmark-circle"></i> Un service
+							personnalisé aux cantines scolaires et producteurs alimentaires .</li>
+						<li><i class="ion-android-checkmark-circle"></i> Cartographie
+							et Imagerie Satellitaire pour un meilleur suivi.</li>
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- #about --> <!--==========================
+      Services Section
+    ============================-->
+	<section id="services">
+		<div class="container">
+			<div class="section-header">
+				<h2>Services</h2>
+				<p></p>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="box wow fadeInLeft">
+						<div class="icon">
+							<a th:href="@{/css_template_index/img/dist_alimentaire.jpg}"
+								class="portfolio-popup"> <img class="imgService"
+								th:src="@{/css_template_index/img/dist_alimentaire.jpg}" alt="" />
+							</a>
+						</div>
+						<h4 class="title titleServ">
+							<a>Accompagnement de la production alimentaire</a>
+						</h4>
+						<p class="description"></p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="box wow fadeInRight">
+						<div class="icon">
+							<a th:href="@{/css_template_index/img/gestion_stock.jpg}"
+								class="portfolio-popup"> <img class="imgService"
+								th:src="@{/css_template_index/img/gestion_stock.jpg}" alt="" /></a>
+						</div>
+						<h4 class="title titleServ">
+							<a>Gestion des menus et du stock</a>
+						</h4>
+						<p class="description"></p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="box wow fadeInLeft" data-wow-delay="0.2s">
+						<div class="icon">
+							<a th:href="@{/css_template_index/img/gest_commande.jpg}"
+								class="portfolio-popup"> <img class="imgService"
+								th:src="@{/css_template_index/img/gest_commande.jpg}" alt="" /></a>
+						</div>
+						<h4 class="title titleServ">
+							<a>Gestion des commandes de bout en bout</a>
+						</h4>
+						<p class="description"></p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="box wow fadeInRight" data-wow-delay="0.2s">
+						<div class="icon">
+							<a th:href="@{/css_template_index/img/Producteur.jpg}"
+								class="portfolio-popup"> <img class="imgService"
+								th:src="@{/css_template_index/img/Producteur.jpg}" alt="" /></a>
+						</div>
+						<h4 class="title titleServ">
+							<a>Distribution produits alimentaires</a>
+						</h4>
+						<p class="description"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #services --> <!--==========================
+      Partenariats et soutiens Section
+    ============================-->
+	<section id="clients" class="wow fadeInUp">
+		<div class="container">
+			<div class="section-header">
+				<h2>Partenariats et soutiens</h2>
+				<p>Nos différents partenaires et accompagnateurs.</p>
+			</div>
+			<div class="owl-carousel clients-carousel">
+				<a href="https://www.radiant.earth/" target="_blank"> <img
+					class="imgPartSout"
+					th:src="@{/css_template_index/img/PartenariatsSoutiens/Radiant Earth Foundation.png}"
+					alt="" /></a><a href="https://www.snsoftware.com/" target="_blank">
+					<img class="imgPartSout"
+					th:src="@{/css_template_index/img/PartenariatsSoutiens/SnSoftware.png}"
+					alt="" />
+				</a><a href="https://yali.state.gov/mwf/apply/" target="_blank"><img
+					class="imgPartSout"
+					th:src="@{/css_template_index/img/PartenariatsSoutiens/mwf.jpg}"
+					alt="" /></a><a href="https://wia-initiative.com/en/" target="_blank">
+					<img class="imgPartSout"
+					th:src="@{/css_template_index/img/PartenariatsSoutiens/WIA.png}"
+					alt="" />
+				</a><a href="https://sn.ambafrance.org/" target="_blank"> <img
+					class="imgPartSout"
+					th:src="@{/css_template_index/img/PartenariatsSoutiens/embFrance.jpg}"
+					alt="" /></a>
+			</div>
+		</div>
+	</section>
+	<!-- #clients --> <!--==========================
+      Our Portfolio Section
+    ============================-->
+	<section id="portfolio" class="wow fadeInUp">
+		<div class="container">
+			<div class="section-header">
+				<h2>Our Portfolio</h2>
+				<p></p>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row no-gutters">
+				<div class="col-lg-3 col-md-4">
+					<div class="portfolio-item wow fadeInUp">
+						<a
+							href="https://www.nouvelobs.com/monde/afrique/20181112.OBS5257/awa-thiam-les-enfants-senegalais-doivent-pouvoir-manger-chaque-jour-a-l-ecole.html"
+							target="_blank"> <img class="taillePortfolio"
+							th:src="@{/css_template_index/img/portfolio/portfolio1.PNG}"
+							alt="" />
+							<div class="portfolio-overlay">
+								<div class="portfolio-info">
+									<h2 class="wow fadeInUp"></h2>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<div class="portfolio-item wow fadeInUp">
+						<a
+							href="https://www.facebook.com/RadioFranceInternationale/videos/awa-thiam-cartographier-le-s%C3%A9n%C3%A9gal-pour-que-les-enfants-aillent-%C3%A0-l%C3%A9cole/273030213543171/"
+							target="_blank"> <img class="taillePortfolio"
+							th:src="@{/css_template_index/img/portfolio/portfolio2.PNG}"
+							alt="" />
+							<div class="portfolio-overlay">
+								<div class="portfolio-info">
+									<h2 class="wow fadeInUp"></h2>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<div class="portfolio-item wow fadeInUp">
+						<a
+							href="https://yali.state.gov/yali-voices-podcast-senegals-awa-thiam-uses-data-to-link-farmers-with-schools-in-need/"
+							target="_blank"> <img class="taillePortfolio"
+							th:src="@{/css_template_index/img/portfolio/portfolio3.PNG}"
+							alt="" />
+							<div class="portfolio-overlay">
+								<div class="portfolio-info">
+									<h2 class="wow fadeInUp"></h2>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<div class="portfolio-item wow fadeInUp">
+						<a
+							href="https://qconline.com/business/african-entrepreneurs-come-to-q-c-to-learn-from-deere/article_6a87d26e-c491-5b41-b432-7ffb671c2fc6.html"
+							target="_blank"> <img class="taillePortfolio"
+							th:src="@{/css_template_index/img/portfolio/portfolio5.PNG}"
+							alt="" />
+							<div class="portfolio-overlay">
+								<div class="portfolio-info">
+									<h2 class="wow fadeInUp"></h2>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #portfolio --> <!--==========================
+      Testimonials Section
+    ============================-->
+	<section id="testimonials" class="wow fadeInUp">
+		<div class="container">
+			<div class="section-header">
+				<h2>Testimonials</h2>
+				<p></p>
+			</div>
+			<div class="owl-carousel testimonials-carousel">
+				<div class="testimonial-item">
+					<p>
+						<img th:src="@{/css_template_index/img/quote-sign-left.png}"
+							class="quote-sign-left" alt="" /> Nous sommes disponibles pour
+						vous appuyer dans l'effort de construire un système de gestion
+						efficace et efficient des cantines scolaires via les TIC . <img
+							th:src="@{/css_template_index/img/quote-sign-right.png}"
+							class="quote-sign-right" alt="" />
+					</p>
+					<img
+						th:src="@{/css_template_index/img/Division des cantines scolaires.png}"
+						class="testimonial-img" alt="" />
+					<h3>Division des cantines scolaires</h3>
+				</div>
+
+				<div class="testimonial-item">
+					<p>
+						<img th:src="@{/css_template_index/img/quote-sign-left.png}"
+							class="quote-sign-left" alt="" /> Il est difficile de trouver
+						des clients capables d'acheter toute une production, le prix varie
+						selon l'acheteur, on a pas de visibilité sur la rentabilité. <img
+							th:src="@{/css_template_index/img/quote-sign-right.png}"
+							class="quote-sign-right" alt="" />
+					</p>
+					<img th:src="@{/css_template_index/img/Producteur.jpg}"
+						class="testimonial-img" alt="" />
+					<h3>Les producteurs</h3>
+				</div>
+
+				<div class="testimonial-item">
+					<p>
+						<img th:src="@{/css_template_index/img/quote-sign-left.png}"
+							class="quote-sign-left" alt="" /> Il y'a une faible
+						compréhension des liens entre agriculture et nutrition", Le
+						soleil, Juin 2017. <img
+							th:src="@{/css_template_index/img/quote-sign-right.png}"
+							class="quote-sign-right" alt="" />
+					</p>
+					<br /> <br />
+					<h3>Seydou Ndiaye</h3>
+					<h4>Coordonateur de la plateforme des organisations de la
+						société civile en collaboration avec Action Contre la Faim et la
+						FAO</h4>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #testimonials --> <!--==========================
+      Call To Action Section
+    ============================-->
+	<section id="call-to-action" class="wow fadeInUp">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 text-center text-lg-left">
+					<h3 class="cta-title">Faites un don pour une cantine</h3>
+					<!-- <p class="cta-text">Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+						officia deserunt mollit anim id est laborum.</p> -->
+				</div>
+				<div class="col-lg-3 cta-btn-container text-center">
+					<a class="cta-btn align-middle" th:href="@{/donation}">Faire un
+						don</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #call-to-action --> <!--==========================
+      Our Team Section
+    ============================-->
+	<section id="team" class="wow fadeInUp">
+		<div class="container">
+			<div class="section-header">
+				<h2>Our Team</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="member">
+						<div class="pic">
+							<img th:src="@{/css_template_index/img/Fatou-Ka.jpg}"
+								class="tailleTeam" alt="" />
+						</div>
+						<div class="details">
+							<h4>Fatou Ka</h4>
+							<span>Analyste Financier Sr </span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="member">
+						<div class="pic">
+							<img th:src="@{/css_template_index/img/Michel-Rosio.jpg}"
+								class="tailleTeam" alt="" />
+						</div>
+						<div class="details">
+							<h4>Michel Rosio</h4>
+							<span>Expert en Système d'Information Géographique</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="member">
+						<div class="pic">
+							<img th:src="@{/css_template_index/img/Photo Awa.jpg}"
+								class="tailleTeam" alt="" />
+						</div>
+						<div class="details">
+							<h4>Awa Thiam</h4>
+							<span>Chef de projet </span>
+							<!-- <div class="social">
+								<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
+									class="fa fa-facebook"></i></a> <a href=""><i
+									class="fa fa-google-plus"></i></a> <a href=""><i
+									class="fa fa-linkedin"></i></a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #team --> <!--==========================
+      Contact Section
+    ============================-->
+	<section id="contact" class="wow fadeInUp">
+		<div class="container">
+			<div class="section-header">
+				<h2>Contact Us</h2>
+				<p></p>
+			</div>
+			<div class="row contact-info">
+				<div class="col-md-4">
+					<div class="contact-address">
+						<i class="ion-ios-location-outline"></i>
+						<h3>Adresse</h3>
+						<address>27 C Cité Soprim</address>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-phone">
+						<i class="ion-ios-telephone-outline"></i>
+						<h3>Telephone</h3>
+						<p>
+							<a href="tel:00221783749349">+221 78 374 93 49 </a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-email">
+						<i class="ion-ios-email-outline"></i>
+						<h3>Email</h3>
+						<p>
+							<a href="mailto:contact@Lifantou.com">contact@Lifantou.com</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="form">
+				<div id="sendmessage">Your message has been sent. Thank you!</div>
+				<div id="errormessage"></div>
+				<form th:action="@{/Contactez-nous/}" method="post"
+					th:object="${contact}">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" th:field="*{nomComplet}" class="form-control"
+								id="name" placeholder="Votre Nom" data-rule="minlen:4"
+								required="required" data-msg="Please enter at least 4 chars" />
+							<div>
+								<span class="My-errors"
+									th:if="${#fields.hasErrors('nomComplet')}"
+									th:errors="*{nomComplet}">tes</span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<input type="email" class="form-control" th:field="*{email}"
+								id="email" placeholder="Votre Email" data-rule="email"
+								required="required" data-msg="Please enter a valid email" />
+							<div>
+								<span class="My-errors" th:if="${#fields.hasErrors('email')}"
+									th:errors="*{email}">tes</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" th:field="*{objt}"
+							id="subject" placeholder="Objet" data-rule="minlen:4"
+							required="required"
+							data-msg="Please enter at least 8 chars of subject" />
+						<div>
+							<span class="My-errors" th:if="${#fields.hasErrors('objt')}"
+								th:errors="*{objt}">tes</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" th:field="*{message}" rows="5"
+							data-rule="required" data-msg="Please write something for us"
+							required="required" placeholder="Message"></textarea>
+						<div>
+							<span class="My-errors" th:if="${#fields.hasErrors('message')}"
+								th:errors="*{message}">tes</span>
+						</div>
+					</div>
+					<div class="text-center">
+						<button type="submit">Envoyer</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- #contact --> </main>
+
+	<!--==========================
+    Footer
+  ============================-->
+	<footer id="footer">
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <strong>Lifantou</strong>. All Rights Reserved
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.snsoftware.com/" target="_blank">SnSoftware</a>
+			</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+	<!-- SCRIPT DU BAS -->
+	<div th:replace="fragments/script_bas_index ::script_bas_index"></div>
+	<!-- ./ SCRIPT DU BAS -->
+</body>
+</html>
