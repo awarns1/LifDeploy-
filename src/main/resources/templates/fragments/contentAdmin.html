@@ -1,8 +1,7 @@
 <div data-th-fragment="contentAdmin">
 	<!-- ======================== DEFAULTCONTENTADMIN =============================== -->
 	<div th:if="${!#strings.isEmpty(getDefaultContAdmin)}">
-		<div
-			th:replace="fragments/includes/defaultContentAdmin ::defaultContentAdmin"></div>
+		<div th:replace="fragments/includes/defaultContentAdmin ::defaultContentAdmin"></div>
 	</div>
 	<!-- ========================  LISTE ECOLES =============================== -->
 	<div th:if="${!#strings.isEmpty(getEcolesList)}">
@@ -10,13 +9,11 @@
 	</div>
 	<!-- ========================  LISTE PRODUCTEURS =============================== -->
 	<div th:if="${!#strings.isEmpty(getProducteursList)}">
-		<div
-			th:replace="fragments/includes/ListeProducteurs ::ListeProducteurs"></div>
+		<div th:replace="fragments/includes/ListeProducteurs ::ListeProducteurs"></div>
 	</div>
 	<!-- ========================  LISTE PARTENAIRES =============================== -->
 	<div th:if="${!#strings.isEmpty(getPartenairesList)}">
-		<div
-			th:replace="fragments/includes/ListePartenaires ::ListePartenaires"></div>
+		<div th:replace="fragments/includes/ListePartenaires ::ListePartenaires"></div>
 	</div>
 	<!-- ========================  LISTE CATEGORIES PRODUIT =============================== -->
 	<div th:if="${!#strings.isEmpty(getCategorieProd)}">
@@ -32,12 +29,10 @@
 	</div>
 	<!-- ========================  COMMANDE/PAIEMENTS/DONATIONS =============================== -->
 	<div th:if="${!#strings.isEmpty(ListeCmdEtPaiementEtDonation)}">
-		<div
-			th:replace="fragments/includes/ListeCmdEtPaiementEtDonation ::ListeCmdEtPaiementEtDonation"></div>
+		<div th:replace="fragments/includes/ListeCmdEtPaiementEtDonation ::ListeCmdEtPaiementEtDonation"></div>
 	</div>
 	<!-- ========================  CARTOGRAPHIE =============================== -->
 	<div th:if="${!#strings.isEmpty(Cartographie)}">
-		<div
-			th:replace="fragments/includes/CartographieEcole ::CartographieEcole"></div>
+		<div th:replace="fragments/includes/CartographieEcole ::CartographieEcole"></div>
 	</div>
 </div>

@@ -118,17 +118,17 @@ public class GestionAdminController {
 				map.put("Cartographie", "Cartographie des Ecoles");
 				map.put("mapForEcole", true);
 				map.put("getCartographie", "active");
-				  map.put("mapMarkersLocations",getMapMarkerLocations(true));
-				  map.put("mapMarkersLabels", getMapMarkerLables(true));
-				  map.put("mapCenterPositionIndice",getMapMarkerCenterPosIndice(true));
+				map.put("mapMarkersLocations", getMapMarkerLocations(true));
+				map.put("mapMarkersLabels", getMapMarkerLables(true));
+				map.put("mapCenterPositionIndice", getMapMarkerCenterPosIndice(true));
 				break;
 			case "Cartographie-Producteur":
 				map.put("Cartographie", "Cartographie des Producteurs");
 				map.put("mapForProductor", true);
 				map.put("getCartographie", "active");
-				  map.put("mapMarkersLocations",getMapMarkerLocations(false)); //
-				  map.put("mapMarkersLabels", getMapMarkerLables(false)); //
-				  map.put("mapCenterPositionIndice",getMapMarkerCenterPosIndice(false));
+				map.put("mapMarkersLocations", getMapMarkerLocations(false)); //
+				map.put("mapMarkersLabels", getMapMarkerLables(false)); //
+				map.put("mapCenterPositionIndice", getMapMarkerCenterPosIndice(false));
 				break;
 			}
 			map.put("NbCmdEnCours", adminService.getAllLigneCommandesEncours().size());
@@ -491,14 +491,15 @@ public class GestionAdminController {
 		}
 		return null;
 	}
-	
+
 	@GetMapping("/Admin/findProdBase")
 	@ResponseBody
 	public Produit getProduiBse(Long id) {
 		return _produitRepository.findOne(id);
 	}
+
 	@GetMapping("/Admin/deleteProdBase")
-	public String getDeleteProdBase(Long id,ModelMap map) {
+	public String getDeleteProdBase(Long id, ModelMap map) {
 		if (adminService.deleteProduitBase(id)) {
 			map.put("suppProdOK", "Produit de base bien supprimé. !!!");
 		} else {
@@ -509,65 +510,65 @@ public class GestionAdminController {
 		 * _produitRepository.delete(id); return "redirect:/Admin/Produit-Base/";
 		 */
 	}
-	
-	   // return geolocal positions for ecoles or proctors 
-	   private List<MapLocation> getMapMarkerLocations(boolean ecoleLocation) {
-		   List<MapLocation> locations = new ArrayList<>();
-			try {
-				   if(ecoleLocation) {
-					   List<Ecole> ecoles = adminService.getEcoles();
-					   for(Ecole ecole : ecoles) {
-						   locations.add(new MapLocation(ecole.getLatitudeEcole(),ecole.getLongitudeEcole()));
-					   }
-					   System.out.println(locations.size() + " ******* location");
-				   }else {
-					   List<Producteur> prods = adminService.getProducteurs();
-					   for(Producteur prod : prods) {
-						   locations.add(new MapLocation(prod.getLatitudeProduct(),prod.getLongitudeProduct()));
-					   }
-				   }
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		  // return jsondata;
-		return locations;
-	   } 
 
-	   private List<String> getMapMarkerLables(boolean ecoleLabeles) {
-		   List<String> labels = new ArrayList<>();
-			try {
-				   if(ecoleLabeles) {
-					   List<Ecole> ecoles = adminService.getEcoles();
-					   for(Ecole ecole : ecoles) {
-						   labels.add(ecole.getNomEcole());
-						   System.out.println("label " + ecole.getNomEcole());
-					   }
-					   System.out.println(labels.size() + " ******* location");
-				   }else {
-					   List<Producteur> prods = adminService.getProducteurs();
-					   for(Producteur prod : prods) {
-						   labels.add(prod.getPrenomProduct()+" "+prod.getNomProduct());
-					   }
-				   }
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	// return geolocal positions for ecoles or proctors
+	private List<MapLocation> getMapMarkerLocations(boolean ecoleLocation) {
+		List<MapLocation> locations = new ArrayList<>();
+		try {
+			if (ecoleLocation) {
+				List<Ecole> ecoles = adminService.getEcoles();
+				for (Ecole ecole : ecoles) {
+					locations.add(new MapLocation(ecole.getLatitudeEcole(), ecole.getLongitudeEcole()));
+				}
+				System.out.println(locations.size() + " ******* location");
+			} else {
+				List<Producteur> prods = adminService.getProducteurs();
+				for (Producteur prod : prods) {
+					locations.add(new MapLocation(prod.getLatitudeProduct(), prod.getLongitudeProduct()));
+				}
 			}
-		  // return jsondata;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// return jsondata;
+		return locations;
+	}
+
+	private List<String> getMapMarkerLables(boolean ecoleLabeles) {
+		List<String> labels = new ArrayList<>();
+		try {
+			if (ecoleLabeles) {
+				List<Ecole> ecoles = adminService.getEcoles();
+				for (Ecole ecole : ecoles) {
+					labels.add(ecole.getNomEcole());
+					System.out.println("label " + ecole.getNomEcole());
+				}
+				System.out.println(labels.size() + " ******* location");
+			} else {
+				List<Producteur> prods = adminService.getProducteurs();
+				for (Producteur prod : prods) {
+					labels.add(prod.getPrenomProduct() + " " + prod.getNomProduct());
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// return jsondata;
 		return labels;
-	   }
-	   
-	   private int getMapMarkerCenterPosIndice(boolean ecoleLocation) {
-		   int max = 0, random=0;
-			try {
-			  max = (ecoleLocation) ? adminService.getEcoles().size() : adminService.getProducteurs().size();
-			  random = new Random().nextInt(max);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		   return random;
-	   }
+	}
+
+	private int getMapMarkerCenterPosIndice(boolean ecoleLocation) {
+		int max = 0, random = 0;
+		try {
+			max = (ecoleLocation) ? adminService.getEcoles().size() : adminService.getProducteurs().size();
+			random = new Random().nextInt(max);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return random;
+	}
 
 }

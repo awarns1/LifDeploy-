@@ -12,30 +12,37 @@ server:
 #    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 #    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 #  file: trace.log
+#spring:
+#    datasource:
+#        driverClassName: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://localhost:3308/lifantou
+#        username: root
+#        password: 
+#    jpa:
+#        hibernate.ddl-auto: validate
+#        generate-ddl: true
+#        show-sql: true
 spring:
+    profiles:
+        active: prod
+    jpa:
+        database: MYSQL
+        hibernate:
+            ddl-auto: validate
+            dialect: org.hibernate.dialect.MySQL5Dialect
+
+#    datasource:
+#        url: jdbc:mysql://localhost:3308/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+#        username: root
+#        password:
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+
     datasource:
-        driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/lifantou
+        url: jdbc:mysql://localhost/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
         username: root
         password: Digit@l2019
-    jpa:
-        hibernate.ddl-auto: validate
-        generate-ddl: true
-        show-sql: true
-#spring:
-#    profiles:
-#        active: prod
-#    jpa:
-#        database: MYSQL
-#        hibernate:
-#            ddl-auto: update
-#            dialect: org.hibernate.dialect.MySQL5Dialect
-#
-#    datasource:
-#       url: jdbc:mysql://localhost/lifantou?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPubl$
-#       username: root
-#       password: 
-#       driver-class-name: com.mysql.cj.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
     mail:
         default-encoding: UTF-8
         host: smtp.gmail.com

@@ -130,7 +130,7 @@ public class LoginController {
 				session.setAttribute("RoleName", accesApp.getIdRole().getType());
 				if (accesApp.getIdRole().getType().equals("ADMIN")) {
 					map.put("getDefaultContAdmin", "active");
-					getNbStatAdmin(map);
+					// getNbStatAdmin(map);
 					return "views/home";
 				} else {
 					String role = (String) session.getAttribute("RoleName");

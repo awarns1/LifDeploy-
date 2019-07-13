@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8" />																																																																										
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<!-- Favicons -->
-<link rel="icon" type="image/x-icon" th:href="@{/css_template_index/img/lifantouIcon.ico}" />
-<link th:href="@{/css_template_index/img/lifantouLogo4.png}" rel="apple-touch-icon" />
-<title>Lifantou</title>
-<!-- =============== VENDOR STYLES ===============-->
-<!-- FONT AWESOME-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css}" />
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css}" />
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css}" />
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css}" />
-<!-- SIMPLE LINE ICONS-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/simple-line-icons/css/simple-line-icons.css}" />
-<!-- ANIMATE.CSS-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/animate.css/animate.css}" />
-<!-- WHIRL (spinners)-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/whirl/dist/whirl.css}" />
-<!-- =============== PAGE VENDOR STYLES ===============-->
-<!-- Bootgrid-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/jquery-bootgrid/dist/jquery.bootgrid.css}" />
-<!-- Datatables-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css}" />
-<!-- WEATHER ICONS-->
-<link rel="stylesheet"
-	th:href="@{/css_template_home/vendor/weather-icons/css/weather-icons.css}" />
-<!-- =============== BOOTSTRAP STYLES ===============-->
-<link rel="stylesheet" th:href="@{/css_template_home/css/bootstrap.css}"
-	id="bscss" />
-<!-- =============== APP STYLES ===============-->
-<link rel="stylesheet" th:href="@{/css_template_home/css/app.css}"
-	id="maincss" />
-<link rel="stylesheet" th:href="@{/css_template_home/myStyles.css}" />
-<!-- ===================== MAPBOX ===========================  -->
-<script src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" th:href="@{/css_template_index/img/lifantouIcon.ico}" />
+	<link th:href="@{/css_template_index/img/lifantouLogo4.png}" rel="apple-touch-icon" />
+	<title>Lifantou</title>
+	<!-- =============== VENDOR STYLES ===============-->
+	<!-- FONT AWESOME-->
+	<link rel="stylesheet"
+		th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css}" />
+	<link rel="stylesheet"
+		th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css}" />
+	<link rel="stylesheet"
+		th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css}" />
+	<link rel="stylesheet"
+		th:href="@{/css_template_home/vendor/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css}" />
+	<!-- SIMPLE LINE ICONS-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/simple-line-icons/css/simple-line-icons.css}" />
+	<!-- ANIMATE.CSS-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/animate.css/animate.css}" />
+	<!-- WHIRL (spinners)-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/whirl/dist/whirl.css}" />
+	<!-- =============== PAGE VENDOR STYLES ===============-->
+	<!-- Bootgrid-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/jquery-bootgrid/dist/jquery.bootgrid.css}" />
+	<!-- Datatables-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css}" />
+	<!-- WEATHER ICONS-->
+	<link rel="stylesheet" th:href="@{/css_template_home/vendor/weather-icons/css/weather-icons.css}" />
+	<!-- =============== BOOTSTRAP STYLES ===============-->
+	<link rel="stylesheet" th:href="@{/css_template_home/css/bootstrap.css}" id="bscss" />
+	<!-- =============== APP STYLES ===============-->
+	<link rel="stylesheet" th:href="@{/css_template_home/css/app.css}" id="maincss" />
+	<link rel="stylesheet" th:href="@{/css_template_home/myStyles.css}" />
+	<!-- ===================== MAPBOX ===========================  -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -56,7 +48,7 @@
 		<!-- ./ HEADER ADMIN-->
 
 		<!-- MENU GAUCHE ADMIN-->
-		<div th:replace="fragments/																																																																										 ::menu_gauche_admin"></div>
+		<div th:replace="fragments/menu_gauche_admin ::menu_gauche_admin"></div>
 		<!-- ./ MENU GAUCHE ADMIN-->
 
 		<!-- offsidebar-->
