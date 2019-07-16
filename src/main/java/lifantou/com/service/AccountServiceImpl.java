@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService {
 	private PasswordResetTokenRepository passwordTokenRepository;
 	@Autowired
 	private MailService mailService;
-	//String emailDest = "lifantou.workgroup@gmail.com";
+	// String emailDest = "lifantou.workgroup@gmail.com";
 	String emailDest = "awa.thiam@lifantou.com";
 
 	// ajouter un user
@@ -59,7 +59,7 @@ public class AccountServiceImpl implements AccountService {
 		Region region = regionRepository.getOne(userForm.getIdRegion());
 		AccesApp accesApp = new AccesApp();
 		accesApp.setUsername(userForm.getUsername());
-		accesApp.setPassword(passwordEncoder.encode(userForm.getPassword()));		
+		accesApp.setPassword(passwordEncoder.encode(userForm.getPassword()));
 		accesApp.setToken(UUID.randomUUID().toString());
 		if (userForm.getUsername().contains("@admin")) {
 			user.setRegion(region);
@@ -106,7 +106,8 @@ public class AccountServiceImpl implements AccountService {
 		String msg = "<p>Votre compte utilisateur avec l'adresse e-mail " + accesApp.getIdUser().getEmail()
 				+ " a été créé.</p>"
 				+ "<p>Merci de bien vouloir patienter pour l'activation du compte qui sera effective sous 48h.<p>";
-		mailService.sendEmailHtml("Création de compte", accesApp.getIdUser().getEmail(), msg);
+		// mailService.sendEmailHtml("Création de compte",
+		// accesApp.getIdUser().getEmail(), msg);
 	}
 
 	@Override
@@ -186,9 +187,9 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void nousContactez(NousContactez contact) {
-		String htmlMsg = "<p>Nom complet: " + contact.getNomComplet() + "</p>" + "<p>Email Exp :"
-				+ contact.getEmail() + "</p>" + "<p>" + contact.getMessage() + "</p>";
+		String htmlMsg = "<p>Nom complet: " + contact.getNomComplet() + "</p>" + "<p>Email Exp :" + contact.getEmail()
+				+ "</p>" + "<p>" + contact.getMessage() + "</p>";
 		mailService.sendEmailHtml(contact.getObjt(), emailDest, htmlMsg);
-		
+
 	}
 }
