@@ -1,0 +1,59 @@
+<div data-th-fragment="formContact">
+    <div class="card-body">
+        <h3>
+            <p class="text-center">Faites un don pour une cantine.</p>
+        </h3>
+        <p class="bg-success" th:if="${!#strings.isEmpty(confirmOk)}">
+            <span> Vous allez recevoir un email pour la confirmation du
+                changement de mot de passe demand&eacute;</span> <span><br />Verifer
+                votre boite mail !!!
+            </span>
+        </p>
+        <form th:action="@{/Contactez-nous/}" method="post"
+            th:object="${contact}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" th:field="*{nomComplet}" class="form-control"
+                        id="name" placeholder="Votre Nom" data-rule="minlen:4"
+                        required="required" data-msg="Please enter at least 4 chars" />
+                    <div>
+                        <span class="My-errors"
+                            th:if="${#fields.hasErrors('nomComplet')}"
+                            th:errors="*{nomComplet}">tes</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="email" class="form-control" th:field="*{email}"
+                        id="email" placeholder="Votre Email" data-rule="email"
+                        required="required" data-msg="Please enter a valid email" />
+                    <div>
+                        <span class="My-errors" th:if="${#fields.hasErrors('email')}"
+                            th:errors="*{email}">tes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{objt}"
+                    id="subject" placeholder="Objet" data-rule="minlen:4"
+                    required="required"
+                    data-msg="Please enter at least 8 chars of subject" />
+                <div>
+                    <span class="My-errors" th:if="${#fields.hasErrors('objt')}"
+                        th:errors="*{objt}">tes</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" th:field="*{message}" rows="5"
+                    data-rule="required" data-msg="Please write something for us"
+                    required="required" placeholder="Message"></textarea>
+                <div>
+                    <span class="My-errors" th:if="${#fields.hasErrors('message')}"
+                        th:errors="*{message}">tes</span>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+	</div>
+</div>

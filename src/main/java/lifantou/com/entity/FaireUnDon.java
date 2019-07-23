@@ -7,13 +7,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "donations")
+@Table(name = "faireundon")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Donation implements Serializable {
+public class FaireUnDon implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
@@ -24,7 +24,8 @@ public class Donation implements Serializable {
     private String description;
     private double montant;
     private String token;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String email;
+    private String tel;
+    private String adresse;
+    private Long user;
 }

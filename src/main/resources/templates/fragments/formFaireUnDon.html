@@ -1,61 +1,63 @@
-<div data-th-fragment="formDonations">
-	<div class="card-body">
-		<h3><p class="text-center">Faites un don pour une cantine.</p></h3>
-		<p class="bg-success" th:if="${!#strings.isEmpty(confirmOk)}">
-			<span> Vous allez recevoir un email pour la confirmation du
-				changement de mot de passe demand&eacute;</span> <span><br />Verifer
-				votre boite mail !!!
-			</span>
-		</p>
-		<form class="mb-3" th:action="@{/donation}" th:object="${donation}" method="post">
-			<div class="form-group">
-				<label class="text-muted" for="signupInputEmail1">Nom Complet </label>
-				<div class="input-group with-focus">
-					<input class="form-control border-right-0" type="text" th:field="*{nomComplet}" />
-					<div class="input-group-append">
-						<span class="input-group-text text-muted bg-transparent border-left-0">
-							<em class="icon-user"></em>
-						</span>
-					</div>
-				</div>
-				<span class="My-errors" th:if="${#fields.hasErrors('nomComplet')}" th:errors="*{nomComplet}">tes</span>
+<div data-th-fragment="formFaireUnDon">
+    <div class="card-body">
+        <h3>
+            <p class="text-center">Faites un don pour une cantine.</p>
+        </h3>
+        <p class="bg-success" th:if="${!#strings.isEmpty(confirmOk)}">
+            <span> Vous allez recevoir un email pour la confirmation du
+                changement de mot de passe demand&eacute;</span> <span><br />Verifer
+                votre boite mail !!!
+            </span>
+        </p>
+        <form class="mb-3" th:action="@{/faire-un-don}" th:object="${faireundon}" method="post">
+            <div class="form-group">
+                <label class="text-muted" for="signupInputEmail1">Nom Complet </label>
+                <div class="input-group with-focus">
+                    <input class="form-control border-right-0" type="text" th:field="*{nomComplet}" />
+                    <div class="input-group-append">
+                        <span class="input-group-text text-muted bg-transparent border-left-0">
+                            <em class="icon-user"></em>
+                        </span>
+                    </div>
+                </div>
+                <span class="My-errors" th:if="${#fields.hasErrors('nomComplet')}" th:errors="*{nomComplet}">tes</span>
 			</div>
 			<div class="form-group">
 				<label class="text-muted" for="signupInputEmail1">Adresse Email </label>
 				<div class="input-group with-focus">
-					<input class="form-control border-right-0" type="email" th:field="*{user.email}" />
+					<input class="form-control border-right-0" type="email" th:field="*{email}" />
 					<div class="input-group-append">
 						<span class="input-group-text text-muted bg-transparent border-left-0">
 							<em class="fa fa-envelope"></em>
 						</span>
 					</div>
 				</div>
-				<span class="My-errors" th:if="${#fields.hasErrors('user.email')}" th:errors="*{user.email}">errors</span>
+				<span class="My-errors" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</span>
 			</div>
 			<div class="form-group">
 				<label class="text-muted" for="signupInputPassword1">Adresse domicile</label>
 				<div class="input-group with-focus">
-					<input class="form-control border-right-0" type="text" th:field="*{user.adresse}" />
+					<input class="form-control border-right-0" type="text" th:field="*{adresse}" />
 					<div class="input-group-append">
 						<span class="input-group-text text-muted bg-transparent border-left-0">
 							<em class="fa fa-address-book"></em>
 						</span>
 					</div>
 				</div>
-				<span class="My-errors" th:if="${#fields.hasErrors('user.adresse')}"
-					th:errors="*{user.adresse}">errors</span>
+				<span class="My-errors" th:if="${#fields.hasErrors('adresse')}"
+					th:errors="*{adresse}">errors</span>
 			</div>
 			<div class="form-group">
 				<label class="text-muted" for="signupInputPassword1">Telephone</label>
 				<div class="input-group with-focus">
-					<input class="form-control border-right-0" type="text" th:field="*{user.tel}" />
+					<input class="form-control border-right-0" type="text" th:field="*{tel}" />
 					<div class="input-group-append">
 						<span class="input-group-text text-muted bg-transparent border-left-0">
 							<em class="icon-phone"></em>
 						</span>
 					</div>
 				</div>
-				<span class="My-errors" th:if="${#fields.hasErrors('user.tel')}" th:errors="*{user.tel}">errors</span>
+				<span class="My-errors" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">errors</span>
 			</div>
 			<div class="form-group">
 				<label class="text-muted" for="signupInputPassword1">Montant donation ( FCFA )</label>

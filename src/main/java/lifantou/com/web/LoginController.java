@@ -25,7 +25,7 @@ import lifantou.com.dao.PasswordResetTokenRepository;
 import lifantou.com.dao.RegionRepository;
 import lifantou.com.entity.AccesApp;
 import lifantou.com.entity.ChoixProducteur;
-import lifantou.com.entity.Donation;
+import lifantou.com.entity.FaireUnDon;
 import lifantou.com.entity.LigneCommande;
 import lifantou.com.entity.NousContactez;
 import lifantou.com.entity.PasswordResetToken;
@@ -56,7 +56,6 @@ public class LoginController {
 
 	@GetMapping("/")
 	public String index(ModelMap map) {
-		map.put("contact", new NousContactez());
 		return "views/index";
 	}
 
@@ -88,12 +87,12 @@ public class LoginController {
 	}
 
 	// redirection vers le form donation
-	@GetMapping("/donation")
-	public String donation(ModelMap map) {
+	@GetMapping("/faire-un-don")
+	public String faireUnDon(ModelMap map) {
 		try {
 			map.put("year", year);
-			map.put("formDonation", true);
-			map.put("donation", new Donation());
+			map.put("formFaireUnDon", true);
+			map.put("faireundon", new FaireUnDon());
 			return "views/login";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,14 +100,16 @@ public class LoginController {
 		}
 	}
 
-	@PostMapping("/donation")
-	public String donationPost(Donation donation, ModelMap map, HttpServletRequest request) {
+	@PostMapping("/faire-un-don")
+	public String faireUnDonPost(FaireUnDon faireUnDon, ModelMap map, HttpServletRequest request) {
 		try {
-			String url = configPayDunyaServ.baseConfig(donation, request);
-			return "redirect:" + url;
+			adminService.saveFaireUnDon(faireUnDon);
+			map.put("registrationOk",
+					"Votre don a été enregistrer avec succès, l'administrateur vous contactera pour plus de détails. !!!");
+			return logon(map);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return "redirect:/";
 		}
 	}
 
@@ -311,11 +312,21 @@ public class LoginController {
 		return "redirect:/login";
 	}
 
+	@GetMapping("/Contactez-nous")
+	public String contactezNous(ModelMap map) {
+		map.put("contact", new NousContactez());
+		map.put("formContact", true);
+		return "views/login";
+	}
+
 	@PostMapping(value = "/Contactez-nous/")
 	public String contactezNousPost(NousContactez contact, BindingResult result, ModelMap map) {
 		try {
 			accountService.nousContactez(contact);
-			return "redirect:/";
+			map.put("contact", new NousContactez());
+			map.put("formContact", true);
+			map.put("confirmOk", "info enregistrer ok");
+			return "views/login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/";

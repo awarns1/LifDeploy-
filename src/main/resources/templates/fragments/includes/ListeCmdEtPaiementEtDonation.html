@@ -100,6 +100,18 @@
 								th:text="${#numbers.formatDecimal(don.montant, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
 							<td><p th:text="${don.description}"></p></td>
 						</tr>
+						<tr th:each="don,index :${ListFaireUnDons}"
+							th:if="${!#strings.isEmpty(getDonations)}">
+							<td th:text="${index.count}"></td>
+							<td th:text="${don.nomComplet}"></td>
+							<td th:text="${don.email}"></td>
+							<td th:text="${don.tel}"></td>
+							<td th:text="${don.adresse}"></td>
+							<td th:text="${#calendars.format(don.date,'dd/MM/yyyy')}"></td>
+							<td
+								th:text="${#numbers.formatDecimal(don.montant, 0, 'WHITESPACE', 0, 'POINT')}+' FCFA'"></td>
+							<td><p th:text="${don.description}"></p></td>
+						</tr>
 						<tr th:each="ac,index :${ListAccessApp}"
 							th:if="${!#strings.isEmpty(getComptesUser)}">
 							<td th:text="${index.count}"></td>
@@ -131,6 +143,11 @@
 										th:href="@{'/Admin/Bloquer_compte/'+${ac.idAccesApp}+'/'}">
 										<button type="button" class="btn btn-sm btn-danger mr-2">
 											<em class="fa fa-times-circle fa-fw"></em>
+										</button>
+									</a> <a title="Supprimer Compte"
+										th:href="@{'/Admin/Supprimer_compte/'+${ac.idAccesApp}+'/'}">
+										<button type="button" class="btn btn-sm btn-danger mr-2">
+											<em class="fa fa-trash" aria-hidden="true"></em>
 										</button>
 									</a>
 								</div></td>

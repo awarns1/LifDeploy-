@@ -200,6 +200,10 @@
 									type="radio" name="type"
 									th:value="${userForm.type='Producteur'}" /> <span
 									class="fa fa-circle"></span> Producteur
+								</label> <label class="c-radio"> <input id="btnParte"
+									type="radio" name="type"
+									th:value="${userForm.type='Partenaire'}" /> <span
+									class="fa fa-circle"></span> Partenaire
 								</label> <span class="My-errors"
 									th:if="${!#strings.isEmpty(selectType)}"
 									th:text="${selectType}">errors</span>

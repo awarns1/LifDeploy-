@@ -29,6 +29,8 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private DonationRepository donationRepository;
 	@Autowired
+	private FaireUnDonRepository faireUnDonRepository;
+	@Autowired
 	private CartRepository cartRepository;
 	@Autowired
 	private ZoneRepository zoneRepository;
@@ -58,17 +60,17 @@ public class AdminServiceImpl implements AdminService {
 		p.setStockGlobal(0);
 		return produitRepository.save(p);
 	}
-	
+
 	@Override
-	public Produit editProduit(Produit p,MultipartFile file) throws IOException{
+	public Produit editProduit(Produit p, MultipartFile file) throws IOException {
 		Produit pr = getProduit(p.getId());
-		if(file.isEmpty()) {			
+		if (file.isEmpty()) {
 			p.setOriginalName(pr.getOriginalName());
 			p.setPhotoBytes(pr.getPhotoBytes());
-		}else {
+		} else {
 			p.setOriginalName(file.getOriginalFilename());
 			p.setPhotoBytes(file.getBytes());
-		}		
+		}
 		return produitRepository.save(p);
 	}
 
@@ -145,7 +147,7 @@ public class AdminServiceImpl implements AdminService {
 		return partenaires;
 	}
 
-//================================================================================
+	// ================================================================================
 	@Override
 	public ProduitProducteur AddProduitToProducteur(ProduitProducteur prodProducteur, Integer quantite, Long produit_id,
 			Long producteur_id, String dateProd) {
@@ -199,7 +201,7 @@ public class AdminServiceImpl implements AdminService {
 		return prodProducteurRepository.findProduitProducteurById(id);
 	}
 
-//================================================================================
+	// ================================================================================
 	@Override
 	public List<LigneCommande> getAllLigneCommandes() {
 		return ligneCommandeRepository.findLigneCommandeByEtatCmdIsNotIn(0);
@@ -345,7 +347,7 @@ public class AdminServiceImpl implements AdminService {
 		return choixProducteurRepository.findChoixProducteursByLigneCommandeEtatPaiement(etatPaiement);
 	}
 
-//================================================================================
+	// ================================================================================
 	@Override
 	public String generateReferenceCmd() {
 		int valeurMin = 100;
@@ -494,6 +496,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public List<FaireUnDon> getAllFaireUnDon() {
+		return faireUnDonRepository.findAll();
+	}
+
+	@Override
 	public UserForm getUserForm(User user, String type) {
 		UserForm usf = new UserForm();
 		if (type.equals("ECOLE")) {
@@ -549,9 +556,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public User editProfilUser(UserForm usfr) {
-		Region reg = regionRepository.findOne(usfr.getIdRegion());		
+		Region reg = regionRepository.findOne(usfr.getIdRegion());
 		String iden[] = usfr.getIdentifiant().split("-");
-		String identEdit = reg.getSigle() +"-"+iden[1]+"-"+iden[2];		
+		String identEdit = reg.getSigle() + "-" + iden[1] + "-" + iden[2];
 		if (usfr.getType().equals("ECOL")) {
 			Ecole ec = new Ecole(identEdit, usfr.getEmail(), usfr.getTel(), usfr.getAdresse(), reg);
 			ec.setId(usfr.getId());
@@ -566,8 +573,7 @@ public class AdminServiceImpl implements AdminService {
 			ec.setLatitudeEcole(usfr.getLatitudeEcole());
 			return userRepository.save(ec);
 		} else if (usfr.getType().equals("PROD")) {
-			Producteur pr = new Producteur(identEdit, usfr.getEmail(), usfr.getTel(), usfr.getAdresse(),
-					reg);
+			Producteur pr = new Producteur(identEdit, usfr.getEmail(), usfr.getTel(), usfr.getAdresse(), reg);
 			pr.setId(usfr.getId());
 			pr.setNomProduct(usfr.getNomProduct());
 			pr.setPrenomProduct(usfr.getPrenomProduct());
@@ -576,8 +582,7 @@ public class AdminServiceImpl implements AdminService {
 			return userRepository.save(pr);
 
 		} else if (usfr.getType().equals("PART")) {
-			Partenaire pa = new Partenaire(identEdit, usfr.getEmail(), usfr.getTel(), usfr.getAdresse(),
-					reg);
+			Partenaire pa = new Partenaire(identEdit, usfr.getEmail(), usfr.getTel(), usfr.getAdresse(), reg);
 			pa.setId(usfr.getId());
 			pa.setNomStructure(usfr.getNomStructure());
 			pa.setDomaineActivite(usfr.getDomaineActivite());
@@ -624,6 +629,15 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public void deleteAccesApp(Long id) {
+		AccesApp ac = accesAppRepository.findOne(id);
+		User user = ac.getIdUser();
+
+		accesAppRepository.delete(ac);
+		userRepository.delete(user);
+	}
+
+	@Override
 	public AccesApp getAccesApp(Long id) {
 		return accesAppRepository.findOne(id);
 	}
@@ -639,19 +653,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Donation saveDonation(Donation donation) {
-		User user = accountService.verificationCompteUser(donation.getUser().getEmail());
+	public FaireUnDon saveFaireUnDon(FaireUnDon faireUnDon) {
+		User user = accountService.verificationCompteUser(faireUnDon.getEmail());
 		if (user == null) {
 			user = new User();
-			user.setEmail(donation.getUser().getEmail());
-			user.setAdresse(donation.getUser().getAdresse());
-			user.setTel(donation.getUser().getTel());
-			user.setEmail(donation.getUser().getEmail());
+			user.setEmail(faireUnDon.getEmail());
+			user.setAdresse(faireUnDon.getAdresse());
+			user.setTel(faireUnDon.getTel());
+			user.setEmail(faireUnDon.getEmail());
 			userRepository.save(user);
 		}
-		donation.setUser(user);
-		donation.setDate(new Date());
-		return donationRepository.save(donation);
+		faireUnDon.setUser(user.getId());
+		faireUnDon.setDate(new Date());
+		return faireUnDonRepository.save(faireUnDon);
 	}
 
 	@Override

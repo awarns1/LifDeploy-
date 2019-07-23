@@ -80,6 +80,12 @@
 				<div th:if="${formDonation==true}">
 					<div th:replace="fragments/formDonations ::formDonations"></div>
 				</div>
+				<div th:if="${formFaireUnDon==true}">
+					<div th:replace="fragments/formFaireUnDon ::formFaireUnDon"></div>
+				</div>
+				<div th:if="${formContact==true}">
+					<div th:replace="fragments/formContact ::formContact"></div>
+				</div>
 			</div>
 			<div
 				th:replace="fragments/copyright_login_register ::copyright_login_register"></div>

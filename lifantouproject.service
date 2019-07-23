@@ -1,0 +1,14 @@
+[Unit]
+Description=Spring Boot lifantou project
+After=syslog.target
+After=network.target[Service]
+User=username
+Type=simple
+[Service]
+ExecStart=/usr/bin/java -jar /var/www/lifantou.com/html/target/lifantou.jar
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=lifantouproject
+[Install]
+WantedBy=multi-user.target
