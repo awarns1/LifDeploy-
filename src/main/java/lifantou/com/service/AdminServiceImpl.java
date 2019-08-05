@@ -35,6 +35,8 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private ZoneRepository zoneRepository;
 	@Autowired
+	NousContactezRepository nousContactezRepository;
+	@Autowired
 	private RegionRepository regionRepository;
 	@Autowired
 	private PartenaireEcoleRepository partEcoleRepository;
@@ -501,6 +503,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public List<NousContactez> getAllCommentaires() {
+		return nousContactezRepository.findAll();
+	}
+
+	@Override
 	public UserForm getUserForm(User user, String type) {
 		UserForm usf = new UserForm();
 		if (type.equals("ECOLE")) {
@@ -635,6 +642,12 @@ public class AdminServiceImpl implements AdminService {
 
 		accesAppRepository.delete(ac);
 		userRepository.delete(user);
+	}
+
+	@Override
+	public void deleteCommentaire(Long id) {
+		NousContactez cmnt = nousContactezRepository.findOne(id);
+		nousContactezRepository.delete(cmnt);
 	}
 
 	@Override

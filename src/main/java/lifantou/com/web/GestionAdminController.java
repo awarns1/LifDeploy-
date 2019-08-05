@@ -109,6 +109,12 @@ public class GestionAdminController {
 				map.put("ListDonations", adminService.getAllDonation());
 				map.put("ListFaireUnDons", adminService.getAllFaireUnDon());
 				break;
+			case "Commentaires":
+				map.put("ListeCommentaires", "Liste des commentaires");
+				map.put("getCommentaires", "active");
+				map.put("title", "Les commentaires");
+				map.put("ListCommentaires", adminService.getAllCommentaires());
+				break;
 			case "Comptes-Users":
 				map.put("ListeCmdEtPaiementEtDonation", "Accès des utilisateurs");
 				map.put("getComptesUser", "active");
@@ -280,6 +286,9 @@ public class GestionAdminController {
 			case "Supprimer_compte":
 				adminService.deleteAccesApp(id);
 				return link("Comptes-Users", map);
+			case "Supprimer_cmnt":
+				adminService.deleteCommentaire(id);
+				return link("Commentaires", map);
 			case "Ecoles_partenaire":
 				map.put("getPartenairesList", "active");
 				map.put("getEcolePart", "not");

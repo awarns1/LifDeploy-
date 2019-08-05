@@ -1,6 +1,7 @@
 package lifantou.com.service;
 
 import lifantou.com.dao.AccesAppRepository;
+import lifantou.com.dao.NousContactezRepository;
 import lifantou.com.dao.PasswordResetTokenRepository;
 import lifantou.com.dao.RegionRepository;
 import lifantou.com.dao.RoleRepository;
@@ -35,6 +36,8 @@ public class AccountServiceImpl implements AccountService {
 	RoleRepository roleRepository;
 	@Autowired
 	AccesAppRepository accesAppRepository;
+	@Autowired
+	NousContactezRepository nousContactezRepository;
 	@Autowired
 	private RegionRepository regionRepository;
 	@Autowired
@@ -187,9 +190,6 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void nousContactez(NousContactez contact) {
-		String htmlMsg = "<p>Nom complet: " + contact.getNomComplet() + "</p>" + "<p>Email Exp :" + contact.getEmail()
-				+ "</p>" + "<p>" + contact.getMessage() + "</p>";
-		mailService.sendEmailHtml(contact.getObjt(), emailDest, htmlMsg);
-
+		nousContactezRepository.saveAndFlush(contact);
 	}
 }

@@ -71,6 +71,9 @@
 							<em class="fab fa-cc-mastercard"></em> <span
 							data-localize="sidebar.nav.SINGLEVIEW">Donations</span>
 					</a></li>
+					<li th:class="${getCommentaires}"><a th:href="@{/Admin/Commentaires}" title="liste des commentaires">
+							<em class="fab fa-cc-mastercard"></em> <span data-localize="sidebar.nav.SINGLEVIEW">Commentaires</span>
+						</a></li>
 					<li th:class="${getComptesUser}"><a th:href="@{/Admin/Comptes-Users}" title="Comptes des utilisateurs">
 							<em class="fas fa-users"></em> <span
 							data-localize="sidebar.nav.SINGLEVIEW">Comptes Utilisateurs</span>

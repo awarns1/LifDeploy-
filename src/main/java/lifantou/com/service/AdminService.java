@@ -60,6 +60,8 @@ public interface AdminService {
 
 	public void deleteAccesApp(Long id);
 
+	public void deleteCommentaire(Long id);
+
 	public AccesApp getAccesApp(Long id);
 
 	public List<Cart> getAllCartByEcole(Long id);
@@ -156,4 +158,6 @@ public interface AdminService {
 	// ==================================STATISTIQUES==============================================
 	// public void getNbStat();
 	public List<Ecole> getAllEcoleNonAffecterToPart(List<Ecole> listEcoleExist);
+
+	public List<NousContactez> getAllCommentaires();
 }

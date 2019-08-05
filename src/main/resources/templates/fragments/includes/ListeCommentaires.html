@@ -1,0 +1,41 @@
+<div data-th-fragment="ListeCommentaires">
+    <div class="content-heading">
+        <div th:text="${title}">title</div>
+    </div>
+    <div class="card" th:if="${!#strings.isEmpty(getCommentaires)}">
+        <div class="card-body">
+            <div class="table-responsive bootgrid">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Prénom Nom</th>
+                            <th>Objet</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c,index :${ListCommentaires}">
+                            <td th:text="${index.count}"></td>
+                            <td th:text="${c.nomComplet}">nomComplet</td>
+                            <td th:text="${c.objt}">Objet</td>
+                            <td th:text="${c.email}">Email</td>
+                            <td th:text="${c.message}">message</td>
+							<td>
+                                <div class="btn-group mb-1">
+                                    <a title="Supprimer Commentaire" th:href="@{'/Admin/Supprimer_cmnt/'+${c.id}+'/'}">
+                                        <button type="button" class="btn btn-sm btn-danger mr-2">
+                                            <em class="fa fa-trash" aria-hidden="true"></em>
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

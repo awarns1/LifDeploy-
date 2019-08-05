@@ -31,6 +31,10 @@
 	<div th:if="${!#strings.isEmpty(ListeCmdEtPaiementEtDonation)}">
 		<div th:replace="fragments/includes/ListeCmdEtPaiementEtDonation ::ListeCmdEtPaiementEtDonation"></div>
 	</div>
+	<!-- ========================  COMMANDE/PAIEMENTS/DONATIONS =============================== -->
+	<div th:if="${!#strings.isEmpty(ListeCommentaires)}">
+		<div th:replace="fragments/includes/ListeCommentaires ::ListeCommentaires"></div>
+	</div>
 	<!-- ========================  CARTOGRAPHIE =============================== -->
 	<div th:if="${!#strings.isEmpty(Cartographie)}">
 		<div th:replace="fragments/includes/CartographieEcole ::CartographieEcole"></div>
