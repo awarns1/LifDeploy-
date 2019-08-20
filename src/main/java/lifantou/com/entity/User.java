@@ -36,7 +36,7 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
 	private List<AccesApp> accesAppList;
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	// @LazyCollection(LazyCollectionOption.FALSE)
 	private Collection<Donation> donations = new ArrayList<>();
 	@ManyToOne

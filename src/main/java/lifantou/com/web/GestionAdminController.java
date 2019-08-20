@@ -271,11 +271,6 @@ public class GestionAdminController {
 				break;
 			case "Activer_compte":
 				AccesApp acc = adminService.getAccesAppActived(id, 1);
-				String msg = "<p>Votre compte utilisateur avec l'adresse e-mail " + acc.getIdUser().getEmail()
-						+ " a été activé avec succès.</p>" + "<p>Vous pouvez maitemnant acceder à votre compte.<p>"
-						+ "<p>Nom utilisateur : " + acc.getUsername() + "<p>" + "<br/><p>Lien plateforme: " + appUrl
-						+ "<p>";
-				mailService.sendEmailHtml("Activation Compte", acc.getIdUser().getEmail(), msg);
 				return link("Comptes-Users", map);
 			case "Desactiver_compte":
 				adminService.getAccesAppActived(id, 0);

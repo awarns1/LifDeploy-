@@ -21,7 +21,7 @@ public class Producteur extends User {
 		super(identifiant, email, tel, adresse, region);
 	}
 
-	@OneToMany(mappedBy = "producteur", fetch = FetchType.LAZY)
-	private Collection<Terrain> terrains = new ArrayList<>();	
+	@OneToMany(mappedBy = "producteur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<Terrain> terrains = new ArrayList<>();
 
 }

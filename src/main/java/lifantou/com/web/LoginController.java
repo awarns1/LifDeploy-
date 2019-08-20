@@ -105,7 +105,7 @@ public class LoginController {
 		try {
 			adminService.saveFaireUnDon(faireUnDon);
 			map.put("registrationOk",
-					"Votre don a été enregistrer avec succès, l'administrateur vous contactera pour plus de détails. !!!");
+					"Votre don a été enregistré avec succès, l'administrateur vous contactera pour plus de détails. !!!");
 			return logon(map);
 		} catch (Exception e) {
 			e.printStackTrace();

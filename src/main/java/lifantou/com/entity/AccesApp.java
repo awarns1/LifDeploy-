@@ -33,8 +33,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "acces_app")
 @Data
-@AllArgsConstructor @NoArgsConstructor
-@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class AccesApp implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,7 +62,7 @@ public class AccesApp implements Serializable {
     @JoinColumn(name = "id_role")
     @ManyToOne(optional = false)
     @JsonIgnore
-    private Role idRole;    
+    private Role idRole;
     @JsonIgnore
     private String token;
 }

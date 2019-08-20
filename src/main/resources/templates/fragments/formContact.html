@@ -1,12 +1,11 @@
 <div data-th-fragment="formContact">
     <div class="card-body">
         <h3>
-            <p class="text-center">Faites un don pour une cantine.</p>
+            <p class="text-center">Contactez-nous</p>
         </h3>
         <p class="bg-success" th:if="${!#strings.isEmpty(confirmOk)}">
-            <span> Vous allez recevoir un email pour la confirmation du
-                changement de mot de passe demand&eacute;</span> <span><br />Verifer
-                votre boite mail !!!
+            <span>
+                Votre commentaire a bien &eacute;t&eacute; envoy&eacute; à l'&eacute;quipe.<br />Nous reviendrons vers vous sous peu.
             </span>
         </p>
         <form th:action="@{/Contactez-nous/}" method="POST"

@@ -1,6 +1,5 @@
 package lifantou.com.entity;
 
-
 import java.util.Calendar;
 import java.util.Date;
 
